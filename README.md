@@ -1,6 +1,6 @@
-# Bases de Dados (BD) - Year 2, Semester 1 (Y2S1)
+# Algoritmos e Estruturas de Dados (AED) - Year 2, Semester 1 (Y2S1)
 
-This repository contains all the exercises and assessments of the UC Data Bases, taught by [Michel Ferreira](https://sigarra.up.pt/fcup/pt/func_geral.formview?p_codigo=241603) and [Carla Lopes](https://sigarra.up.pt/feup/pt/func_geral.formview?p_codigo=467117) at [Integrated Master in Informatics and Computing Engineering](https://sigarra.up.pt/feup/pt/cur_geral.cur_view?pv_curso_id=742) [MIEIC] at the [Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/pt/web_page.Inicial) [FEUP]. <br/>
+This repository contains all the exercises and assessments of the UC Algorithms and Data Structures, taught by [Pedro Ribeiro](https://www.dcc.fc.up.pt/~pribeiro/) and [Carla Lopes](https://sigarra.up.pt/feup/pt/func_geral.formview?p_codigo=211625) at [Integrated Master in Informatics and Computing Engineering](https://sigarra.up.pt/feup/pt/cur_geral.cur_view?pv_curso_id=742) [MIEIC] at the [Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/pt/web_page.Inicial) [FEUP]. <br/>
 
 <br/>
 <p align = "center" >
@@ -14,7 +14,7 @@ This repository contains all the exercises and assessments of the UC Data Bases,
 ## Here are several documents, namely:
 
 ### My Drafts <br/>
-Pieces of code for exercises and assessments, notes that I take during practical classes and other experiences using sql language. It is an authentic disorganized notebook. <br/>
+Pieces of code for exercises and assessments, notes that I take during practical classes and other experiences using C and C++ languages. It is an authentic disorganized notebook. <br/>
 
 ### Notes
 Notes that I take during theoretical lectures.<br/>
