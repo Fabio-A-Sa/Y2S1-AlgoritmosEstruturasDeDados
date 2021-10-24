@@ -52,35 +52,22 @@ int main () {
     poo.addMailToSend(new GreenMail("carla", "lara","7100-514", "box"));
     unsigned int bal = 0;
     vector<Mail *> mailToOtherPO = poo.endOfDay(bal);
+    cout << (bal == 510) << endl;
+    cout << (mailToOtherPO.size() == 3) << endl;
+    cout << (poo.getMailToDeliver().size() == 1) << endl;
+    cout << (poo.getMailToSend().size() == 0) << endl;
+    PostOffice po2("2600-000", "3999-999");
+    po2.addMailToSend(new RegularMail("rita", "joana","3200-514", 120));
+    mailToOtherPO = po2.endOfDay(bal);
+    cout << (bal == 140) << endl;
+    cout << (mailToOtherPO.size() == 0) << endl;
+    cout << (po2.getMailToDeliver().size() == 1) << endl;
+    cout << (po2.getMailToSend().size() == 0) << endl;
 
     return 0;
 }
 
 /*
-
-TEST(test_1, endOfDay){
-    PostOffice po("2600-000", "3999-999");
-    po.addMailToSend(new RegularMail("manuel", "ana","3330-454", 401));
-    po.addMailToSend(new RegularMail("ana", "rui","4400-146", 10));
-    po.addMailToSend(new GreenMail("maria", "luis","2520-110", "envelope"));
-    po.addMailToSend(new GreenMail("carla", "lara","7100-514", "box"));
-
-    unsigned int bal = 0;
-    vector<Mail *> mailToOtherPO = po.endOfDay(bal);
-    EXPECT_EQ(510, bal);
-    EXPECT_EQ(3,mailToOtherPO.size());
-    EXPECT_EQ(1,po.getMailToDeliver().size());
-    EXPECT_EQ(0,po.getMailToSend().size());
-
-    PostOffice po2("2600-000", "3999-999");
-    po2.addMailToSend(new RegularMail("rita", "joana","3200-514", 120));
-
-    mailToOtherPO = po2.endOfDay(bal);
-    EXPECT_EQ(140, bal);
-    EXPECT_EQ(0,mailToOtherPO.size());
-    EXPECT_EQ(1,po2.getMailToDeliver().size());
-    EXPECT_EQ(0,po2.getMailToSend().size());
-}
 
 TEST(test_1, addMailToPostman){
     PostOffice po;

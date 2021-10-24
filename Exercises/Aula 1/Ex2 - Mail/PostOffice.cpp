@@ -59,9 +59,9 @@ vector<Mail *> PostOffice::endOfDay(unsigned int &balance) {
         else {
             out.push_back(*it);
         }
-        mailToSend.erase(it);
     }
     balance = totalPrice;
+    mailToSend.clear();
 	return out;
 }
 
