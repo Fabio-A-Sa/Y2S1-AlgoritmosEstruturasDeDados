@@ -26,17 +26,10 @@ class PostOffice {
         Postman addMailToPostman(Mail *m, string name);
 };
 
+class NoPostmanException {
 
-// TODO
-class NoPostmanException
-{
-public:
-	   string getName() const {return ""; }
+    public:
+           string getName() const {return ""; }
 };
-
-
-
-
-
 
 #endif /* SRC_POSTOFFICE_H_ */

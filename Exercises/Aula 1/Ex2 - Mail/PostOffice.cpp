@@ -1,10 +1,12 @@
 #include "PostOffice.h"
 #include <string>
 
-PostOffice::PostOffice(string firstZCode, string lastZCode):
-								firstZipCode(firstZCode), lastZipCode(lastZCode)
-{}
-PostOffice::PostOffice() {}
+PostOffice::PostOffice(string firstZCode, string lastZCode) {
+    this->firstZipCode = firstZCode;
+    this->lastZipCode = lastZCode;
+}
+
+PostOffice::PostOffice() { }
 
 void PostOffice::addMailToSend(Mail *m) {
 	mailToSend.push_back(m);
@@ -30,16 +32,19 @@ vector<Postman> PostOffice::getPostman() const {
 	return postmen;
 }
 
-
-//--------
-
-// TODO
 vector<Mail *> PostOffice::removePostman(string name) {
-	vector<Mail *> res;
-	return res;
+
+	vector<Mail *> answer = {};
+    for (vector<Postman>::iterator it = postmen.begin() ; it != postmen.end() ; it++) {
+        if ((*it).getName() == name) {
+            answer = (*it).getMail();
+            postmen.erase(it);
+            return answer;
+        }
+    }
+	return answer;
 }
 
-// TODO
 vector<Mail *> PostOffice::endOfDay(unsigned int &balance) {
 	vector<Mail *> res;
 	return res;
