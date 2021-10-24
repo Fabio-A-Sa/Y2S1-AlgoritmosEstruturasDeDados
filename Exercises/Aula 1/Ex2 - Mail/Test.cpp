@@ -1,12 +1,14 @@
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
 #include "Mail.h"
 #include "PostOffice.h"
 #include "Postman.h"
 #include <string>
 
-using testing::Eq;
+int main () {
+    Mail test = Mail("h", "h", "8");
+    return 0;
+}
 
+/*
 TEST(test_1, getPrice){
     RegularMail m1("manuel", "ana","3330-454", 401);
     RegularMail m2("ana", "rui","4400-146", 10);
@@ -114,3 +116,4 @@ TEST(test_1, addMailToPostman){
     EXPECT_EQ(2,px.getMail().size());
 }
 
+/*/

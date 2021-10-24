@@ -21,7 +21,6 @@ class Mail {
 class RegularMail: public Mail {
 
 	unsigned int weight;
-
     public:
         RegularMail(string send, string rec, string code, unsigned int w);
 };
