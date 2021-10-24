@@ -46,8 +46,23 @@ vector<Mail *> PostOffice::removePostman(string name) {
 }
 
 vector<Mail *> PostOffice::endOfDay(unsigned int &balance) {
-	vector<Mail *> res;
-	return res;
+
+    vector<Mail *> out;
+    unsigned int totalPrice = 0;
+
+    for (vector<Mail *>::iterator it = mailToSend.begin() ; it != mailToSend.end() ; it++ ) {
+
+        totalPrice += (*it)->getPrice();
+        if ((*it)->getZipCode() <= lastZipCode && (*it)->getZipCode() >= firstZipCode) {
+            addMailToDeliver(*it);
+        }
+        else {
+            out.push_back(*it);
+        }
+        mailToSend.erase(it);
+    }
+    balance = totalPrice;
+	return out;
 }
 
 
