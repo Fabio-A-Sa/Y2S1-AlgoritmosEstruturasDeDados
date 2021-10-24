@@ -28,8 +28,12 @@ class PostOffice {
 
 class NoPostmanException {
 
+    string name;
     public:
-           string getName() const {return ""; }
+            NoPostmanException (string name);
+            string getName() const { return name; }
 };
+
+NoPostmanException::NoPostmanException(string name) { this->name = name; }
 
 #endif /* SRC_POSTOFFICE_H_ */
