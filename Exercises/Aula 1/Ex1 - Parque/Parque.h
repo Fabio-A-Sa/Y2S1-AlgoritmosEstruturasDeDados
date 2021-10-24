@@ -14,9 +14,9 @@ class InfoCartao {
 class ParqueEstacionamento {
 
 	unsigned vagas;
-	const unsigned  lotacao;
+	unsigned  lotacao;
 	vector<InfoCartao> clientes;
-	const unsigned numMaximoClientes;
+	unsigned numMaximoClientes;
 
     public:
         ParqueEstacionamento(unsigned lot, unsigned nMaxCli);
