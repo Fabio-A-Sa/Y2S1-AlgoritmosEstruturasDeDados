@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "mail.h"
-#include "postOffice.h"
-#include "postman.h"
+#include "Mail.h"
+#include "PostOffice.h"
+#include "Postman.h"
 #include <string>
 
 using testing::Eq;

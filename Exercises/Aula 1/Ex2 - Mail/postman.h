@@ -1,7 +1,7 @@
 #ifndef SRC_POSTMAN_H_
 #define SRC_POSTMAN_H_
 
-#include "mail.h"
+#include "Mail.h"
 #include <string>
 #include <vector>
 

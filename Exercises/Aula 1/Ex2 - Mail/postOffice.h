@@ -1,8 +1,8 @@
 #ifndef SRC_POSTOFFICE_H_
 #define SRC_POSTOFFICE_H_
 
-#include "mail.h"
-#include "postman.h"
+#include "Mail.h"
+#include "Postman.h"
 #include <vector>
 
 

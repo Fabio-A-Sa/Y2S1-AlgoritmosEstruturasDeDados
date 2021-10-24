@@ -1,4 +1,4 @@
-#include "postOffice.h"
+#include "PostOffice.h"
 #include <string>
 
 PostOffice::PostOffice(string firstZCode, string lastZCode):
