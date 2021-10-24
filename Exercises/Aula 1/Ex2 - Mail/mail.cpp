@@ -1,4 +1,4 @@
-#include "mail.h"
+#include "Mail.h"
 
 Mail::Mail(string send, string rec, string zcode):
 			sender(send),receiver(rec), zipCode(zcode)
