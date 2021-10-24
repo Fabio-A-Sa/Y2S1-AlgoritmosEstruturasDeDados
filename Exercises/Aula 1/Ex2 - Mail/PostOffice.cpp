@@ -1,12 +1,12 @@
 #include "PostOffice.h"
 #include <string>
 
+PostOffice::PostOffice() {}
+
 PostOffice::PostOffice(string firstZCode, string lastZCode) {
     this->firstZipCode = firstZCode;
     this->lastZipCode = lastZCode;
 }
-
-PostOffice::PostOffice() { }
 
 void PostOffice::addMailToSend(Mail *m) {
 	mailToSend.push_back(m);
@@ -73,6 +73,7 @@ Postman PostOffice::addMailToPostman(Mail *m, string name) {
             return postman;
         }
     }
-    throw (NoPostmanException(name).getName());
+    NoPostmanException p1(name);
+    throw (p1.getName());
 }
 

@@ -1,28 +1,19 @@
-#include "Mail.h"
-#include "PostOffice.h"
-#include "Postman.h"
+#include "Mail.cpp"
+#include "PostOffice.cpp"
+#include "Postman.cpp"
 #include <string>
+#include <iostream>
+using namespace std;
 
 int main () {
-    Mail test = Mail("h", "h", "8");
-    return 0;
-}
 
-/*
-TEST(test_1, getPrice){
-    RegularMail m1("manuel", "ana","3330-454", 401);
-    RegularMail m2("ana", "rui","4400-146", 10);
-    GreenMail m3("maria", "luis","2520-110", "envelope");
-    GreenMail m4("carla", "lara","7100-514", "box");
+    cout << endl << "Preços (1 Correcto, 0 Incorrecto): " << endl;
+    RegularMail m1("manuel", "ana","3330-454", 401); cout << (m1.getPrice() == 140) << endl;
+    RegularMail m2("ana", "rui","4400-146", 10); cout << (m2.getPrice() == 50) << endl;
+    GreenMail m3("maria", "luis","2520-110", "envelope"); cout << (m3.getPrice() == 80) << endl;
+    GreenMail m4("carla", "lara","7100-514", "box"); cout << (m4.getPrice() == 240) << endl;
 
-    EXPECT_EQ(140, m1.getPrice());
-    EXPECT_EQ(50, m2.getPrice());
-    EXPECT_EQ(80, m3.getPrice());
-    EXPECT_EQ(240, m4.getPrice());
-}
-
-
-TEST(test_1, removePostman){
+    cout << endl << "Mail for Postman (1 Correcto, 0 Incorrecto): " << endl;
     PostOffice po;
     Postman p1;
     p1.setName("joao");
@@ -39,25 +30,33 @@ TEST(test_1, removePostman){
     po.addPostman(p1);
     po.addPostman(p2);
     po.addPostman(p3);
-
     vector <Mail *> mailP = po.removePostman("joao");
-    EXPECT_EQ(1, mailP.size());
-    EXPECT_EQ(2,po.getPostman().size());
-
+    cout << (mailP.size() == 1) << endl;
+    cout << (po.getPostman().size() == 2) << endl;
     mailP.clear();
     mailP = po.removePostman("sergio");
-    EXPECT_EQ(0, mailP.size());
-
+    cout << (mailP.size() == 0) << endl;
     mailP.clear();
     mailP = po.removePostman("paulo");
-    EXPECT_EQ(4, mailP.size());
-
+    cout << (mailP.size() == 4) << endl;
     mailP.clear();
     mailP = po.removePostman("fernando");
-    EXPECT_EQ(1, mailP.size());
+    cout << (mailP.size() == 1) << endl;
+    cout << (po.getPostman().size() == 0) << endl;
 
-    EXPECT_EQ(0,po.getPostman().size());
+    cout << endl << "End of the day (1 Correcto, 0 Incorrecto): " << endl;
+    PostOffice poo("2600-000", "3999-999");
+    poo.addMailToSend(new RegularMail("manuel", "ana","3330-454", 401));
+    poo.addMailToSend(new RegularMail("ana", "rui","4400-146", 10));
+    poo.addMailToSend(new GreenMail("maria", "luis","2520-110", "envelope"));
+    poo.addMailToSend(new GreenMail("carla", "lara","7100-514", "box"));
+    unsigned int bal = 0;
+    vector<Mail *> mailToOtherPO = poo.endOfDay(bal);
+
+    return 0;
 }
+
+/*
 
 TEST(test_1, endOfDay){
     PostOffice po("2600-000", "3999-999");

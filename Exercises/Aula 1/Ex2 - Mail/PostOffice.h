@@ -36,4 +36,4 @@ class NoPostmanException {
 
 NoPostmanException::NoPostmanException(string name) { this->name = name; }
 
-#endif /* SRC_POSTOFFICE_H_ */
+#endif// SRC_POSTOFFICE_H_

@@ -1,6 +1,5 @@
 #include "Postman.h"
 
-
 Postman::Postman(): id(0) {}
 
 void Postman::setName(string nm){

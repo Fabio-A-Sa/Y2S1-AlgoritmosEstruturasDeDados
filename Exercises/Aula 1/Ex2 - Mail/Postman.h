@@ -21,4 +21,4 @@ class Postman {
         unsigned int getID() const;
 };
 
-#endif /* SRC_POSTMAN_H_ */
+#endif //SRC_POSTMAN_H_
