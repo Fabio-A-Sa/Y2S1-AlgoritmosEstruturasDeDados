@@ -52,17 +52,17 @@ int main () {
     poo.addMailToSend(new GreenMail("carla", "lara","7100-514", "box"));
     unsigned int bal = 0;
     vector<Mail *> mailToOtherPO = poo.endOfDay(bal);
-    cout << (bal == 510) << endl;
-    cout << (mailToOtherPO.size() == 3) << endl;
-    cout << (poo.getMailToDeliver().size() == 1) << endl;
-    cout << (poo.getMailToSend().size() == 0) << endl;
+    cout << (bal == 510) << bal <<endl;
+    cout << (mailToOtherPO.size() == 3) << mailToOtherPO.size() <<endl;
+    cout << (poo.getMailToDeliver().size() == 1) << poo.getMailToDeliver().size() << endl;
+    cout << (poo.getMailToSend().size() == 0) << poo.getMailToSend().size() << endl;
     PostOffice po2("2600-000", "3999-999");
     po2.addMailToSend(new RegularMail("rita", "joana","3200-514", 120));
-    mailToOtherPO = po2.endOfDay(bal);
-    cout << (bal == 140) << endl;
-    cout << (mailToOtherPO.size() == 0) << endl;
-    cout << (po2.getMailToDeliver().size() == 1) << endl;
-    cout << (po2.getMailToSend().size() == 0) << endl;
+    vector<Mail *> mailToOtherPO2 = po2.endOfDay(bal);
+    cout << (bal == 140) << bal << endl;
+    cout << (mailToOtherPO2.size() == 0) << mailToOtherPO.size() << endl;
+    cout << (po2.getMailToDeliver().size() == 1) << po2.getMailToDeliver().size() << endl;
+    cout << (po2.getMailToSend().size() == 0) << po2.getMailToSend().size() << endl;
 
     return 0;
 }

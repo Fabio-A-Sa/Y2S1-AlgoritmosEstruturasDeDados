@@ -47,7 +47,7 @@ vector<Mail *> PostOffice::removePostman(string name) {
 
 vector<Mail *> PostOffice::endOfDay(unsigned int &balance) {
 
-    vector<Mail *> out;
+    vector<Mail *> out = {};
     unsigned int totalPrice = 0;
 
     for (vector<Mail *>::iterator it = mailToSend.begin() ; it != mailToSend.end() ; it++ ) {
@@ -59,10 +59,11 @@ vector<Mail *> PostOffice::endOfDay(unsigned int &balance) {
         else {
             out.push_back(*it);
         }
+        //mailToSend.erase(it);
     }
     balance = totalPrice;
     mailToSend.clear();
-	return out;
+    return out;
 }
 
 Postman PostOffice::addMailToPostman(Mail *m, string name) {
