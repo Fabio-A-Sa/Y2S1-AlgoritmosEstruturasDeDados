@@ -1,6 +1,6 @@
 // Created on October, 2021
 // @author: Fábio Araújo de Sá
-// Theorical Lecture 3, 26/10/2021, BigO Notation
+// Theorical Lecture 3, 25/10/2021, BigO Notation
 
 #include <iostream>
 #include <vector>
