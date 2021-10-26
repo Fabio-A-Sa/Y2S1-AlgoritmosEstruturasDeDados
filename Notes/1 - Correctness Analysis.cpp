@@ -19,7 +19,7 @@ int main () {
     cout << "X = " << x << endl << "Result = squareRoot(X) = " << result << endl;
     cout << "Preconditions: x >= 0\nPostconditions: result >= 0 && pow(result, 2) == x" << endl;
 
-    
+    cout << "Parcial correctness:\n\t- Com as pré-condições correctas, caso o algoritmo termine então está correcto;\n\t- Detetar a invariante do ciclo e provar a veracidade para o início, meio e fim\n\n"
 
     return 0;
 }
