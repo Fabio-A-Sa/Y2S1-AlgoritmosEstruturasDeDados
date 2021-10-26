@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <ctime>
 using namespace std;
 
 template <class Comparable>
@@ -55,12 +56,30 @@ Comparable maxSubSum3(const vector<Comparable> &a)
 }
 
 int main () {
+
+    srand(time(NULL));
+    vector<int> numbers = { -3, 1, -8, 4, -1, 2, 1, -5, 5, -3, 1, 10, 2, 4, 5, -8, 4, -1, 2, 1,
+                            -5, 5, -3, 1, -8, 4, -1, 2, 1, -5, 5, -3, 1, -8, 4, -1, 2, 1, -5, 5, -3 };
+
+    time_t t0, t1, t2, t3, t4, t5;
+    int a1, a2, a3;
+
+    t0 = time(nullptr);
+    a1 = maxSubSum1(numbers);
+    t1 = time(nullptr); t1 = t1 - t0;
+
+    t2 = time(nullptr);
+    a2 = maxSubSum2(numbers);
+    t3 = time(nullptr); t3 = t3 - t2;
+
+    t4 = time(nullptr);
+    a3 = maxSubSum3(numbers);
+    t5 = time(nullptr); t5 = t5 - t4;
+
     cout << "\n\nBig-O Notation\n" << endl;
-    vector<int> numbers = {-3, 1, -8, 4, -1, 2, 1, -5, 5, -3, 1, 10, 2, 4, 5, -8, 4, -1, 2, 1,
-                           -5, 5, -3, 1, -8, 4, -1, 2, 1, -5, 5, -3, 1, -8, 4, -1, 2, 1, -5, 5, -3,
-                            1, -8, 4, -1, 2, 1, -5, 5, -3, 1, -8, 4, -1, 2, 1, -5, 5, -3, 1, -8};
-    cout << "First algorithm\nResult = " << maxSubSum1(numbers) << "\nTime complexity: O(n^3)\nSpace complexity: n + n + n = 3n\n" << endl;
-    cout << "Second algorithm\nResult = " << maxSubSum2(numbers) << "\nTime complexity: O(n^2)\nSpace complexity: n + n = 2n\n" << endl;
-    cout << "First algorithm\nResult = " << maxSubSum1(numbers) << "\nTime complexity: O(n)\nSpace complexity: n\n" << endl;
+    cout << "First algorithm\nResult = " << a1 << " in " << t1 << " seconds\nTime complexity: O(n^3)\nSpace complexity: n + n + n = 3n\n" << endl;
+    cout << "Second algorithm\nResult = " << a2 << " in " << t3 << " seconds\nTime complexity: O(n^2)\nSpace complexity: n + n = 2n\n" << endl;
+    cout << "First algorithm\nResult = " << a3 << " in " << t5 << " seconds\nTime complexity: O(n)\nSpace complexity: n\n" << endl;
+
     return 0;
 }
