@@ -3,13 +3,23 @@
 // Theorical Lecture 2, 22/10/2021, Correctness Analysis
 
 #include <iostream>
-#include <string>
-#include <vector>
 #include <cmath>
 using namespace std;
 
 template <class Number>
 Number squareRoot (Number n) { return sqrt(n); }
+
+// invariant: em cada iteração, sum = 1+2+…+(k-1)
+// variant: n + 1 - k, pois o valor máximo de K será n + 1 e K é incrementado a cada iteração
+long sum (int n) {
+    long sum = 0;
+    int k = 1;
+    while (k <= n) {
+        sum += k;
+        k++;
+    }
+    return sum;
+}
 
 int main () {
 
@@ -27,3 +37,4 @@ int main () {
 
     return 0;
 }
+
