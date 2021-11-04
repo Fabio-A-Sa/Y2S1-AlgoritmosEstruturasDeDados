@@ -20,10 +20,6 @@ GreenMail::GreenMail(string send, string rec, string zcode, string t) : Mail(sen
     this->type = t;
 }
 
-unsigned int Mail::getPrice() const {
-    return 0;
-}
-
 unsigned int RegularMail::getPrice() const {
 	if (weight <= 20) return 50;
     if (weight > 20 && weight <= 100) return 75;
