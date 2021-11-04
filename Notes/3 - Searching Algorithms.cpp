@@ -7,7 +7,7 @@
 using namespace std;
 
 template <class F>
-int linearSearch(vector<F> values, F number) {
+int sequentialSearch(vector<F> values, F number) {
 
     for (int i = 0 ; i < values.size() ; i++ ) {
         if (values[i] == number) return i;
@@ -15,13 +15,12 @@ int linearSearch(vector<F> values, F number) {
     return -1;
 }
 
+template <class F>
+int binarySearch(vector<F> values, F number) {
 
+}
 
 int main () {
-
-    for (int i = 0 ; i < 10 ; i++) {
-        cout << "Hello World" << endl;
-    }
     return 0;
 }
 
