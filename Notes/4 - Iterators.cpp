@@ -23,7 +23,11 @@ void binarySearch() {
 
     vector<int> sortedNumbers = {0, 4, 6, 7, 12, 45, 67, 89, 133, 245, 246, 467, 6789, 23455};
     vector<int> keys = {3, 7, 12, 245, 246, 247, 890, 23455};
-
+    for (auto key : keys) {
+        vector<int>::iterator it = binary_search(sortedNumbers.begin(), sortedNumbers.end(), );
+        string result = it == sortedNumbers.end() ? "not found" : "found";
+        cout << key << "? " << result << endl;
+    }
 
 }
 
