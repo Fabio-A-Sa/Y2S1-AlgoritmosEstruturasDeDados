@@ -43,15 +43,14 @@ int binarySearch(vector<F> values, F number) {
 template <class F>
 int findK (vector<F> &board, F atmost)
 {
-    int n = board.size();
     int s = 0, painters = 1;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < board.size(); i++)  // Vai somando
     {
         s += board[i];
         if (s > atmost)
         {
-            s = board[i];
-            painters++;
+            s = board[i];   // Se a soma for o máximo possível
+            painters++;     // Chama outro pintor
         }
     }
     return painters;
@@ -70,11 +69,14 @@ int paintersProblem (F k, vector<F> board) {
     while (low < high)
     {
         int mid = low + (high - low) / 2;       // Observa o tempo intermédio
-        int painters = findK(board, mid);       // É possível que k pintores pintem esse tempo?
+        int painters = findK(board, mid);       // É possível que k pintores ou menos pintem esse tempo?
         if (painters <= k) high = mid;          // Se sim, o intervalo fica [máximo do vector, tempo médio]
         else low = mid + 1;                     // Senão, o intervalo fica [tempo médio, soma de todos os tempos]
     }
     return low;
+
+    // Time complexity: O(n + nlog2(n)) -> loop inicial (n) e a cada iteração (max = log2(n)) existe uma iteração de n elementos (função findK())
+    // Space complexity: O(1)
 }
 
 int main () {
