@@ -40,6 +40,13 @@ int binarySearch(vector<F> values, F number) {
     // Space complexity: O(1)
 }
 
+template <class F>
+int paintersProblem (F numberOfPainters, vector<F> boards) {
+
+
+    return 0;
+}
+
 int main () {
 
     vector<int> numbers = {0, 3, 2, 4, 35, 52, 3, 6, 32, 52, 14, 634, 3, 54, 87, 23, 3, 8, 3, 0, 4, -4, 2, 7, 8, 2};
@@ -48,14 +55,14 @@ int main () {
         cout << i << "? " << sequentialSearch(numbers, i) << endl;
     }
 
-    cout << "\nTest binarySearch() method:" << endl;
     vector<int> sortedNumbers = {0, 4, 6, 7, 12, 45, 67, 89, 133, 245, 246, 467, 6789, 23455};
     vector<int> keys = {3, 7, 12, 245, 246, 247, 890, 23455};
+    cout << "\nTest binarySearch() method:" << endl;
     for (auto key : keys) {
         cout << key << "? " << binarySearch(sortedNumbers, key) << endl;
     }
 
-
+    
 
     return 0;
 }
