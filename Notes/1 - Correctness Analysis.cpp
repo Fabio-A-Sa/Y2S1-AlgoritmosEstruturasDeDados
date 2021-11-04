@@ -11,6 +11,7 @@ Number squareRoot (Number n) { return sqrt(n); }
 
 // invariant: em cada iteração, sum = 1+2+…+(k-1)
 // variant: n + 1 - k, pois o valor máximo de K será n + 1 e K é incrementado a cada iteração
+
 long sum (int n) {
     long sum = 0;
     int k = 1;
