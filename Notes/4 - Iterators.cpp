@@ -10,6 +10,7 @@ using namespace std;
 
 void sequentialSearch() {
 
+    cout << "\nTest sequentialSearch() STL algorithm:" << endl;
     vector<int> numbers = {23, 3, 123, 3, 1, 3, 5, 65, 32, 654, 246, 776, 3, 76, 457, 5, 975, 3224, 8, 2, 5, 42, 644, 75, 2, 44, 64};
     vector<int> keys = {1, 2, 3, 4, 5, 6, 7, 8};
     for (auto key : keys) {
@@ -19,13 +20,15 @@ void sequentialSearch() {
     }
 }
 
+bool lambda (int x, int y) { return x < y; }
+
 void binarySearch() {
 
+    cout << "\nTest binarySearch() STL algorithm:" << endl;
     vector<int> sortedNumbers = {0, 4, 6, 7, 12, 45, 67, 89, 133, 245, 246, 467, 6789, 23455};
     vector<int> keys = {3, 7, 12, 245, 246, 247, 890, 23455};
     for (auto key : keys) {
-        vector<int>::iterator it = binary_search(sortedNumbers.begin(), sortedNumbers.end(), );
-        string result = it == sortedNumbers.end() ? "not found" : "found";
+        string result = binary_search(sortedNumbers.begin(), sortedNumbers.end(), key, lambda) ? "found" : "not found";
         cout << key << "? " << result << endl;
     }
 
@@ -34,5 +37,6 @@ void binarySearch() {
 int main () {
 
     sequentialSearch();
+    binarySearch();
     return 0;
 }
