@@ -41,10 +41,40 @@ int binarySearch(vector<F> values, F number) {
 }
 
 template <class F>
-int paintersProblem (F numberOfPainters, vector<F> boards) {
+int findK (vector<F> &board, F atmost)
+{
+    int n = board.size();
+    int s = 0, painters = 1;
+    for (int i = 0; i < n; i++)
+    {
+        s += board[i];
+        if (s > atmost)
+        {
+            s = board[i];
+            painters++;
+        }
+    }
+    return painters;
+}
 
+template <class F>
+int paintersProblem (F k, vector<F> board) {
 
-    return 0;
+    int n = board.size(), s = 0, m = 0;
+    for(int i = 0; i < n; i++)
+    {
+        m = max(m, board[i]);
+        s += board[i];
+    }
+    int low = m, high = s;
+    while (low < high)
+    {
+        int mid = low + (high - low) / 2;
+        int painters = findK(board, mid);
+        if (painters <= k) high = mid;
+        else low = mid + 1;
+    }
+    return low;
 }
 
 int main () {
@@ -62,7 +92,18 @@ int main () {
         cout << key << "? " << binarySearch(sortedNumbers, key) << endl;
     }
 
-    
+    vector<vector<vector<int>>> input = {
+                                            {{2}, {10, 20, 30, 40}},
+                                            {{3}, {34, 23, 123, 35, 346, 23, 1, 4, 52, 3262, 3, 213, 4, 1}},
+                                            {{3}, {10, 20, 30, 40}},
+                                            {{5}, {34, 23, 123, 35, 346, 23, 1, 4, 52, 3262, 3, 213, 4, 1}},
+                                            {{2}, {34, 23, 123, 35, 4, 52, 3262, 3, 213, 4, 1}},
+                                        };
+
+    cout << "\nTest paintersProblem() method:" << endl;
+    for (auto pair : input) {
+        cout << paintersProblem (pair[0][0], pair[1]) << endl;
+    }
 
     return 0;
 }
