@@ -63,16 +63,16 @@ int paintersProblem (F k, vector<F> board) {
     int n = board.size(), s = 0, m = 0;
     for(int i = 0; i < n; i++)
     {
-        m = max(m, board[i]);
-        s += board[i];
+        m = max(m, board[i]);       // m = máximo do vector = mínimo de tempo possível
+        s += board[i];              // s = soma de todos os tempos = máximo de tempo possível
     }
-    int low = m, high = s;
+    int low = m, high = s;          // [máximo do vector, soma de todos os tempos]
     while (low < high)
     {
-        int mid = low + (high - low) / 2;
-        int painters = findK(board, mid);
-        if (painters <= k) high = mid;
-        else low = mid + 1;
+        int mid = low + (high - low) / 2;       // Observa o tempo intermédio
+        int painters = findK(board, mid);       // É possível que k pintores pintem esse tempo?
+        if (painters <= k) high = mid;          // Se sim, o intervalo fica [máximo do vector, tempo médio]
+        else low = mid + 1;                     // Senão, o intervalo fica [tempo médio, soma de todos os tempos]
     }
     return low;
 }
