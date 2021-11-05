@@ -7,25 +7,21 @@
 using testing::Eq;
 
 TEST(test_1, max){
+
     MyVector<int> v;
+    vector<int> tests = {10, 100, 1000, 10000, 100000, 1000000, 10000000};
 
-    EXPECT_THROW(v.max(), EmptyVector);
-
-    v.push_back(4); v.push_back(33);
-    v.push_back(14); v.push_back(18);
-    v.push_back(45); v.push_back(33);
-    EXPECT_EQ(45,v.max());
-
-    v.push_back(85);
-    EXPECT_EQ(85,v.max());
-
+    for (auto test : tests) {
+    MyVector<int> v;
+    for (int i = 0 ; i <= test ; i++) { v.push_back(i); }
     ticks tstart, tend;
     unsigned t;
     tstart = getticks();
-    EXPECT_EQ(85,v.max());
+    EXPECT_EQ(test,v.max());
     tend = getticks();
     t = ( (int)tend - (int)tstart )/1000;
-    cout << "(vmax(size 8)) t = " <<  t <<endl;
+    cout << "(vmax(size " << test << ")) t = " <<  t <<endl;
+}
 
 }
 
@@ -39,9 +35,9 @@ TEST(test_1, hasDuplicates){
 
     v.push_back(33);
     EXPECT_EQ(true,v.hasDuplicates());
-}
+    }
 
-TEST(test_1, removeDuplicates){
+    TEST(test_1, removeDuplicates){
     MyVector<int> v;
 
     v.push_back(4); v.push_back(33);
