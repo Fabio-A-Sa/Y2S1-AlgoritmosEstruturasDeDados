@@ -14,7 +14,7 @@ class Mail {
         Mail(string send, string rec, string zcode);
         virtual ~Mail();
         string getZipCode() const;
-        virtual unsigned int getPrice() const { return 0; };
+        virtual unsigned int getPrice() const = 0;
 };
 
 class RegularMail: public Mail {
