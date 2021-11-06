@@ -52,16 +52,14 @@ bool Person::operator < (const Person &p) const {
     return age < p.getAge();
 }
 
-bool isTeenager (const Person &p) { return p.getAge() < 20 ; }
+bool isTeenager (const Person &p) { return p.getAge() <= 20 ; }
 
 bool younger (const Person &p1, const Person &p2) {
     return p1.getAge() < p2.getAge();
 }
 
 void writeVector (vector<Person> p) {
-    for (auto person : p) {
-        cout << p << endl;
-    }
+    for (auto person : p) { cout << person; }
 }
 
 void sequentialSearch() {
@@ -98,7 +96,7 @@ void testPerson() {
     vp.push_back(Person("Maria Barros", 28328123, 20));
     vp.push_back(Person ("Carlos Sousa", 2938921798, 18));
     vp.push_back(Person("Fernando Cardoso", 202083293, 33));
-    cout << "initial vector:" << endl;
+    cout << "\nPresentation:" << endl;
     writeVector(vp);
 }
 
