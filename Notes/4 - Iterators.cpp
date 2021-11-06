@@ -17,9 +17,9 @@ class Person {
     public:
         Person();
         Person(string name, unsigned int up, int age);
-        void setName(string name) const;
-        void setAge(int age) const;
-        void setUp(unsigned int up) const;
+        void setName(string name);
+        void setAge(int age);
+        void setUp(unsigned int up);
         string getName() const;
         unsigned int getUp() const;
         int getAge() const;
@@ -29,16 +29,11 @@ class Person {
 };
 
 Person::Person() {}
+Person::Person(string name, unsigned int up, int age) : name(name), up(up), age(age) {}
 
-Person::Person(string name, unsigned int up, int age) {
-    this->name = name;
-    this->up = up;
-    this->age = age;
-}
-
-void Person::setName (string name) const { this->name = name; }
-void Person::setAge (int age) const { this-> age = age; }
-void Person::setUp (unsigned int up) const { this->up = up; }
+void Person::setName (string name) { this->name = name; }
+void Person::setAge (int age) { this-> age = age; }
+void Person::setUp (unsigned int up) { this->up = up; }
 
 string Person::getName() const { return name; }
 unsigned int Person::getUp() const { return up; }
@@ -46,8 +41,8 @@ int Person::getAge() const { return age; }
 
 void Person::presentation() { cout << name << " with up " << up << " have " << age << " years old" << endl; }
 
-bool Person::operator == (const Person &p) {
-    return (age == p.getAge && up == p.getUp() && name = p.getName());
+bool Person::operator == (const Person &p) const {
+    return (age == p.getAge() && up == p.getUp() && name == p.getName());
 }
 
 void sequentialSearch() {
