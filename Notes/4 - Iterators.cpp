@@ -36,17 +36,19 @@ Person::Person(string name, unsigned int up, int age) {
     this->age = age;
 }
 
-void setName (string name) { this->name = name; }
-void setAge (int age) { this-> age = age; }
-void setUp (unsigned int up) { this->up = up; }
+void Person::setName (string name) const { this->name = name; }
+void Person::setAge (int age) const { this-> age = age; }
+void Person::setUp (unsigned int up) const { this->up = up; }
 
-string getName() { return name; }
-unsigned int getUp() { return up; }
-int getAge() { return age; }
+string Person::getName() const { return name; }
+unsigned int Person::getUp() const { return up; }
+int Person::getAge() const { return age; }
 
-void presentation() { cout << name << " with up " << up << " have " << age << " years old" << endl; }
+void Person::presentation() { cout << name << " with up " << up << " have " << age << " years old" << endl; }
 
-bool operator == 
+bool Person::operator == (const Person &p) {
+    return (age == p.getAge && up == p.getUp() && name = p.getName());
+}
 
 void sequentialSearch() {
 
