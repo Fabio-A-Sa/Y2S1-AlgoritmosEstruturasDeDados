@@ -98,25 +98,42 @@ void testPerson() {
     people.push_back(Person ("Carlos Sousa", 2938921798, 18));
     people.push_back(Person("Fernando Cardoso", 202083293, 33));
     cout << "\nPresentation:" << endl;
-    writeVector(vp);
+    writeVector(people);
 
     Person me = Person("Fabio Sa");
     vector<Person>::iterator i = find(people.begin(), people.end(), me);
-    if (i == vp.end()) {
+    if (i == people.end()) {
         cout << me.getName() << " not found in vector" << endl;
     } else {
         cout << me.getName() << " is in vector" << endl;
     }
+
+    me.setAge(19);
+    me.setUp(202007658);
     people.push_back(me);
-    vector<Person>::iterator i = find(people.begin(), people.end(), me);
-    if (i == vp.end()) {
+    vector<Person>::iterator f = find(people.begin(), people.end(), me);
+    if (f == people.end()) {
         cout << me.getName() << " not found in vector" << endl;
     } else {
         cout << me.getName() << " is in vector" << endl;
+    }
+    cout << endl;
+
+    f = find_if(people.begin(), people.end(), isTeenager);
+    if (f == people.end()) {
+        cout << "There's no teenager in this vector" << endl;
+    } else {
+        cout << (*f).getName() << " is a teenager" << endl;
+    }
+    cout << endl;
+
+    for (vector<Person>::iterator it = people.begin(); it != people.end() ; it++) {
+        if (isTeenager(*it)) {
+            cout << *it;
+        }
     }
 
     
-
 }
 
 int main () {
