@@ -41,6 +41,7 @@ int Person::getAge() const { return age; }
 
 ostream & operator << (ostream & os, const Person &p) {
     os << p.getName() << " have up " << p.getUp() << " and " << p.getAge() << " years old" << endl;
+    return os;
 }
 
 bool Person::operator == (const Person &p) const {
@@ -49,6 +50,18 @@ bool Person::operator == (const Person &p) const {
 
 bool Person::operator < (const Person &p) const {
     return age < p.getAge();
+}
+
+bool isTeenager (const Person &p) { return p.getAge() < 20 ; }
+
+bool younger (const Person &p1, const Person &p2) {
+    return p1.getAge() < p2.getAge();
+}
+
+void writeVector (vector<Person> p) {
+    for (auto person : p) {
+        cout << p << endl;
+    }
 }
 
 void sequentialSearch() {
@@ -65,8 +78,6 @@ void sequentialSearch() {
 
 bool lambda (int x, int y) { return x < y; }
 
-bool isTeenager (const Person &p) { return p.getAge() < 20 ; }
-
 void binarySearch() {
 
     cout << "\nTest binarySearch() STL algorithm:" << endl;
@@ -80,7 +91,15 @@ void binarySearch() {
 }
 
 void testPerson() {
-    cout << "Test complete" << endl;
+
+    vector<Person> vp;
+    vp.push_back(Person("6666666","Rui Silva",34));
+    vp.push_back(Person("7777777","Antonio Matos",24));
+    vp.push_back(Person("1234567","Maria Barros",20));
+    vp.push_back(Person ("7654321","Carlos Sousa",18));
+    vp.push_back(Person("3333333","Fernando Cardoso",33));
+    cout << "initial vector:" << endl;
+    writeVector(vp);
 }
 
 int main () {
