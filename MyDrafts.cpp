@@ -561,3 +561,34 @@ EXPECT_EQ(2, p1.getNumLugaresOcupados());
 EXPECT_EQ(3, p1.getNumClientesAtuais());
 }
 
+class Mail {
+
+    string sender;
+    string receiver;
+    string zipCode;
+
+public:
+    Mail(string send, string rec, string zcode);
+    virtual ~Mail();
+    string getZipCode() const;
+    virtual unsigned int getPrice() const = 0;
+};
+
+class RegularMail: public Mail {
+
+    unsigned int weight;
+
+public:
+    RegularMail(string send, string rec, string code, unsigned int w);
+    unsigned int getPrice() const;
+};
+
+class GreenMail: public Mail {
+
+    string type;
+
+public:
+    GreenMail(string send, string rec, string code, string t);
+    unsigned int getPrice() const;
+};
+
