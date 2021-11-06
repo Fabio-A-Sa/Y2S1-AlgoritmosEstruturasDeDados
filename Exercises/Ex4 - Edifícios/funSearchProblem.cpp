@@ -2,10 +2,18 @@
 
 FunSearchProblem::FunSearchProblem() {}
 
-//-----------------------------------------------------------------
-
-// TODO
 int FunSearchProblem::facingSun(const vector<int> & values) {
+
+    if (!values.empty()) {
+        int result = 1, maxHeight = values[0];
+        for (int i = 1 ; i < values.size() ; i++ ) {
+            if (maxHeight < values[i]) {
+                maxHeight = values[i];
+                result++;
+            }
+        }
+        return result;
+    }
     return 0;
 }
 
