@@ -8,6 +8,26 @@
 #include <string>
 using namespace std;
 
+class Person {
+
+    string name;
+    unsigned int up;
+    int age;
+
+    public:
+        Person();
+        Person(string name, unsigned int up, int age);
+        void setName() const;
+        void setAge() const;
+        void setUp() const;
+        string getName() const;
+        unsigned int getUp() const;
+        int getAge() const;
+        void presentation();
+        bool operator == (const Person &p) const;
+        bool operator < (const Person &p) const;
+};
+
 void sequentialSearch() {
 
     cout << "\nTest sequentialSearch() STL algorithm:" << endl;
@@ -31,12 +51,17 @@ void binarySearch() {
         string result = binary_search(sortedNumbers.begin(), sortedNumbers.end(), key, lambda) ? "found" : "not found";
         cout << key << "? " << result << endl;
     }
+    cout << endl;
+}
 
+void testPerson() {
+    cout << "Test complete" << endl;
 }
 
 int main () {
 
     sequentialSearch();
     binarySearch();
+    testPerson();
     return 0;
 }
