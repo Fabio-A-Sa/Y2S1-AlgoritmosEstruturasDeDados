@@ -91,6 +91,7 @@ void binarySearch() {
 
 void testPerson() {
 
+    // Fill vector
     vector<Person> people;
     people.push_back(Person("Rui Silva", 21812313, 34));
     people.push_back(Person("Antonio Matos", 23983123, 24));
@@ -100,6 +101,7 @@ void testPerson() {
     cout << "\nPresentation:" << endl;
     writeVector(people);
 
+    // Is there a person named Fabio Sa in vector?
     Person me = Person("Fabio Sa");
     vector<Person>::iterator i = find(people.begin(), people.end(), me);
     if (i == people.end()) {
@@ -107,7 +109,6 @@ void testPerson() {
     } else {
         cout << me.getName() << " is in vector" << endl;
     }
-
     me.setAge(19);
     me.setUp(202007658);
     people.push_back(me);
@@ -119,6 +120,7 @@ void testPerson() {
     }
     cout << endl;
 
+    // Are teenagers in people?
     f = find_if(people.begin(), people.end(), isTeenager);
     if (f == people.end()) {
         cout << "There's no teenager in this vector" << endl;
@@ -127,13 +129,18 @@ void testPerson() {
     }
     cout << endl;
 
+    // List all teenagers in people
     for (vector<Person>::iterator it = people.begin(); it != people.end() ; it++) {
         if (isTeenager(*it)) {
             cout << *it;
         }
     }
 
-    
+    // Searching using binarySearch STL algorithm
+    people.clear();
+    people.push_back(Person())
+
+
 }
 
 int main () {
