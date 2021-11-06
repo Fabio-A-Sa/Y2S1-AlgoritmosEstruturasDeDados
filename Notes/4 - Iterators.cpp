@@ -93,11 +93,11 @@ void binarySearch() {
 void testPerson() {
 
     vector<Person> vp;
-    vp.push_back(Person("6666666","Rui Silva",34));
-    vp.push_back(Person("7777777","Antonio Matos",24));
-    vp.push_back(Person("1234567","Maria Barros",20));
-    vp.push_back(Person ("7654321","Carlos Sousa",18));
-    vp.push_back(Person("3333333","Fernando Cardoso",33));
+    vp.push_back(Person("Rui Silva", 21812313, 34));
+    vp.push_back(Person("Antonio Matos", 23983123, 24));
+    vp.push_back(Person("Maria Barros", 28328123, 20));
+    vp.push_back(Person ("Carlos Sousa", 2938921798, 18));
+    vp.push_back(Person("Fernando Cardoso", 202083293, 33));
     cout << "initial vector:" << endl;
     writeVector(vp);
 }
