@@ -29,7 +29,7 @@ class Person {
 };
 
 Person::Person() {}
-Person::Person(string name, unsigned int up, int age) : name(name), up(up), age(age) {}
+Person::Person(string name = "UNKNOWN", unsigned int up = 0, int age = 0) : name(name), up(up), age(age) {}
 
 void Person::setName (string name) { this->name = name; }
 void Person::setAge (int age) { this-> age = age; }
@@ -60,6 +60,7 @@ bool younger (const Person &p1, const Person &p2) {
 
 void writeVector (vector<Person> p) {
     for (auto person : p) { cout << person; }
+    cout << endl;
 }
 
 void sequentialSearch() {
@@ -90,14 +91,32 @@ void binarySearch() {
 
 void testPerson() {
 
-    vector<Person> vp;
-    vp.push_back(Person("Rui Silva", 21812313, 34));
-    vp.push_back(Person("Antonio Matos", 23983123, 24));
-    vp.push_back(Person("Maria Barros", 28328123, 20));
-    vp.push_back(Person ("Carlos Sousa", 2938921798, 18));
-    vp.push_back(Person("Fernando Cardoso", 202083293, 33));
+    vector<Person> people;
+    people.push_back(Person("Rui Silva", 21812313, 34));
+    people.push_back(Person("Antonio Matos", 23983123, 24));
+    people.push_back(Person("Maria Barros", 28328123, 20));
+    people.push_back(Person ("Carlos Sousa", 2938921798, 18));
+    people.push_back(Person("Fernando Cardoso", 202083293, 33));
     cout << "\nPresentation:" << endl;
     writeVector(vp);
+
+    Person me = Person("Fabio Sa");
+    vector<Person>::iterator i = find(people.begin(), people.end(), me);
+    if (i == vp.end()) {
+        cout << me.getName() << " not found in vector" << endl;
+    } else {
+        cout << me.getName() << " is in vector" << endl;
+    }
+    people.push_back(me);
+    vector<Person>::iterator i = find(people.begin(), people.end(), me);
+    if (i == vp.end()) {
+        cout << me.getName() << " not found in vector" << endl;
+    } else {
+        cout << me.getName() << " is in vector" << endl;
+    }
+
+    
+
 }
 
 int main () {
