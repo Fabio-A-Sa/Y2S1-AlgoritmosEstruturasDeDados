@@ -138,9 +138,17 @@ void testPerson() {
 
     // Searching using binarySearch STL algorithm
     people.clear();
-    people.push_back(Person())
+    people.push_back(Person("Fabio Sa", 202007658, 19));
+    people.push_back(Person("Tó Ferreira", 223007658, 24));
+    people.push_back(Person("Alexandre Afonso", 12343124, 25));
+    people.push_back(Person("Correia Lopes", 543545658, 34));
+    people.push_back(Person("Torcato Silva", 70213658, 92));
 
-
+    for (int age = 15 ; age < 26 ; i++) {
+        Person unknown = Person("unknown", 0, age);
+        string answer = binary_search(people.begin(), people.end(), unknown, younger) ? "found" : "not found";
+        cout << unknown.getAge() << answer << " in people";
+    }
 }
 
 int main () {
