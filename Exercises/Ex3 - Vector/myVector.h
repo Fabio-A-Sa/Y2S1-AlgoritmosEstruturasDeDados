@@ -16,6 +16,7 @@ class MyVector {
         T max() const;
         bool hasDuplicates() const;
         void removeDuplicates() ;
+        void removeDuplicates();
 };
 
 class EmptyVector { };
@@ -94,4 +95,19 @@ void MyVector<T>::removeDuplicates() {
     // Complexidade Espacial: O(1), as variáveis usadas não dependem do tamanho n do vector
 }
 
+template <class T>
+void MyVector<T>::removeDuplicates2() {
 
+    if (hasDuplicates()) {
+        for (vector<T>::iterator back = values.begin() ; back != values.end() ; back++ ) {
+            for (vector<T>::iterator front = back + 1 ; front != values.end() ; front++ ) {
+                if ((*back) == (*front)) {
+                    values.erase(front);
+                    front--;
+                }
+            }
+        }
+    }
+    // Complexidade Temporal: O(n^2), no pior cenário, para cada n é necessário percorrer n vezes o vector
+    // Complexidade Espacial: O(1), as variáveis usadas não dependem do tamanho n do vector
+}
