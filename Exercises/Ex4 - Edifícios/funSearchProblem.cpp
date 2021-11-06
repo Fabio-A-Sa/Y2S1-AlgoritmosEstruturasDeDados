@@ -42,8 +42,15 @@ int FunSearchProblem::squareR(int num) {
     }
 }
 
-// TODO
 int FunSearchProblem::smallestMissingValue(const vector<int> & values) {
+
+    int answer = INT_MIN;
+    for (auto number : values) {
+        if (answer < number) answer = number;
+    }
+    if (answer >= 0) {
+        return answer+1;
+    }
     return 0;
 }
 

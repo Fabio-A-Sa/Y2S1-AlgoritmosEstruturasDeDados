@@ -23,6 +23,8 @@ TEST(test, squareR){
 
 TEST(test, missingvalue){
 
+    FunSearchProblem problem;
+
 }
 
 TEST(test, minPages){
