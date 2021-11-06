@@ -39,10 +39,16 @@ string Person::getName() const { return name; }
 unsigned int Person::getUp() const { return up; }
 int Person::getAge() const { return age; }
 
-void Person::presentation() { cout << name << " with up " << up << " have " << age << " years old" << endl; }
+ostream & operator << (ostream & os, const Person &p) {
+    os << p.getName() << " have up " << p.getUp() << " and " << p.getAge() << " years old" << endl;
+}
 
 bool Person::operator == (const Person &p) const {
     return (age == p.getAge() && up == p.getUp() && name == p.getName());
+}
+
+bool Person::operator < (const Person &p) const {
+    return age < p.getAge();
 }
 
 void sequentialSearch() {
@@ -58,6 +64,8 @@ void sequentialSearch() {
 }
 
 bool lambda (int x, int y) { return x < y; }
+
+bool isTeenager (const Person &p) { return p.getAge() < 20 ; }
 
 void binarySearch() {
 
