@@ -131,10 +131,9 @@ void testPerson() {
 
     // List all teenagers in people
     for (vector<Person>::iterator it = people.begin(); it != people.end() ; it++) {
-        if (isTeenager(*it)) {
-            cout << *it;
-        }
+        if (isTeenager(*it)) { cout << *it; }
     }
+    cout << endl;
 
     // Searching using binarySearch STL algorithm
     people.clear();
@@ -144,10 +143,10 @@ void testPerson() {
     people.push_back(Person("Correia Lopes", 543545658, 34));
     people.push_back(Person("Torcato Silva", 70213658, 92));
 
-    for (int age = 15 ; age < 26 ; i++) {
+    for (int age = 15 ; age < 26 ; age++) {
         Person unknown = Person("unknown", 0, age);
-        string answer = binary_search(people.begin(), people.end(), unknown, younger) ? "found" : "not found";
-        cout << unknown.getAge() << answer << " in people";
+        string answer = binary_search(people.begin(), people.end(), unknown, younger) ? " found" : " not found";
+        cout << unknown.getAge() << answer << " in people" << endl;
     }
 }
 
