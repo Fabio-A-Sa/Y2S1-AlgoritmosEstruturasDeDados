@@ -16,7 +16,7 @@ class MyVector {
         T max() const;
         bool hasDuplicates() const;
         void removeDuplicates() ;
-        void removeDuplicates();
+        void removeDuplicates2();
 };
 
 class EmptyVector { };
@@ -99,8 +99,8 @@ template <class T>
 void MyVector<T>::removeDuplicates2() {
 
     if (hasDuplicates()) {
-        for (vector<T>::iterator back = values.begin() ; back != values.end() ; back++ ) {
-            for (vector<T>::iterator front = back + 1 ; front != values.end() ; front++ ) {
+        for (typename vector<T>::iterator back = values.begin() ; back != values.end() ; back++ ) {
+            for (typename vector<T>::iterator front = back + 1 ; front != values.end() ; front++ ) {
                 if ((*back) == (*front)) {
                     values.erase(front);
                     front--;

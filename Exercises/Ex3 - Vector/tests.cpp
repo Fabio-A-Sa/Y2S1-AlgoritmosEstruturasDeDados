@@ -12,16 +12,16 @@ TEST(test_1, max){
     vector<int> tests = {10, 100, 1000, 10000, 100000, 1000000, 10000000};
 
     for (auto test : tests) {
-    MyVector<int> v;
-    for (int i = 0 ; i <= test ; i++) { v.push_back(i); }
-    ticks tstart, tend;
-    unsigned t;
-    tstart = getticks();
-    EXPECT_EQ(test,v.max());
-    tend = getticks();
-    t = ( (int)tend - (int)tstart )/1000;
-    cout << "(vmax(size " << test << ")) t = " <<  t <<endl;
-}
+        MyVector<int> v;
+        for (int i = 0 ; i <= test ; i++) { v.push_back(i); }
+        ticks tstart, tend;
+        unsigned t;
+        tstart = getticks();
+        EXPECT_EQ(test,v.max());
+        tend = getticks();
+        t = ( (int)tend - (int)tstart )/1000;
+        cout << "(vmax(size " << test << ")) t = " <<  t <<endl;
+    }
 
 }
 
@@ -35,9 +35,9 @@ TEST(test_1, hasDuplicates){
 
     v.push_back(33);
     EXPECT_EQ(true,v.hasDuplicates());
-    }
+}
 
-    TEST(test_1, removeDuplicates){
+TEST(test_1, removeDuplicates){
     MyVector<int> v;
 
     v.push_back(4); v.push_back(33);
@@ -52,7 +52,7 @@ TEST(test_1, hasDuplicates){
 
     v.push_back(33); v.push_back(20);
     v.push_back(18);
-    v.removeDuplicates();
+    v.removeDuplicates2();
     vx = v.getValues();
     EXPECT_EQ(7, vx.size());
     EXPECT_EQ(4, vx[0]);
@@ -62,7 +62,7 @@ TEST(test_1, hasDuplicates){
 
     v.push_back(20); v.push_back(20);
     v.push_back(20); v.push_back(44);
-    v.removeDuplicates();
+    v.removeDuplicates2();
     vx = v.getValues();
     EXPECT_EQ(8, vx.size());
     EXPECT_EQ(4, vx[0]);
