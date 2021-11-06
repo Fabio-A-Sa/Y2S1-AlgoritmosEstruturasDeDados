@@ -17,9 +17,9 @@ class Person {
     public:
         Person();
         Person(string name, unsigned int up, int age);
-        void setName() const;
-        void setAge() const;
-        void setUp() const;
+        void setName(string name) const;
+        void setAge(int age) const;
+        void setUp(unsigned int up) const;
         string getName() const;
         unsigned int getUp() const;
         int getAge() const;
@@ -27,6 +27,26 @@ class Person {
         bool operator == (const Person &p) const;
         bool operator < (const Person &p) const;
 };
+
+Person::Person() {}
+
+Person::Person(string name, unsigned int up, int age) {
+    this->name = name;
+    this->up = up;
+    this->age = age;
+}
+
+void setName (string name) { this->name = name; }
+void setAge (int age) { this-> age = age; }
+void setUp (unsigned int up) { this->up = up; }
+
+string getName() { return name; }
+unsigned int getUp() { return up; }
+int getAge() { return age; }
+
+void presentation() { cout << name << " with up " << up << " have " << age << " years old" << endl; }
+
+bool operator == 
 
 void sequentialSearch() {
 
