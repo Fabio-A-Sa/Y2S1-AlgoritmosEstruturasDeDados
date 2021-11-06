@@ -17,9 +17,29 @@ int FunSearchProblem::facingSun(const vector<int> & values) {
     return 0;
 }
 
-// TODO
 int FunSearchProblem::squareR(int num) {
-    return 0;
+
+    if (num > 0) {
+
+        int left = 1, right = num, middle;
+
+        while (right - left > 1) {
+
+            middle = (right + left) / 2;
+            if (middle*middle > num) {
+                right = middle;
+            } else if (middle*middle < num) {
+                left = middle;
+            } else {
+                return middle;
+            }
+        }
+        return left;
+
+    } else {
+        cout << "Invalid number" << endl;
+        return 0;
+    }
 }
 
 // TODO
