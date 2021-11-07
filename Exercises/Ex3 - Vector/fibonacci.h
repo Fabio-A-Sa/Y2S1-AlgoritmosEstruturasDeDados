@@ -1,3 +1,5 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
 
 unsigned fibonacci_1(unsigned n) {
 
