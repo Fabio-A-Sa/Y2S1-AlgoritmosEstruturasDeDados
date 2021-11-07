@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #ifndef SRC_POSTOFFICE_H_
 #define SRC_POSTOFFICE_H_
 
