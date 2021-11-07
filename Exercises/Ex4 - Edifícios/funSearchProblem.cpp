@@ -65,6 +65,7 @@ int FunSearchProblem::minPages(const vector<int> & values, int numSt) {
 
         // low: máximo valor do vector = mínimo número de páginas por aluno
         // high: soma de todos os valores do vector = máximo número de páginas por aluno
+        // Algoritmo semelhante ao Painters Problem
 
         int low = values[0], high = 0;
         for (auto number : values) {
