@@ -43,17 +43,17 @@ int FunSearchProblem::squareR(int num) {
 }
 
 int FunSearchProblem::smallestMissingValue(const vector<int> & values) {
-
-    int answer = INT_MIN;
+    /**
+    int min = 0, max = INT_MAX;
     for (auto number : values) {
-        if (answer < number) answer = number;
+        currentRange = number - base;
+        if (currentRange < range) range = currentRange;
+        if (number == base + 1) base++;
     }
-    if (answer >= 0) {
-        return answer+1;
-    }
-    return 0;
-}
 
+    return base ? base + 1 : base ;
+     **/
+}
 // TODO
 int FunSearchProblem::minPages(const vector<int> & values, int numSt) {
     return 0;
