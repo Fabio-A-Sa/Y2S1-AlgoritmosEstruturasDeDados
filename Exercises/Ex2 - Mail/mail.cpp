@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #include "mail.h"
 
 Mail::Mail(string send, string rec, string zcode) {
