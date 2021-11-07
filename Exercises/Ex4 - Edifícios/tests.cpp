@@ -32,11 +32,20 @@ TEST(test, missingvalue){
 
     numbers = {0, 1, 2, 3, 4, 6, 7, 8, 20, -4};
     EXPECT_EQ(3, problem.smallestMissingValue(numbers));
-    numbers = {-3, 0, 4, 2, 4, 6, 5, 7, 12, -5, 3, 1, 0, 8, 2, 5, 3, 9, 10, 3, 6, 2, 12};
+    numbers = {-3, 0, 4, 2, 4, 6, 5, 7, 12, -5, 3, 1, 0, 8, 2, 5, 3, 9, 10, 3, 6, 2};
     EXPECT_EQ(11, problem.smallestMissingValue(numbers));
 
 }
 
 TEST(test, minPages){
 
+    FunSearchProblem problem;
+    vector<int> numbers;
+
+    numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    EXPECT_EQ(10, problem.minPages(numbers, 10));
+    numbers = {10, 20, 34, 42, 42, 63, 78, 98, 102, 123};
+    EXPECT_EQ(123, problem.minPages(numbers, 9));
+    numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    EXPECT_EQ(-1, problem.minPages(numbers, 11));
 }

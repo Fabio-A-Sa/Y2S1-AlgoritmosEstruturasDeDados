@@ -43,19 +43,41 @@ int FunSearchProblem::squareR(int num) {
 }
 
 int FunSearchProblem::smallestMissingValue(const vector<int> & values) {
-    /**
-    int min = 0, max = INT_MAX;
-    for (auto number : values) {
-        currentRange = number - base;
-        if (currentRange < range) range = currentRange;
-        if (number == base + 1) base++;
-    }
-
-    return base ? base + 1 : base ;
-     **/
-}
-// TODO
-int FunSearchProblem::minPages(const vector<int> & values, int numSt) {
     return 0;
 }
 
+int findStudents(const vector<int> & values, int students) {
+
+    int sum = 0, maxStudents = 1;
+    for (auto number : values) {
+        sum += number;
+        if (sum > students) {
+            sum = number;
+            maxStudents++;
+        }
+    }
+    return maxStudents;
+}
+
+int FunSearchProblem::minPages(const vector<int> & values, int numSt) {
+
+    if (!values.empty() && values.size() >= numSt) {
+
+        // low: máximo valor do vector = mínimo número de páginas por aluno
+        // high: soma de todos os valores do vector = máximo número de páginas por aluno
+
+        int low = values[0], high = 0;
+        for (auto number : values) {
+            high += number;
+            if (low < number) low = number;
+        }
+
+        while (low < high) {
+            int middle = low + (high-low) / 2;
+            if (findStudents(values, middle) <= numSt) high = middle;
+            else low = middle + 1;
+        }
+        return low;
+    }
+    return -1;
+}
