@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "cycle.h"
