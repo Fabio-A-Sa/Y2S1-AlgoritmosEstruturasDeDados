@@ -72,7 +72,16 @@ void bubbleSort (vector<int> numbers) {
 
 void shellSort (vector<int> numbers) {
 
-    
+    int j;
+    for (int gap = numbers.size() / 2 ; gap > 0 ; gap /= 2) {
+        for (int i = gap ; i < numbers.size() ; i++ ) {
+            int temp = numbers[i];
+            for (j = i ; j >= gap && temp < numbers[j-gap] ; j -= gap) {
+                numbers[j] = numbers[j-gap];
+            }
+            numbers[j] = temp;
+        }
+    }
     cout << "Shell Sort: " << endl;
     showVector(numbers);
     // Time complexity: O(n^2)
