@@ -16,7 +16,7 @@ void showVector (const vector<int> &vector) {
     cout << endl << endl;
 }
 
-void insertionSort (vector<int> &numbers) {
+void insertionSort (vector<int> numbers) {
 
     for (int i = 1 ; i < numbers.size() ; i++ ) {
         int temp = numbers[i], j;
@@ -25,7 +25,15 @@ void insertionSort (vector<int> &numbers) {
         }
         numbers[j] = temp;
     }
-    cout << "Insertion Sort: " << endl; showVector(numbers);
+    cout << "Insertion Sort: " << endl;
+    showVector(numbers);
+    // Time complexity: O(n^2)
+    // Space complexity: O(1)
+}
+
+void selectionSort (vector<int> numbers) {
+    cout << "Selection Sort: " << endl;
+    showVector(numbers);
 }
 
 int main () {
@@ -41,6 +49,7 @@ int main () {
     cout << "\nInitial vector" << endl; showVector(numbers);
 
     insertionSort(numbers);
+    selectionSort(numbers);
 
     return 0;
 }
