@@ -16,13 +16,14 @@ void showVector (const vector<int> &vector) {
     cout << endl << endl;
 }
 
-void insertionSort (vector<int> numbers) {
+void insertionSort (vector<int> &numbers) {
 
     for (int i = 1 ; i < numbers.size() ; i++ ) {
-        int temp = numbers[i];
-        for (int j = 0 ; j < i &&  ; j++ ) {
-            if ()
+        int temp = numbers[i], j;
+        for (j = i ; j > 0 && temp < numbers[j-1] ; j-- ) {
+            numbers[j] = numbers[j-1];
         }
+        numbers[j] = temp;
     }
     cout << "Insertion Sort: " << endl; showVector(numbers);
 }
