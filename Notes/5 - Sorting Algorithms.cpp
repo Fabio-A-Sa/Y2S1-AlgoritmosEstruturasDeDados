@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <vector>
-#include <string>
 #include <random>
 #include <ctime>
 
@@ -19,7 +18,12 @@ void showVector (const vector<int> &vector) {
 
 void insertionSort (vector<int> numbers) {
 
-    
+    for (int i = 1 ; i < numbers.size() ; i++ ) {
+        int temp = numbers[i];
+        for (int j = 0 ; j < i &&  ; j++ ) {
+            if ()
+        }
+    }
     cout << "Insertion Sort: " << endl; showVector(numbers);
 }
 
