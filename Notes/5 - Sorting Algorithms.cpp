@@ -49,10 +49,29 @@ void selectionSort (vector<int> numbers) {
 }
 
 void bubbleSort (vector<int> numbers) {
+
+    bool swap = true;
+    while (swap) {
+        swap = false;
+        for (int i = 0 ; i < numbers.size()-1 ; i++ ) {
+            for (int j = i + 1 ; j < numbers.size() ; j++ ) {
+                if (numbers[i] > numbers[j]) {
+                    int temp = numbers [i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                    swap = true;
+                }
+            }
+        }
+    }
     cout << "Bubble Sort: " << endl;
     showVector(numbers);
     // Time complexity: O(n^2)
     // Space complexity: O(1)
+}
+
+void shellSort (vector<int> numbers) {
+    cout
 }
 
 int main () {
@@ -67,9 +86,11 @@ int main () {
     }
     cout << "\nInitial vector" << endl; showVector(numbers);
 
+    // Tests
     insertionSort(numbers);
     selectionSort(numbers);
     bubbleSort(numbers);
+    shellSort(numbers);
 
     return 0;
 }
