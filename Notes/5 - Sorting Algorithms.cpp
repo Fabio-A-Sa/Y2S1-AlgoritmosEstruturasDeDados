@@ -117,6 +117,16 @@ void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
 void mergeSortMain(vector <int> & v) {
     vector<int> tmpArr(v.size());
     mergeSort(v, tmpArr, 0, v.size()-1);
+    cout <<
+    // Time complexity: O(n*log(n))
+    // Space complexity: O(n)
+}
+
+void quickSort (vector<int> numbers) {
+
+    // TODO
+    cout << "Quick Sort: " << endl;
+    showVector(numbers);
 }
 
 int main () {
@@ -137,6 +147,7 @@ int main () {
     bubbleSort(numbers);
     shellSort(numbers);
     mergeSortMain(numbers);
+    quickSort(numbers);
 
     return 0;
 }
