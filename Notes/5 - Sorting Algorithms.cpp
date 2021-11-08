@@ -48,6 +48,13 @@ void selectionSort (vector<int> numbers) {
     // Space complexity: O(1)
 }
 
+void bubbleSort (vector<int> numbers) {
+    cout << "Bubble Sort: " << endl;
+    showVector(numbers);
+    // Time complexity: O(n^2)
+    // Space complexity: O(1)
+}
+
 int main () {
 
     srand(time(NULL));
@@ -62,6 +69,7 @@ int main () {
 
     insertionSort(numbers);
     selectionSort(numbers);
+    bubbleSort(numbers);
 
     return 0;
 }
