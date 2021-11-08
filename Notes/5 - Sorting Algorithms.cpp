@@ -71,7 +71,12 @@ void bubbleSort (vector<int> numbers) {
 }
 
 void shellSort (vector<int> numbers) {
-    cout
+
+    
+    cout << "Shell Sort: " << endl;
+    showVector(numbers);
+    // Time complexity: O(n^2)
+    // Space complexity: O(1)
 }
 
 int main () {
