@@ -114,10 +114,11 @@ void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
     }
 }
 
-void mergeSortMain(vector <int> & v) {
+void mergeSortMain(vector <int> v) {
     vector<int> tmpArr(v.size());
     mergeSort(v, tmpArr, 0, v.size()-1);
-    cout <<
+    cout << "Merge Sort: " << endl;
+    showVector(v);
     // Time complexity: O(n*log(n))
     // Space complexity: O(n)
 }
