@@ -88,6 +88,37 @@ void shellSort (vector<int> numbers) {
     // Space complexity: O(1)
 }
 
+void merge(vector <int> &v, vector<int> &tmpArr, int leftPos, int rightPos, int rightEnd) {
+
+    int leftEnd = rightPos--, tmpPos = leftPos;
+    int numElements = rightEnd - leftPos + 1;
+    while ( leftPos <= leftEnd && rightPos <= rightEnd )
+        if ( v[leftPos] <= v[rightPos] )
+            tmpArr[tmpPos++] = v[leftPos++];
+        else
+            tmpArr[tmpPos++] = v[rightPos++];
+    while ( leftPos <= leftEnd )
+        tmpArr[tmpPos++] = v[leftPos++];
+    while ( rightPos <= rightEnd )
+        tmpArr[tmpPos++] = v[rightPos++];
+    for ( int i = 0; i < numElements; i++, rightEnd-- )
+        v[rightEnd] = tmpArr[rightEnd];
+}
+
+void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
+    if (left < right) {
+        int center = (left + right) / 2;
+        mergeSort(v, tmpArr, left, center);
+        mergeSort(v, tmpArr, center + 1, right);
+        merge(v, tmpArr, left, center +1, right);
+    }
+}
+
+void mergeSortMain(vector <int> & v) {
+    vector<int> tmpArr(v.size());
+    mergeSort(v, tmpArr, 0, v.size()-1);
+}
+
 int main () {
 
     srand(time(NULL));
@@ -105,6 +136,7 @@ int main () {
     selectionSort(numbers);
     bubbleSort(numbers);
     shellSort(numbers);
+    mergeSortMain(numbers);
 
     return 0;
 }
