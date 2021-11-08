@@ -32,8 +32,20 @@ void insertionSort (vector<int> numbers) {
 }
 
 void selectionSort (vector<int> numbers) {
+
+    for (int i = 0 ; i < numbers.size() ; i++ ) {
+        int min = i;
+        for (int j = i+1 ; j < numbers.size() ; j++ ) {
+            if (numbers[j] < numbers[min]) min = j;
+        }
+        int temp = numbers[i];
+        numbers[i] = numbers[min];
+        numbers[min] = temp;
+    }
     cout << "Selection Sort: " << endl;
     showVector(numbers);
+    // Time complexity: O(n^2)
+    // Space complexity: O(1)
 }
 
 int main () {
