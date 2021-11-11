@@ -6,15 +6,18 @@
 #include <vector>
 #include <random>
 #include <ctime>
+#include <algorithm>
 
 using namespace std;
 
-void showVectorRun (const vector<int> &vector) {
+void showVector (const vector<int> &vector) {
     for (auto number : vector) {
         cout << number << " ";
     }
     cout << endl << endl;
 }
+
+int median3(int a, int b, int c) { return (a+b+c)/3; }
 
 void insertionSortRun (vector<int> numbers) {
 
@@ -124,27 +127,24 @@ void mergeSortRun(vector <int> v) {
 }
 
 template <class Comparable>
-void quickSort(vector<Comparable> &v){
-    quickSort(v, 0, v.size()-1);
+void quickSort2(vector<Comparable> &v, int left, int right){
+
+    Comparable x = median3(v.size(), left, right);
+    int i = left; int j = right-1;
+    while(true) {
+        while (v[++i] < x) ;
+        while (x < v[--j]) ;
+        if (i < j)
+            swap(v[i], v[j]);
+        else break;
+    }
+    quickSort2(v, left, i-1);
+    quickSort2(v, i+1, right);
 }
 
 template <class Comparable>
-void quickSort(vector<Comparable> &v, int left, int right){
-    if (right-left <= 10)
-        insertionSort(v, left, right);
-    else {
-        Comparable x = median3(v, left, right);
-        int i = left; int j = right-1;
-        for(; ; ) {
-            while (v[++i] < x) ;
-            while (x < v[--j]) ;
-            if (i < j)
-                swap(v[i], v[j]);
-            else break;
-        }
-        quickSort(v, left, i-1);
-        quickSort(v, i+1, right);
-    }
+void quickSort(vector<Comparable> &v){
+    quickSort2(v, 0, v.size()-1);
 }
 
 void quickSortRun (vector<int> numbers) {
