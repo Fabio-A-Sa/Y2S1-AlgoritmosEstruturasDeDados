@@ -9,14 +9,14 @@
 
 using namespace std;
 
-void showVector (const vector<int> &vector) {
+void showVectorRun (const vector<int> &vector) {
     for (auto number : vector) {
         cout << number << " ";
     }
     cout << endl << endl;
 }
 
-void insertionSort (vector<int> numbers) {
+void insertionSortRun (vector<int> numbers) {
 
     for (int i = 1 ; i < numbers.size() ; i++ ) {
         int temp = numbers[i], j;
@@ -31,7 +31,7 @@ void insertionSort (vector<int> numbers) {
     // Space complexity: O(1)
 }
 
-void selectionSort (vector<int> numbers) {
+void selectionSortRun (vector<int> numbers) {
 
     for (int i = 0 ; i < numbers.size() ; i++ ) {
         int min = i;
@@ -48,7 +48,7 @@ void selectionSort (vector<int> numbers) {
     // Space complexity: O(1)
 }
 
-void bubbleSort (vector<int> numbers) {
+void bubbleSortRun (vector<int> numbers) {
 
     bool swap = true;
     while (swap) {
@@ -70,7 +70,7 @@ void bubbleSort (vector<int> numbers) {
     // Space complexity: O(1)
 }
 
-void shellSort (vector<int> numbers) {
+void shellSortRun (vector<int> numbers) {
 
     int j;
     for (int gap = numbers.size() / 2 ; gap > 0 ; gap /= 2) {
@@ -114,7 +114,7 @@ void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
     }
 }
 
-void mergeSortMain(vector <int> v) {
+void mergeSortRun(vector <int> v) {
     vector<int> tmpArr(v.size());
     mergeSort(v, tmpArr, 0, v.size()-1);
     cout << "Merge Sort: " << endl;
@@ -123,11 +123,37 @@ void mergeSortMain(vector <int> v) {
     // Space complexity: O(n)
 }
 
-void quickSort (vector<int> numbers) {
+template <class Comparable>
+void quickSort(vector<Comparable> &v){
+    quickSort(v, 0, v.size()-1);
+}
 
-    // TODO
+template <class Comparable>
+void quickSort(vector<Comparable> &v, int left, int right){
+    if (right-left <= 10)
+        insertionSort(v, left, right);
+    else {
+        Comparable x = median3(v, left, right);
+        int i = left; int j = right-1;
+        for(; ; ) {
+            while (v[++i] < x) ;
+            while (x < v[--j]) ;
+            if (i < j)
+                swap(v[i], v[j]);
+            else break;
+        }
+        quickSort(v, left, i-1);
+        quickSort(v, i+1, right);
+    }
+}
+
+void quickSortRun (vector<int> numbers) {
+
     cout << "Quick Sort: " << endl;
+    quickSort(numbers);
     showVector(numbers);
+    // Time complexity: O(n*log(n)) or O(n^2) if pivot is maximum
+    // Space complexity: O(n) or O(log(n)) in best case
 }
 
 int main () {
@@ -143,12 +169,12 @@ int main () {
     cout << "\nInitial vector" << endl; showVector(numbers);
 
     // Tests
-    insertionSort(numbers);
-    selectionSort(numbers);
-    bubbleSort(numbers);
-    shellSort(numbers);
-    mergeSortMain(numbers);
-    quickSort(numbers);
+    insertionSortRun(numbers);
+    selectionSortRun(numbers);
+    bubbleSortRun(numbers);
+    shellSortRun(numbers);
+    mergeSortRun(numbers);
+    quickSortRun(numbers);
 
     return 0;
 }
