@@ -6,6 +6,7 @@
 #include <vector>
 #include <cmath>
 #include <typeinfo>
+#include <algorithm>
 using namespace std;
 
 const vector<char> letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -16,13 +17,20 @@ const vector<int> numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 const int diffBetweenTypes = pow(numbers.size(), 4) * pow(letters.size(), 2);
 
-int findType (string &matricula) { // Find type (1, 2, 3, 4) and modify matricula to type 1
+int findType (string &matricula) { // Find type (1, 2, 3, 4) and modify matricula to type 1 to compare later
     return 1;
 }
 
-template<class C>
-int diff(C c1, C c2) {
-    if ()
+int diffInt(int c1, int c2) {
+    return abs(c2-c1);
+}
+
+int diffChar(char c1, char c2) {
+    int  = 0;
+    for (int i = 0 ; i < letters.size() ; i++) {
+        if ()
+    }
+    return abs();
 }
 
 int main () {
@@ -35,6 +43,6 @@ int main () {
         cin >> matricula1 >> matricula2;
         cout << matricula2 << endl;
     }
-    
+
     return 0;
 }
