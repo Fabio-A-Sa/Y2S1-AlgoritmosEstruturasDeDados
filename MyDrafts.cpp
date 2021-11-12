@@ -1438,3 +1438,44 @@ numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 EXPECT_EQ(-1, problem.minPages(numbers, 11));
 }
 
+int main() {
+
+    int lines, attemp;
+    cin >> lines;
+    int count = 0;
+
+    for (int i = 0 ; i < lines ; i++) {
+        cin >> attemp;
+        if (attemp == 42) count++;
+    }
+
+    cout << count << endl;
+
+    return 0;
+}
+
+bool match (long int attemp, int sum) {
+
+    int currentSum = 0, digit;
+    while (attemp) {
+        digit = attemp % 10;
+        attemp = attemp / 10;
+        currentSum += digit;
+    }
+    return currentSum == sum;
+}
+
+int main() {
+
+    long int number;
+    int sum, lines;
+
+    cin >> lines;
+    for (int i = 0 ; i < lines ; i++) {
+        cin >> number >> sum;
+        while (!match(number + 1, sum)) number++;
+        cout << number + 1 << endl;
+    }
+
+    return 0;
+}
