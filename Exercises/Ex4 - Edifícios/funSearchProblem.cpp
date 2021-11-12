@@ -45,8 +45,31 @@ int FunSearchProblem::squareR(int num) {
     }
 }
 
+bool thereArePositives(const vector<int> & values) {
+    for (auto number : values) {
+        if (number > 0) return true;
+    }
+    return false;
+}
+
 int FunSearchProblem::smallestMissingValue(const vector<int> & values) {
-    return 0;
+
+    if (thereArePositives(values)) {
+        int toSearch = 1;
+        while (true) {
+            bool found = false;
+            for (auto number : values) {
+                if (number == toSearch) {
+                    toSearch++;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) return toSearch;
+        }
+    } else {
+        return 0;
+    }
 }
 
 int findStudents(const vector<int> & values, int students) {
@@ -65,10 +88,6 @@ int findStudents(const vector<int> & values, int students) {
 int FunSearchProblem::minPages(const vector<int> & values, int numSt) {
 
     if (!values.empty() && values.size() >= numSt) {
-
-        // low: máximo valor do vector = mínimo número de páginas por aluno
-        // high: soma de todos os valores do vector = máximo número de páginas por aluno
-        // Algoritmo semelhante ao Painters Problem
 
         int low = values[0], high = 0;
         for (auto number : values) {
