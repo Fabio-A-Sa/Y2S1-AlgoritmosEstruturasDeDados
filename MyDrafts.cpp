@@ -1479,3 +1479,41 @@ int main() {
 
     return 0;
 }
+
+const vector<char> letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                              'I', 'J', 'L', 'M', 'N', 'O', 'P', 'Q',
+                              'R', 'S', 'T', 'U', 'V', 'X', 'X'   };
+
+const vector<int> numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+const int diffBetweenTypes = pow(numbers.size(), 4) * pow(letters.size(), 2);
+
+int findType (string &matricula) { // Find type (1, 2, 3, 4) and modify matricula to type 1 to compare later
+    return 1;
+}
+
+int diffInt(int c1, int c2) {
+    return abs(c2-c1);
+}
+
+int diffChar(char c1, char c2) {
+    int  = 0;
+    for (int i = 0 ; i < letters.size() ; i++) {
+        if ()
+    }
+    return abs();
+}
+
+int main () {
+
+    int lines;
+    string matricula1, matricula2;
+
+    cin >> lines;
+    for (int i = 0 ; i < lines ; i++) {
+        cin >> matricula1 >> matricula2;
+        cout << matricula2 << endl;
+    }
+
+    return 0;
+}
