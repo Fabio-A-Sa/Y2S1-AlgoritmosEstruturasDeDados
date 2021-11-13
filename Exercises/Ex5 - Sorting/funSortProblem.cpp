@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #include "funSortProblem.h"
 #include <algorithm>
 #include <vector>
