@@ -182,10 +182,31 @@ void quickSortRun (vector<int> &numbers) {
     // Space complexity: O(n) or O(log(n)) in best case
 }
 
+void countingSortRun(vector<int> & numbers) {
+
+    //Get maximum:
+    int maximum = numbers[0];
+    for (int i = 1 ; i < numbers.size() ; i++) if (maximum < numbers[i]) maximum = numbers[i];
+
+    // Create an empty vector and fill with occurrence/indexes
+    vector<int> count(maximum);
+    for (auto number : numbers) count[number] += 1;
+
+    // Create a sorted vector based on index vector
+    vector<int> sortedNumbers = {};
+    for (int i = 0 ; i < maximum ; i++) {
+        if (count[i]) {
+            sortedNumbers.push_back(i);
+        }
+    }
+    for (auto number : sortedNumbers) cout << number << " ";
+    numbers = sortedNumbers;
+}
+
 int main () {
 
     srand(time(NULL));
-    int min = -5, max = 100, size = 20;
+    int min = 0, max = 100, size = 20;
     vector<int> numbers = {};
 
     // Fill vector with random numbers
@@ -194,7 +215,7 @@ int main () {
     }
     cout << "\nInitial vector" << endl; showVector(numbers);
 
-    // Tests
+    // Test sorting comparative based algorithms
     insertionSortRun(numbers);
     selectionSortRun(numbers);
     bubbleSortRun(numbers);
@@ -206,6 +227,9 @@ int main () {
     sort(numbers.begin(), numbers.end());
     cout << "STL Sort()" << endl;
     showVector(numbers);
+
+    // Test sorting non-comparative based algorithms
+    countingSortRun(numbers);
 
     return 0;
 }
