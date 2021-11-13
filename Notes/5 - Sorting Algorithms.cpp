@@ -230,6 +230,8 @@ void countingSortRun(vector<int> numbers) {
         }
     }
     showVector(sortedNumbers); cout << endl;
+    // Time complexity: O(n+k), k is the maximum element
+    // Space complexity: O(k), k is the maximum element
 }
 
 void STLSortRun(vector<int> vector) {
