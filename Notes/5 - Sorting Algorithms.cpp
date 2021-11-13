@@ -29,6 +29,15 @@ void showVector (vector<int> vector) {
     cout << endl;
 }
 
+int getMax(vector<int> vector) {
+
+    if (!vector.empty()) {
+        int max = vector[0];
+        for (int i = 1 ; i < vector.size() ; i++) if (vector[i] > max) max = vector[i];
+        return max;
+    } else return 0;
+}
+
 void insertionSortRun (vector<int> numbers) {
 
     cout << "Insertion Sort Algorithm: " << endl;
@@ -214,8 +223,7 @@ void countingSortRun(vector<int> numbers) {
     showVector(numbers);
 
     // Get maximum:
-    int maximum = numbers[0];
-    for (int i = 1 ; i < numbers.size() ; i++) if (maximum < numbers[i]) maximum = numbers[i];
+    int maximum = getMax(numbers);
 
     // Create an empty vector and fill with number of occurrences/index
     vector<int> count(maximum);
@@ -242,16 +250,48 @@ void STLSortRun(vector<int> vector) {
     showVector(vector); cout << endl;
 }
 
+void countSort(vector<int> &v, int size, int exp) {
+
+    vector<int> output(size);
+    vector<int> count(10);
+
+    for (int i = 0 ; i < size ; i++) {
+        count[(v[i] / exp) % 10]++;
+    }
+
+    for (int i = 1 ; i < 10 ; i++) {
+        count[i] += count[i-1];
+    }
+
+    for (int i = size -1 ; i >= 0 ; i--) {
+        output[count[(v[i] / exp) % 10] - 1] = v[i];
+        count[(v[i] / exp) % 10]--;
+    }
+
+    for (int i = 0 ; i < size ; i++) {
+        v[i] = output[i];
+    }
+}
+
+void radixSort(vector<int> &numbers, int size) {
+
+    int maximum = getMax(numbers);
+    for (int i = 1 ; maximum / i > 0 ; i *= 10)
+        countSort(numbers, numbers.size(), i);
+
+}
+
 void radixSortRun(vector<int> numbers) {
 
     cout << "Radix Sort Algorithm: " << endl;
     showVector(numbers);
 
-    //TODO
+    radixSort(numbers, numbers.size());
 
     showVector(numbers);
-    // Time complexity: O(?)
-    // Space complexity: O(?)
+    // d --> maximum number of digits; k --> maximum element;
+    // Time complexity: O(d*(n+k))
+    // Space complexity: O(d*(n+10))
 }
 
 int main () {
