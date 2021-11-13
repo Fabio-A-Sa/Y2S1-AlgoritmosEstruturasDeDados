@@ -122,10 +122,39 @@ unsigned FunSortProblem::minPlatforms (const vector<float> &arrival, const vecto
     // Space complexity: O(n)
 }
 
+int partition(vector<Piece> &v, int low, int high) {
 
-// TODO
+    float pivot = v[high].getDiameter();
+    int i = (low - 1);
+
+    for (int j = low; j < high; j++) {
+        if (v[j].getDiameter() <= pivot) {
+            i++;
+            swapElements(v[i], v[j]);
+        }
+    }
+    swapElements(v[i + 1], v[high]);
+    return (i + 1);
+}
+
+void quickSort(vector<Piece> &v, int low, int high) {
+
+    if (low < high) {
+        int pi = partition(v, low, high);
+        quickSort(v, low, pi - 1);
+        quickSort(v, pi + 1, high);
+    }
+}
+
+bool NBKey (const Piece &p1, const Piece &p2) {
+    return p1.getDiameter() < p2.getDiameter();
+}
 
 void FunSortProblem::nutsBolts(vector<Piece> &nuts, vector<Piece> &bolts) {
 
-}
+    sort(nuts.begin(), nuts.end(), NBKey);
+    sort(bolts.begin(), bolts.end(), NBKey);
 
+    // Time complexity: O(n*log(n));
+    // Space complexity: O(n);
+}

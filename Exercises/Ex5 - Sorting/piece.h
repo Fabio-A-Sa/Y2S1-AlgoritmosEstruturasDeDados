@@ -5,12 +5,14 @@
 using namespace std;
 
 class Piece {
+
     string id;
     float diameter;
-public:
-    Piece(string i, float d);
-    string getId() const;
-    float getDiameter() const;
+
+    public:
+        Piece(string i, float d);
+        string getId() const;
+        float getDiameter() const;
 };
 
 #endif
