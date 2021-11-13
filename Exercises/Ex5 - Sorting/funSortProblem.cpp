@@ -1,20 +1,14 @@
 #include "funSortProblem.h"
 #include <algorithm>
 #include <vector>
-#include <string>
 
 FunSortProblem::FunSortProblem() {}
 
-template<class F>
+template <class F>
 void swapElements(F &p1, F &p2) {
     F temp = p1;
     p1 = p2;
     p2 = temp;
-}
-
-void showVector(const vector<char> &v) {
-    for (auto number : v) cout << number << " ";
-    cout << endl;
 }
 
 void FunSortProblem::expressLane(vector<Product> &products, unsigned k) {
@@ -71,9 +65,7 @@ bool key (pair<float, char> &p1, pair<float, char> &p2) {
 }
 
 bool exist(const vector<char> & horarios) {
-    for (auto h : horarios) {
-        if (h != ' ') return true;
-    }
+    for (auto h : horarios) if (h != 'V') return true;
     return false;
 }
 
@@ -82,7 +74,7 @@ void generateTrain (vector<char> &horarios) {
     char toSeek = 'A';
     for (auto & h : horarios) {
         if (h == toSeek) {
-            h = ' '; // visited
+            h = 'V'; // visited
             toSeek = toSeek == 'A' ? 'D' : 'A';
         }
     }
@@ -105,6 +97,22 @@ unsigned FunSortProblem::minPlatforms (const vector<float> &arrival, const vecto
             generateTrain(horarios);
             platforms++;
         }
+
+        /**
+            A --> Chegada
+            D --> Partida
+            V --> Horário visitado
+
+            Cada comboio consome uma plataforma e a máxima sequência de pares de horários (A + D)
+
+            A D A A A D D D A A D D --> platforms = 0, existem ainda horários = true;
+            V V V A A V D D V A V D --> platforms = 1, existem ainda horários = true;
+            V V V V A V V D V V V V --> platforms = 2, existem ainda horários = true;
+            V V V V V V V V V V V V --> platforms = 3, existem ainda horários = false;
+
+            A D A D A D --> platforms = 0, existem ainda horários = true;
+            V V V V V V --> platforms = 1, existem ainda horários = false;
+         */
 
         return platforms;
 
