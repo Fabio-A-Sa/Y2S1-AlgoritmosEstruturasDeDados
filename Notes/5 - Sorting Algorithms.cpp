@@ -9,6 +9,19 @@
 
 using namespace std;
 
+const int MIN_VALUE = 0;
+const int MAX_VALUE = 100;
+const int LENGTH = 20;
+
+vector<int> getUnsortedVector() {
+
+    vector<int> numbers = {};
+    for (int i = 0 ; i < LENGTH ; i++) {
+        numbers.push_back(MIN_VALUE + (rand() % (MAX_VALUE - MIN_VALUE)));
+    }
+    return numbers;
+}
+
 void showVector (const vector<int> &vector) {
     for (auto number : vector) {
         cout << number << " ";
@@ -18,6 +31,8 @@ void showVector (const vector<int> &vector) {
 
 void insertionSortRun (vector<int> numbers) {
 
+    cout << "Insertion Sort: " << endl;
+    showVector(numbers);
     for (int i = 1 ; i < numbers.size() ; i++ ) {
         int temp = numbers[i], j;
         for (j = i ; j > 0 && temp < numbers[j-1] ; j-- ) {
@@ -25,7 +40,6 @@ void insertionSortRun (vector<int> numbers) {
         }
         numbers[j] = temp;
     }
-    cout << "Insertion Sort: " << endl;
     showVector(numbers);
     // Time complexity: O(n^2)
     // Space complexity: O(1)
@@ -184,52 +198,50 @@ void quickSortRun (vector<int> &numbers) {
 
 void countingSortRun(vector<int> & numbers) {
 
-    //Get maximum:
+    // Get maximum:
     int maximum = numbers[0];
     for (int i = 1 ; i < numbers.size() ; i++) if (maximum < numbers[i]) maximum = numbers[i];
 
-    // Create an empty vector and fill with occurrence/indexes
+    // Create an empty vector and fill with number of occurrences/index
     vector<int> count(maximum);
     for (auto number : numbers) count[number] += 1;
 
     // Create a sorted vector based on index vector
     vector<int> sortedNumbers = {};
     for (int i = 0 ; i < maximum ; i++) {
-        if (count[i]) {
+        while (count[i]) {
             sortedNumbers.push_back(i);
+            count[i]--;
         }
     }
-    for (auto number : sortedNumbers) cout << number << " ";
-    numbers = sortedNumbers;
+    showVector(sortedNumbers);
+}
+
+void STLSortRun(vector<int> vector) {
+
+    cout << "STL Sort():" << endl;
+    showVector(vector);
+    sort(vector.begin(), vector.end());
+    showVector(vector);
 }
 
 int main () {
 
     srand(time(NULL));
-    int min = 0, max = 100, size = 20;
-    vector<int> numbers = {};
-
-    // Fill vector with random numbers
-    for (int i = 0 ; i < size ; i++) {
-        numbers.push_back(min + (rand() % (max - min)));
-    }
-    cout << "\nInitial vector" << endl; showVector(numbers);
 
     // Test sorting comparative based algorithms
-    insertionSortRun(numbers);
-    selectionSortRun(numbers);
-    bubbleSortRun(numbers);
-    shellSortRun(numbers);
-    mergeSortRun(numbers);
-    quickSortRun(numbers);
+    insertionSortRun(getUnsortedVector());
+    selectionSortRun(getUnsortedVector());
+    bubbleSortRun(getUnsortedVector());
+    shellSortRun(getUnsortedVector());
+    mergeSortRun(getUnsortedVector());
+    quickSortRun(getUnsortedVector());
 
     // Using STL algorithm: IntroSort() = (QuickSort + HeapSort) + InsertionSort
-    sort(numbers.begin(), numbers.end());
-    cout << "STL Sort()" << endl;
-    showVector(numbers);
+    STLSortRun(getUnsortedVector());
 
     // Test sorting non-comparative based algorithms
-    countingSortRun(numbers);
+    countingSortRun(getUnsortedVector());
 
     return 0;
 }
