@@ -13,3 +13,10 @@ float Product::getPrice() const {
 float Product::getWeight() const {
     return weight;
 }
+
+bool Product::operator < (const Product &p) const {
+    if (this->getPrice() == p.getPrice()) {
+        return this->getWeight() < p.getWeight();
+    }
+    return this->getPrice() < p.getPrice();
+}
