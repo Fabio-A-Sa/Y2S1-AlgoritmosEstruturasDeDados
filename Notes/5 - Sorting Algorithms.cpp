@@ -92,8 +92,7 @@ void shellSortRun (vector<int> numbers) {
 }
 
 void merge(vector <int> &v, vector<int> &tmpArr, int leftPos, int rightPos, int rightEnd) {
-
-    int leftEnd = rightPos--, tmpPos = leftPos;
+    int leftEnd = rightPos - 1, tmpPos = leftPos;
     int numElements = rightEnd - leftPos + 1;
     while ( leftPos <= leftEnd && rightPos <= rightEnd )
         if ( v[leftPos] <= v[rightPos] )
@@ -108,8 +107,8 @@ void merge(vector <int> &v, vector<int> &tmpArr, int leftPos, int rightPos, int 
         v[rightEnd] = tmpArr[rightEnd];
 }
 
-void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
-    if (left < right) {
+void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right){
+    if (left < right){
         int center = (left + right) / 2;
         mergeSort(v, tmpArr, left, center);
         mergeSort(v, tmpArr, center + 1, right);
@@ -117,13 +116,11 @@ void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
     }
 }
 
-void mergeSortRun(vector <int> v) {
+void mergeSortRun(vector <int> & v) {
     vector<int> tmpArr(v.size());
     mergeSort(v, tmpArr, 0, v.size()-1);
     cout << "Merge Sort: " << endl;
     showVector(v);
-    // Time complexity: O(n*log(n))
-    // Space complexity: O(n)
 }
 
 template <class Comparable>
@@ -174,7 +171,7 @@ int main () {
     bubbleSortRun(numbers);
     shellSortRun(numbers);
     mergeSortRun(numbers);
-    quickSortRun(numbers);
+    //quickSortRun(numbers);
 
     return 0;
 }
