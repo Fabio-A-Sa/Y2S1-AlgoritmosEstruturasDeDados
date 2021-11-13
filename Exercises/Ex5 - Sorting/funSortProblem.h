@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #ifndef SRC_FUNSORTP_H_
 #define SRC_FUNSORTP_H_
 
