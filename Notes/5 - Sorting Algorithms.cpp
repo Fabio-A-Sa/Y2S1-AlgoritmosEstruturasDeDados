@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <vector>
-#include <random>
 #include <ctime>
 #include <algorithm>
 
@@ -90,6 +89,7 @@ void shellSortRun (vector<int> numbers) {
 }
 
 void merge(vector <int> &v, vector<int> &tmpArr, int leftPos, int rightPos, int rightEnd) {
+
     int leftEnd = rightPos - 1, tmpPos = leftPos;
     int numElements = rightEnd - leftPos + 1;
     while ( leftPos <= leftEnd && rightPos <= rightEnd )
@@ -105,7 +105,8 @@ void merge(vector <int> &v, vector<int> &tmpArr, int leftPos, int rightPos, int 
         v[rightEnd] = tmpArr[rightEnd];
 }
 
-void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right){
+void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
+
     if (left < right){
         int center = (left + right) / 2;
         mergeSort(v, tmpArr, left, center);
@@ -115,6 +116,7 @@ void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right){
 }
 
 void mergeSortRun(vector <int> & v) {
+
     vector<int> tmpArr(v.size());
     mergeSort(v, tmpArr, 0, v.size()-1);
     cout << "Merge Sort: " << endl;
@@ -130,6 +132,7 @@ void swap (int &i, int &j) {
 }
 
 const int &median3(vector<int> &v, int left, int right){
+
     int center = (left+right) /2;
     if (v[center] < v[left])
         swap(v[left], v[center]); //swap elements if order incorrect
@@ -142,9 +145,9 @@ const int &median3(vector<int> &v, int left, int right){
 }
 
 void quickSort(vector<int> &v, int left, int right){
-    if (right-left <= 10) // if small vector
 
-        //insertionSortRun(v);
+    if (right-left <= 10) // if small vector, using insertionSortRun(v);
+
         for (int i = 1 ; i < v.size() ; i++ ) {
             int temp = v[i], j;
             for (j = i ; j > 0 && temp < v[j-1] ; j-- ) {
@@ -154,9 +157,10 @@ void quickSort(vector<int> &v, int left, int right){
         }
 
     else {
+
         int x = median3(v, left, right); // x is the pivot
         int i = left; int j = right-1;
-        for(; ; ) {
+        while (true) {
             while (v[++i] < x) ;
             while (x < v[--j]) ;
             if (i < j)
@@ -174,7 +178,7 @@ void quickSortRun (vector<int> &numbers) {
     quickSort(numbers, 0, numbers.size()-1);
     cout << "Quick Sort: " << endl;
     showVector(numbers);
-    // Time complexity: O(n*log(n)) or O(n^2) if pivot is maximum (worse idea)
+    // Time complexity: O(n*log(n)) or O(n^2) if pivot is maximum (worse case)
     // Space complexity: O(n) or O(log(n)) in best case
 }
 
