@@ -242,6 +242,18 @@ void STLSortRun(vector<int> vector) {
     showVector(vector); cout << endl;
 }
 
+void radixSortRun(vector<int> numbers) {
+
+    cout << "Radix Sort Algorithm: " << endl;
+    showVector(numbers);
+
+    //TODO
+
+    showVector(numbers);
+    // Time complexity: O(?)
+    // Space complexity: O(?)
+}
+
 int main () {
 
     srand(time(NULL));
@@ -259,6 +271,7 @@ int main () {
 
     // Test sorting non-comparative based algorithms
     countingSortRun(getUnsortedVector());
+    radixSortRun(getUnsortedVector());
 
     return 0;
 }
