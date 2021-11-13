@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #ifndef PRODUCT_H
 #define PRODUCT_H
 
