@@ -202,5 +202,10 @@ int main () {
     mergeSortRun(numbers);
     quickSortRun(numbers);
 
+    // Using STL algorithm: IntroSort() = (QuickSort + HeapSort) + InsertionSort
+    sort(numbers.begin(), numbers.end());
+    cout << "STL Sort()" << endl;
+    showVector(numbers);
+
     return 0;
 }
