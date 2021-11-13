@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #ifndef PIECE_H
 #define PIECE_H
 
