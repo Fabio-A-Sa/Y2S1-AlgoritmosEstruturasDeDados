@@ -17,8 +17,6 @@ void showVector (const vector<int> &vector) {
     cout << endl << endl;
 }
 
-int median3(int a, int b, int c) { return (a+b+c)/3; }
-
 void insertionSortRun (vector<int> numbers) {
 
     for (int i = 1 ; i < numbers.size() ; i++ ) {
@@ -121,35 +119,62 @@ void mergeSortRun(vector <int> & v) {
     mergeSort(v, tmpArr, 0, v.size()-1);
     cout << "Merge Sort: " << endl;
     showVector(v);
+    // Time complexity: O(n*log(n))
+    // Space complexity: O(n)
 }
 
-template <class Comparable>
-void quickSort2(vector<Comparable> &v, int left, int right){
+void swap (int &i, int &j) {
+    int temp = i;
+    i = j;
+    j = temp;
+}
 
-    Comparable x = median3(v.size(), left, right);
-    int i = left; int j = right-1;
-    while(true) {
-        while (v[++i] < x) ;
-        while (x < v[--j]) ;
-        if (i < j)
-            swap(v[i], v[j]);
-        else break;
+const int &median3(vector<int> &v, int left, int right){
+    int center = (left+right) /2;
+    if (v[center] < v[left])
+        swap(v[left], v[center]); //swap elements if order incorrect
+    if (v[right] < v[left])
+        swap(v[left], v[right]); //swap elements if order incorrect
+    if (v[right] < v[center])
+        swap(v[center], v[right]); //swap elements if order incorrect
+    swap(v[center], v[right-1]); //puts pivot in position right-1
+    return v[right-1];
+}
+
+void quickSort(vector<int> &v, int left, int right){
+    if (right-left <= 10) // if small vector
+
+        //insertionSortRun(v);
+        for (int i = 1 ; i < v.size() ; i++ ) {
+            int temp = v[i], j;
+            for (j = i ; j > 0 && temp < v[j-1] ; j-- ) {
+                v[j] = v[j-1];
+            }
+            v[j] = temp;
+        }
+
+    else {
+        int x = median3(v, left, right); // x is the pivot
+        int i = left; int j = right-1;
+        for(; ; ) {
+            while (v[++i] < x) ;
+            while (x < v[--j]) ;
+            if (i < j)
+                swap(v[i], v[j]);
+            else break;
+        }
+        swap(v[i], v[right-1]); //reset pivot
+        quickSort(v, left, i-1);
+        quickSort(v, i+1, right);
     }
-    quickSort2(v, left, i-1);
-    quickSort2(v, i+1, right);
 }
 
-template <class Comparable>
-void quickSort(vector<Comparable> &v){
-    quickSort2(v, 0, v.size()-1);
-}
+void quickSortRun (vector<int> &numbers) {
 
-void quickSortRun (vector<int> numbers) {
-
+    quickSort(numbers, 0, numbers.size()-1);
     cout << "Quick Sort: " << endl;
-    quickSort(numbers);
     showVector(numbers);
-    // Time complexity: O(n*log(n)) or O(n^2) if pivot is maximum
+    // Time complexity: O(n*log(n)) or O(n^2) if pivot is maximum (worse idea)
     // Space complexity: O(n) or O(log(n)) in best case
 }
 
@@ -171,7 +196,7 @@ int main () {
     bubbleSortRun(numbers);
     shellSortRun(numbers);
     mergeSortRun(numbers);
-    //quickSortRun(numbers);
+    quickSortRun(numbers);
 
     return 0;
 }
