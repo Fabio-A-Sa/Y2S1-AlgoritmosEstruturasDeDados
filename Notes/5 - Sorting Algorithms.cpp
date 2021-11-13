@@ -178,7 +178,7 @@ void quickSortRun (vector<int> &numbers) {
     quickSort(numbers, 0, numbers.size()-1);
     cout << "Quick Sort: " << endl;
     showVector(numbers);
-    // Time complexity: O(n*log(n)) or O(n^2) if pivot is maximum (worse case)
+    // Time complexity: O(n*log(n)) or O(n^2) if pivot is minimum value (worst case)
     // Space complexity: O(n) or O(log(n)) in best case
 }
 
