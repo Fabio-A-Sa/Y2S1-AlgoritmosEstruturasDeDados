@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #include "product.h"
 
 Product::Product(string i, float p, float w): id(i), price(p), weight(w) {}
