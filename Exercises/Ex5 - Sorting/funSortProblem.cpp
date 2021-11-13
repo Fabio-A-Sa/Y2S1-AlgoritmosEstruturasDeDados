@@ -1,5 +1,7 @@
 #include "funSortProblem.h"
 #include <algorithm>
+#include <vector>
+#include <string>
 
 FunSortProblem::FunSortProblem() {}
 
@@ -10,7 +12,7 @@ void swapElements(F &p1, F &p2) {
     p2 = temp;
 }
 
-void showVector(vector<unsigned> v) {
+void showVector(const vector<char> &v) {
     for (auto number : v) cout << number << " ";
     cout << endl;
 }
@@ -64,9 +66,52 @@ int FunSortProblem::minDifference(const vector<unsigned> &values, unsigned nc) {
     // Space complexity: O(n), clone of initial vector to swap values if necessary
 }
 
-// TODO
+bool key (pair<float, char> &p1, pair<float, char> &p2) {
+    return p1.first < p2.first;
+}
+
+bool exist(const vector<char> & horarios) {
+    for (auto h : horarios) {
+        if (h != ' ') return true;
+    }
+    return false;
+}
+
+void generateTrain (vector<char> &horarios) {
+
+    char toSeek = 'A';
+    for (auto & h : horarios) {
+        if (h == toSeek) {
+            h = ' '; // visited
+            toSeek = toSeek == 'A' ? 'D' : 'A';
+        }
+    }
+}
+
 unsigned FunSortProblem::minPlatforms (const vector<float> &arrival, const vector<float> &departure) {
-    return 0;
+
+    if (!arrival.empty() || !departure.empty()) {
+
+        int platforms = 0;
+        vector<pair<float, char>> order = {};
+        for (auto time : arrival) order.push_back(pair<float, char>(time, 'A'));
+        for (auto time : departure) order.push_back(pair<float, char>(time, 'D'));
+
+        sort(order.begin(), order.end(), key);
+        vector<char> horarios = {};
+        for (auto pair : order) horarios.push_back(pair.second);
+
+        while (exist(horarios)) {
+            generateTrain(horarios);
+            platforms++;
+        }
+
+        return platforms;
+
+    } else return arrival.empty() ? departure.size() : arrival.size();
+
+    // Time complexity: O(n^2)
+    // Space complexity: O(n)
 }
 
 
