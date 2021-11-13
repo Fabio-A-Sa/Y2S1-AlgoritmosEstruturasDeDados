@@ -22,17 +22,18 @@ vector<int> getUnsortedVector() {
     return numbers;
 }
 
-void showVector (const vector<int> &vector) {
+void showVector (vector<int> vector) {
     for (auto number : vector) {
         cout << number << " ";
     }
-    cout << endl << endl;
+    cout << endl;
 }
 
 void insertionSortRun (vector<int> numbers) {
 
-    cout << "Insertion Sort: " << endl;
+    cout << "Insertion Sort Algorithm: " << endl;
     showVector(numbers);
+
     for (int i = 1 ; i < numbers.size() ; i++ ) {
         int temp = numbers[i], j;
         for (j = i ; j > 0 && temp < numbers[j-1] ; j-- ) {
@@ -40,12 +41,16 @@ void insertionSortRun (vector<int> numbers) {
         }
         numbers[j] = temp;
     }
-    showVector(numbers);
+
+    showVector(numbers); cout << endl;
     // Time complexity: O(n^2)
     // Space complexity: O(1)
 }
 
 void selectionSortRun (vector<int> numbers) {
+
+    cout << "Selection Sort Algorithm: " << endl;
+    showVector(numbers);
 
     for (int i = 0 ; i < numbers.size() ; i++ ) {
         int min = i;
@@ -56,13 +61,16 @@ void selectionSortRun (vector<int> numbers) {
         numbers[i] = numbers[min];
         numbers[min] = temp;
     }
-    cout << "Selection Sort: " << endl;
-    showVector(numbers);
+
+    showVector(numbers); cout << endl;
     // Time complexity: O(n^2)
     // Space complexity: O(1)
 }
 
 void bubbleSortRun (vector<int> numbers) {
+
+    cout << "Bubble Sort Algorithm: " << endl;
+    showVector(numbers);
 
     bool swap = true;
     while (swap) {
@@ -78,13 +86,16 @@ void bubbleSortRun (vector<int> numbers) {
             }
         }
     }
-    cout << "Bubble Sort: " << endl;
-    showVector(numbers);
+
+    showVector(numbers); cout << endl;
     // Time complexity: O(n^2)
     // Space complexity: O(1)
 }
 
 void shellSortRun (vector<int> numbers) {
+
+    cout << "Shell Sort Algorithm: " << endl;
+    showVector(numbers);
 
     int j;
     for (int gap = numbers.size() / 2 ; gap > 0 ; gap /= 2) {
@@ -96,8 +107,7 @@ void shellSortRun (vector<int> numbers) {
             numbers[j] = temp;
         }
     }
-    cout << "Shell Sort: " << endl;
-    showVector(numbers);
+    showVector(numbers); cout << endl;
     // Time complexity: O(n^2)
     // Space complexity: O(1)
 }
@@ -129,12 +139,13 @@ void mergeSort(vector <int> &v, vector<int> &tmpArr, int left, int right) {
     }
 }
 
-void mergeSortRun(vector <int> & v) {
+void mergeSortRun(vector <int> v) {
 
+    cout << "Merge Sort Algorithm:" << endl;
+    showVector(v);
     vector<int> tmpArr(v.size());
     mergeSort(v, tmpArr, 0, v.size()-1);
-    cout << "Merge Sort: " << endl;
-    showVector(v);
+    showVector(v); cout << endl;
     // Time complexity: O(n*log(n))
     // Space complexity: O(n)
 }
@@ -187,16 +198,20 @@ void quickSort(vector<int> &v, int left, int right){
     }
 }
 
-void quickSortRun (vector<int> &numbers) {
+void quickSortRun (vector<int> numbers) {
 
-    quickSort(numbers, 0, numbers.size()-1);
-    cout << "Quick Sort: " << endl;
+    cout << "Quick Sort Algorithm:" << endl;
     showVector(numbers);
+    quickSort(numbers, 0, numbers.size()-1);
+    showVector(numbers); cout << endl;
     // Time complexity: O(n*log(n)) or O(n^2) if pivot is minimum value (worst case)
     // Space complexity: O(n) or O(log(n)) in best case
 }
 
-void countingSortRun(vector<int> & numbers) {
+void countingSortRun(vector<int> numbers) {
+
+    cout << "Counting Sort Algorithm:" << endl;
+    showVector(numbers);
 
     // Get maximum:
     int maximum = numbers[0];
@@ -208,13 +223,13 @@ void countingSortRun(vector<int> & numbers) {
 
     // Create a sorted vector based on index vector
     vector<int> sortedNumbers = {};
-    for (int i = 0 ; i < maximum ; i++) {
+    for (int i = 0 ; i <= maximum ; i++) {
         while (count[i]) {
             sortedNumbers.push_back(i);
             count[i]--;
         }
     }
-    showVector(sortedNumbers);
+    showVector(sortedNumbers); cout << endl;
 }
 
 void STLSortRun(vector<int> vector) {
@@ -222,7 +237,7 @@ void STLSortRun(vector<int> vector) {
     cout << "STL Sort():" << endl;
     showVector(vector);
     sort(vector.begin(), vector.end());
-    showVector(vector);
+    showVector(vector); cout << endl;
 }
 
 int main () {
