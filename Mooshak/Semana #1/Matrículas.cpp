@@ -59,15 +59,17 @@ int d (char c1, char c2) {
         if (letters[i] == c1) ic1 = i;
         if (letters[i] == c2) ic2 = i;
     }
+    cout << "ics = " << ic1 << ic2 << endl;
     return abs(ic1-ic2);
 }
 
 void interval(string m1, string m2) {
-    // AA TO CA;
-    int index = m1.size()-1, exponent = 0;
+
+    cout << endl;
+    int index = m1.length()-1, exponent = 0;
     int result = 0;
-    while (index) {
-        result = result + d(m1[index], m2[index]) * pow(10, exponent);
+    while (index-1) {
+        result = result + d(m1[index], m2[index]) * pow(23, exponent);
         index--;
         exponent++;
     }
@@ -82,7 +84,8 @@ int getDiff (string m1, string m2, int type) {
 
     switch (type) {
         case 1:
-            int n1 = stoi(m1.substr(3, 2) + m1.substr(6, 2)), n2 = stoi(m2.substr(3, 2) + m2.substr(6, 2)); // NNNN integer
+            //int n1 = stoi(m1.substr(3, 2) + m1.substr(6, 2)), n2 = stoi(m2.substr(3, 2) + m2.substr(6, 2)); // NNNN integer
+
             return 1;
             break;
         default:
@@ -100,7 +103,7 @@ void solve(string m1, string m2) {
     vector<string> m = {m1, m2}; sort(m.begin(), m.end(), old);
     int t0 = findType(m[0]), t1 = findType(m[1]);
 
-    int a0 = getDiff(m[0], keys[t0-1][1], t0); cout << " depois ";
+    int a0 = getDiff(m[0], keys[t0-1][1], t0);
     int a1 = getDiff(keys[t1-1][0], m[1], t1);
 
 }
@@ -116,7 +119,6 @@ int main () {
         cin >> matricula1 >> matricula2;
         cout << getDiff(matricula1, matricula2) << endl;
     }
-     */
 
     solve("ZZ-90-00", "00-00-AA");
     solve("01-AA-00", "00-AA-99");
@@ -127,9 +129,11 @@ int main () {
     solve("GT-09-32", "32-TG-09");
     solve("12-SV-45", "67-PT-89");
 
-    getDiff("AA", "CA");
-    getDiff("AA", "ZZ");
-    getDiff("AE", "CA");
+    */
+    interval("AA", "CA");
+    interval("AA", "ZZ");
+    interval("AE", "CA");
+    interval("AAAA", "ABCD");
 
 
     return 0;
