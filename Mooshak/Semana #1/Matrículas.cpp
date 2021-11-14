@@ -46,7 +46,33 @@ int findType (string m) {
     }
 }
 
+/**
+ * Type 1: LL-NN-NN
+ * Type 2: NN-NN-LL
+ * Type 3: NN-LL-NN
+ * Type 4: LL-NN-LL
+ */
 
+int d (char c1, char c2) {
+    int ic1, ic2;
+    for (int i = 0 ; i < letters.size() ; i++) {
+        if (letters[i] == c1) ic1 = i;
+        if (letters[i] == c2) ic2 = i;
+    }
+    return abs(ic1-ic2);
+}
+
+void interval(string m1, string m2) {
+    // AA TO CA;
+    int index = m1.size()-1, exponent = 0;
+    int result = 0;
+    while (index) {
+        result = result + d(m1[index], m2[index]) * pow(10, exponent);
+        index--;
+        exponent++;
+    }
+    cout << result << endl;
+}
 
 int getDiff (string m1, string m2, int type) {
 
@@ -56,6 +82,7 @@ int getDiff (string m1, string m2, int type) {
 
     switch (type) {
         case 1:
+            int n1 = stoi(m1.substr(3, 2) + m1.substr(6, 2)), n2 = stoi(m2.substr(3, 2) + m2.substr(6, 2)); // NNNN integer
             return 1;
             break;
         default:
@@ -99,6 +126,11 @@ int main () {
     solve("ZZ-99-ZZ", "AA-00-00");
     solve("GT-09-32", "32-TG-09");
     solve("12-SV-45", "67-PT-89");
+
+    getDiff("AA", "CA");
+    getDiff("AA", "ZZ");
+    getDiff("AE", "CA");
+
 
     return 0;
 }
