@@ -74,18 +74,27 @@ int getDiff (string m1, string m2, int type) {
     switch (type) {
 
         case 1: // Type 1: LL-NN-NN
-            n1 = stoi(m1.substr(3, 2) + m1.substr(6, 2)); n2 = stoi(m2.substr(3, 2) + m2.substr(6, 2)); // NNNN integer
-            n3 = abs(n1-n2) * interval(m1.substr(0, 2), m2.substr(0, 2));
+            n1 = abs(stoi(m1.substr(3, 2) + m1.substr(6, 2)) - stoi(m2.substr(3, 2) + m2.substr(6, 2))); // NNNN integer
+            n1 = n1 ? n1 : 1;
+            n2 = interval(m1.substr(0, 2), m2.substr(0, 2));
+            n2 = n2 ? n2 : 1;
+            n3 = n1 * n2;
             break;
 
         case 2: // Type 2: NN-NN-LL
-            n1 = stoi(m1.substr(0, 2) + m1.substr(3, 2)); n2 = stoi(m2.substr(0, 2) + m2.substr(3, 2)); // NNNN integer
-            n3 = abs(n1-n2) * interval(m1.substr(6, 2), m2.substr(6, 2));
+            n1 = abs(stoi(m1.substr(0, 2) + m1.substr(3, 2)) - stoi(m2.substr(0, 2) + m2.substr(3, 2))); // NNNN integer
+            n1 = n1 ? n1 : 1;
+            n2 = interval(m1.substr(6, 2), m2.substr(6, 2));
+            n2 = n2 ? n2 : 1;
+            n3 = n1 * n2;
             break;
 
         case 3: // Type 3: NN-LL-NN
-            n1 = stoi(m1.substr(0, 2) + m1.substr(6, 2)); n2 = stoi(m2.substr(0, 2) + m2.substr(6, 2)); // NNNN integer
-            n3 = abs(n1-n2) * interval(m1.substr(3, 2), m2.substr(3, 2));
+            n1 = abs(stoi(m1.substr(0, 2) + m1.substr(6, 2)) - stoi(m2.substr(0, 2) + m2.substr(6, 2))); // NNNN integer
+            n1 = n1 ? n1 : 1;
+            n2 = interval(m1.substr(3, 2), m2.substr(3, 2));
+            n2 = n2 ? n2 : 1;
+            n3 = n1 * n2;
             break;
 
         case 4: // Type 4: LL-NN-LL
@@ -96,7 +105,7 @@ int getDiff (string m1, string m2, int type) {
         default:
             cout << "Error" << endl;
     }
-    cout << "n1 = " << n1 << " n2 = " << n2 << " n3 = " << n3 << endl;
+    //cout << "n1 = " << n1 << " n2 = " << n2 << " n3 = " << n3 << endl;
     return n3;
 }
 
@@ -110,10 +119,11 @@ void solve(string m1, string m2) {
     int t0 = findType(m[0]), t1 = findType(m[1]); // T0 <= T1 sempre
 
     int a0 = getDiff(m[0], keys[t0-1][1], t0);
+    cout << "string = " << m[0] << " vai até " << keys[t0-1][1] << " as duas de tipo " << t0 << " e intervalo calculado " << a0 << endl;
     int a1 = getDiff(keys[t1-1][0], m[1], t1);
+    cout << "string = " << keys[t1-1][0] << " vai até " << m[1] << " as duas de tipo " << t1 << " e intervalo calculado " << a1 << endl;
 
-    cout << a0 << " " << a1 << endl;
-
+    cout << a0 + a1 << endl << endl;
 }
 
 int main () {
@@ -127,6 +137,7 @@ int main () {
         cin >> matricula1 >> matricula2;
         cout << getDiff(matricula1, matricula2) << endl;
     }
+         */
 
     solve("ZZ-90-00", "00-00-AA");
     solve("01-AA-00", "00-AA-99");
@@ -136,9 +147,10 @@ int main () {
     solve("ZZ-99-ZZ", "AA-00-00");
     solve("GT-09-32", "32-TG-09");
 
-    */
 
-    solve("12-SV-45", "67-PT-89");
+
+
+    //solve("12-SV-45", "67-PT-89");
 
 
 
