@@ -1881,3 +1881,17 @@ bool Product::operator < (const Product &p) const {
     return this->getPrice() < p.getPrice();
 }
 
+class Product {
+
+    string id;
+    float price;
+    float weight;
+
+public:
+    Product(string i, float p, float w);
+    string getId() const;
+    float getPrice() const;
+    float getWeight() const;
+    bool operator < (const Product &p) const;
+};
+
