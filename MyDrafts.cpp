@@ -1839,3 +1839,13 @@ public:
     static void nutsBolts(vector<Piece> &nuts, vector<Piece> &bolds);
 };
 
+Piece::Piece(string i, float d): id(i), diameter(d) {}
+
+string Piece::getId() const {
+    return id;
+}
+
+float Piece::getDiameter() const {
+    return diameter;
+}
+
