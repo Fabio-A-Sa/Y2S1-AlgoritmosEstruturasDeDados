@@ -5,47 +5,46 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <map>
 using namespace std;
 
-bool notIn (vector<char> all, char c) {
-    for (auto a : all) if (a == c) return false;
-    return true;
+bool keySort (pair<char, int> a, pair<char, int> b) {
+    if (a.second == b.second) {
+        return false;
+    } else {
+        return a.first < b.first ;
+    }
 }
 
-bool sortKey (pair<char, int> a, pair<char, int> b) {
-    return a.second > b.second;
-}
+void atualize (vector<pair<char, int>> &result, char c) {
 
-vector<pair<char, int>> getResult(const string &m) {
-
-    vector<pair<char, int>> result = {};
-    vector<char> visited = {};
-
-    for (int i = 0 ; i < m.size() ; i++) {
-        char c = m[i];
-        if (notIn(visited, c)) {
-            int occurrence = 1;
-            for (int j = i + 1; j < m.size() ; j++) {
-                if (m[j] == c) occurrence++;
-            }
-            pair<char, int> p(c, occurrence);
-            result.push_back(p);
-            visited.push_back(c);
+    bool found = false;
+    for (auto &p : result) {
+        if (p.first == c) {
+            p.second += 1;
+            found = true;
         }
     }
-    sort(result.begin(), result.end(), sortKey);
-    return result;
+    if (!found) {
+        result.push_back(pair<char, int>(c, 1));
+    }
+
+}
+
+void getResult(const string &m) {
+
+    vector<pair<char, int>> result = {};
+    for (auto c : m) atualize(result, c);
+    sort(result.begin(), result.end(), keySort);
+    for (auto pair : result) {
+        cout << pair.first << " " << pair.second << endl;
+    }
+
 }
 
 int main() {
 
-    string ADN;
-    cin >> ADN;
-
-    vector<pair<char, int>> result = getResult(ADN);
-    for (int i = 0 ; i < result.size() ; i++) {
-        cout << result[i].first << " " << result[i].second << endl;
-    }
-
+    string ADN = "PPOIUYTREWQ";
+    getResult(ADN);
     return 0;
 }
