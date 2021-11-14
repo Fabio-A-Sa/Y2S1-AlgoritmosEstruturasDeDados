@@ -9,23 +9,16 @@
 
 using namespace std;
 
-/**
- * Type 1: LL-NN-NN
- * Type 2: NN-NN-LL
- * Type 3: NN-LL-NN
- * Type 4: LL-NN-LL
- */
-
 const vector<vector<string>> keys = { {"AA-00-00", "ZZ-99-99"},
                                       {"00-00-AA", "99-99-ZZ"},
                                       {"00-AA-00", "99-ZZ-99"},
                                       {"AA-00-AA", "ZZ-99-ZZ"}, };
 
-const vector<char> letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-                                'I', 'J', 'L', 'M', 'N', 'O', 'P', 'Q',
-                                    'R', 'S', 'T', 'U', 'V', 'X', 'X'   } ;
-
 const vector<int> numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} ;
+
+const vector<char> letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+                              'I', 'J', 'L', 'M', 'N', 'O', 'P', 'Q',
+                              'R', 'S', 'T', 'U', 'V', 'X', 'X'   } ;
 
 const int diffBetweenTypes = pow(numbers.size(), 4) * pow(letters.size(), 2) ;
 
@@ -53,45 +46,58 @@ int findType (string m) {
  * Type 4: LL-NN-LL
  */
 
-int d (char c1, char c2) {
-    int ic1, ic2;
+int d (char c1, char c2) { // Check
+
+    int ic1 = 0, ic2 = 0;
     for (int i = 0 ; i < letters.size() ; i++) {
         if (letters[i] == c1) ic1 = i;
         if (letters[i] == c2) ic2 = i;
     }
-    cout << "ics = " << ic1 << ic2 << endl;
     return abs(ic1-ic2);
 }
 
-void interval(string m1, string m2) {
+int interval(string m1, string m2) { // Check
 
-    cout << endl;
-    int index = m1.length()-1, exponent = 0;
+    int index = m1.size()-1, exponent = 0;
     int result = 0;
-    while (index-1) {
+    while (index > -1) {
         result = result + d(m1[index], m2[index]) * pow(23, exponent);
         index--;
         exponent++;
     }
-    cout << result << endl;
+    return result;
 }
 
 int getDiff (string m1, string m2, int type) {
 
-    // m1 < m2, logo contar de m1 para m2:
-
-    cout << m1 << " até " << m2 << endl;
-
+    int n1, n2, n3;
     switch (type) {
-        case 1:
-            //int n1 = stoi(m1.substr(3, 2) + m1.substr(6, 2)), n2 = stoi(m2.substr(3, 2) + m2.substr(6, 2)); // NNNN integer
 
-            return 1;
+        case 1: // Type 1: LL-NN-NN
+            n1 = stoi(m1.substr(3, 2) + m1.substr(6, 2)); n2 = stoi(m2.substr(3, 2) + m2.substr(6, 2)); // NNNN integer
+            n3 = abs(n1-n2) * interval(m1.substr(0, 2), m2.substr(0, 2));
             break;
-        default:
-            return 0;
-    }
 
+        case 2: // Type 2: NN-NN-LL
+            n1 = stoi(m1.substr(0, 2) + m1.substr(3, 2)); n2 = stoi(m2.substr(0, 2) + m2.substr(3, 2)); // NNNN integer
+            n3 = abs(n1-n2) * interval(m1.substr(6, 2), m2.substr(6, 2));
+            break;
+
+        case 3: // Type 3: NN-LL-NN
+            n1 = stoi(m1.substr(0, 2) + m1.substr(6, 2)); n2 = stoi(m2.substr(0, 2) + m2.substr(6, 2)); // NNNN integer
+            n3 = abs(n1-n2) * interval(m1.substr(3, 2), m2.substr(3, 2));
+            break;
+
+        case 4: // Type 4: LL-NN-LL
+            n1 = stoi(m1.substr(3, 2)); n2 = stoi(m2.substr(3, 2)); // NN integer
+            n3 = abs(n1-n2) * interval(m1.substr(0, 2) + m1.substr(6, 2), m2.substr(0, 2) + m2.substr(6, 2));
+            break;
+
+        default:
+            cout << "Error" << endl;
+    }
+    cout << "n1 = " << n1 << " n2 = " << n2 << " n3 = " << n3 << endl;
+    return n3;
 }
 
 bool old (string m1, string m2) {
@@ -101,10 +107,12 @@ bool old (string m1, string m2) {
 void solve(string m1, string m2) {
 
     vector<string> m = {m1, m2}; sort(m.begin(), m.end(), old);
-    int t0 = findType(m[0]), t1 = findType(m[1]);
+    int t0 = findType(m[0]), t1 = findType(m[1]); // T0 <= T1 sempre
 
     int a0 = getDiff(m[0], keys[t0-1][1], t0);
     int a1 = getDiff(keys[t1-1][0], m[1], t1);
+
+    cout << a0 << " " << a1 << endl;
 
 }
 
@@ -127,13 +135,11 @@ int main () {
     solve("98-ZZ-99", "AA-42-AA");
     solve("ZZ-99-ZZ", "AA-00-00");
     solve("GT-09-32", "32-TG-09");
-    solve("12-SV-45", "67-PT-89");
 
     */
-    interval("AA", "CA");
-    interval("AA", "ZZ");
-    interval("AE", "CA");
-    interval("AAAA", "ABCD");
+
+    solve("12-SV-45", "67-PT-89");
+
 
 
     return 0;
