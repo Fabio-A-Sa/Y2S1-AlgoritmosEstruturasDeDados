@@ -6,6 +6,7 @@ using namespace std;
 
 
 unsigned int Game::numberOfWords(string phrase) {
+
   if ( phrase.length() == 0 ) return 0;
 
   unsigned n=1;
@@ -26,23 +27,25 @@ Game::Game(list<Kid>& l2) {
 	this->kids = l2;
 }
 
-//-----------------------------------------------------------------
-
-// TODO
 void Game::addKid(const Kid k1) {
+    kids.push_back(k1);
 }
 
-// TODO
 list<Kid> Game::getKids() const {
-    return (list<Kid>());
+    return kids;
 }
 
-// TODO
 void Game::setKids(const list<Kid>& l1) {
+    this->kids = l1;
 }
 
-// TODO
 Kid Game::loseGame(string phrase) {
+
+    int words = numberOfWords(phrase);
+    while (kids.size() > 1) {
+        
+    }
+
     return (Kid("",0,'x'));
 }
 
