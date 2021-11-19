@@ -66,7 +66,6 @@ Kid Game::loseGame(string phrase) {
     return kids.front();
 }
 
-// TODO
 list<Kid> Game::removeOlder(unsigned id) {
 
     list<Kid> result = {};
@@ -87,9 +86,18 @@ queue<Kid> Game::rearrange() {
     return(queue<Kid>());
 }
 
-// TODO
-bool Game::operator==(Game& g2) {
-	return true;
+bool Game::operator == (Game& g2) {
+
+    if (this->getKids().size() != g2.getKids().size()) return false;
+
+    auto g1Kids = this->getKids().begin();
+    auto g2Kids = g2.getKids().begin();
+    for (int i = 0 ; i < this->getKids().size() ; i++) {
+        if (!(*g1Kids == *g2Kids)) return false;
+        g1Kids++;
+        g2Kids++;
+    }
+    return true;
 }
 
 // TODO
