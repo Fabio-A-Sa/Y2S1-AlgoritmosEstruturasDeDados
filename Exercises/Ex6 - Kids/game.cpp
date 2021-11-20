@@ -1,3 +1,6 @@
+// Created on November, 2021
+// @author: Fábio Araújo de Sá
+
 #include "game.h"
 #include <cstdlib>
 #include <ctime>
@@ -42,11 +45,16 @@ void Game::setKids(const list<Kid>& l1) {
 Kid Game::loseGame(string phrase) {
 
     int words = numberOfWords(phrase);
+    int index = 0;
+
     while (kids.size() > 1) {
-        
+        index = (words-1+index) % kids.size();
+        list<Kid>::iterator it = kids.begin();
+        for (int i = 0 ; i < index ; i++) { it++; }
+        kids.remove(*it);
     }
 
-    return (Kid("",0,'x'));
+    return kids.front();
 }
 
 // TODO
