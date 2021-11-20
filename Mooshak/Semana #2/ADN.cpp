@@ -6,14 +6,37 @@
 #include <vector>
 using namespace std;
 
-class ADN {
+class Letter {
+
+    char letter;
+    int frequency, firstOccurrence;
 
     public:
-        string sequence;
-        string unique;
+        Letter(char letter, int frequency, int firstOccurrence);
+        char getLetter() const;
+        int getFrequency() const;
+        int getFirstOccurrence() const;
+};
+
+Letter::Letter(char letter, int frequency, int firstOccurrence) :
+        letter(letter),
+        frequency(frequency),
+        firstOccurrence(firstOccurrence) {}
+
+char Letter::getLetter() const { return letter; }
+int Letter::getFrequency() const { return frequency; }
+int Letter::getFirstOccurrence() const { return firstOccurrence; }
+
+class ADN {
+
+    vector<Letter> letters;
+    string sequence;
+    string unique;
+
+    public:
         ADN(string name);
         void showFrequency();
-        bool key(const pair<char, int> &a, const pair<char, int> &b);
+        friend bool notIn (char c, string s);
 };
 
 bool notIn (char c, string s) {
@@ -21,27 +44,37 @@ bool notIn (char c, string s) {
     return true;
 }
 
-ADN::ADN(string sequence) : sequence(sequence) {
-    string t = "";
-    for (auto letter : sequence) if (notIn(letter, t)) t += letter;
-    this->unique = t;
+bool key (const Letter &a, const Letter &b) {
+    if (a.getFrequency() == b.getFrequency()) {
+        return a.getFirstOccurrence() < b.getFirstOccurrence();
+    } else return a.getFrequency() > b.getFrequency();
 }
 
-bool ADN::key(const pair<char, int> &a, const pair<char, int> &b) {
+ADN::ADN(string sequence) : sequence(sequence) {
 
-    if (a.second == b.second) {
-        return true;
-    } else return a.second > b.second;
+    this->letters.clear();
+    int firstOcc;
+    string unique = "";
+
+    for (auto letter : sequence) if (notIn(letter, unique)) unique += letter;
+
+    for (auto letter : unique) {
+        for (int i = 0 ; i < sequence.size() ; i++) {
+            if (sequence[i] == letter) {
+                firstOcc = i;
+                break;
+            }
+        }
+        Letter l = Letter(letter, count(sequence.begin(), sequence.end(), letter), firstOcc);
+        letters.push_back(l);
+    }
+    sort(letters.begin(), letters.end(), key);
 }
 
 void ADN::showFrequency() {
 
-    vector<pair<char, int>> frequency = {};
-    for (auto letter : unique) frequency.push_back(pair<char, int>(letter, count(sequence.begin(), sequence.end(), letter)));
-    sort(frequency.begin(), frequency.end(), ADN::key);
-
-    for (auto pair : frequency) {
-        cout << pair.first << " " <<pair.second << endl;
+    for (auto letter : letters) {
+        cout << letter.getLetter() << " " << letter.getFrequency()  << endl;
     }
 }
 
