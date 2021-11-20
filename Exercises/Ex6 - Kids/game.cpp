@@ -42,6 +42,15 @@ void Game::setKids(const list<Kid>& l1) {
     this->kids = l1;
 }
 
+int Game::getBoys() const {
+
+    int boys = 0;
+    for (auto const &kid : kids) {
+        if (kid.getSex() == 'm') boys++;
+    }
+    return 0;
+}
+
 Kid Game::loseGame(string phrase) {
 
     int words = numberOfWords(phrase);
@@ -59,11 +68,22 @@ Kid Game::loseGame(string phrase) {
 
 // TODO
 list<Kid> Game::removeOlder(unsigned id) {
-    return (list<Kid>());
+
+    list<Kid> result = {};
+    for (auto kid : kids) {
+        if (kid.getAge() > id) {
+            result.push_back(kid);
+            kids.remove(kid);
+        }
+    }
+    return result;
 }
 
-// TODO
 queue<Kid> Game::rearrange() {
+
+    int boys = getBoys();
+    int girls = kids.size() - boys;
+
     return(queue<Kid>());
 }
 

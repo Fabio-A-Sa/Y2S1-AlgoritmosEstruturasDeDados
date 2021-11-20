@@ -26,6 +26,7 @@ class Game
         queue<Kid> rearrange();
         bool operator==(Game& g2);
         list<Kid> shuffle() const;
+        int getBoys() const;
 };
 
 #endif /* GAME_H_ */
