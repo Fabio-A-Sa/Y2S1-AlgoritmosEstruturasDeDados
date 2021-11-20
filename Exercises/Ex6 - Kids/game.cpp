@@ -9,17 +9,9 @@ using namespace std;
 
 
 unsigned int Game::numberOfWords(string phrase) {
-
-  if ( phrase.length() == 0 ) return 0;
-
-  unsigned n=1;
-  size_t pos = phrase.find(' ');
-  while (pos != string::npos) {
-    phrase = phrase.substr(pos+1);
-    pos = phrase.find(' ');
-    n++;
-  }
-  return n;
+    int result = 0;
+    for (auto c : phrase) if (c == ' ') result++;
+    return result ? result + 1 : result;
 }
 
 Game::Game() {
@@ -42,13 +34,12 @@ void Game::setKids(const list<Kid>& l1) {
     this->kids = l1;
 }
 
-int Game::getBoys() const {
+void Game::splitKids(list<Kid> &boys, list<Kid> &girls) const {
 
-    int boys = 0;
     for (auto const &kid : kids) {
-        if (kid.getSex() == 'm') boys++;
+        if (kid.getSex() == 'm') boys.push_back(kid);
+        else girls.push_back(kid);
     }
-    return 0;
 }
 
 Kid Game::loseGame(string phrase) {
@@ -80,27 +71,74 @@ list<Kid> Game::removeOlder(unsigned id) {
 
 queue<Kid> Game::rearrange() {
 
-    int boys = getBoys();
-    int girls = kids.size() - boys;
+    queue<Kid> result = {};
+    list<Kid> sortedKids = {}, qBoys = {}, qGirls = {};
+    splitKids(qBoys, qGirls);
 
-    return(queue<Kid>());
+    int boys = qBoys.size(), girls = qGirls.size();
+    int nBoys = girls < boys ? boys/girls : 1;
+    int nGirls = girls >= boys ? girls/boys : 1;
+
+    int loop = kids.size() / (nGirls+nBoys);
+
+    while (loop) {
+
+        int qtdGirls = nGirls, qtdBoys = nBoys;
+        while (qtdGirls) {
+            sortedKids.push_back(qGirls.front());
+            qGirls.remove(qGirls.front());
+            qtdGirls--;
+        }
+        while (qtdBoys) {
+            sortedKids.push_back(qBoys.front());
+            qBoys.remove(qBoys.front());
+            qtdBoys--;
+        }
+        loop--;
+    }
+
+    for (auto girl : qGirls) result.push(girl);
+    for (auto boy : qBoys) result.push(boy);
+    kids = sortedKids;
+    return result;
 }
 
 bool Game::operator == (Game& g2) {
 
     if (this->getKids().size() != g2.getKids().size()) return false;
 
-    auto g1Kids = this->getKids().begin();
-    auto g2Kids = g2.getKids().begin();
-    for (int i = 0 ; i < this->getKids().size() ; i++) {
-        if (!(*g1Kids == *g2Kids)) return false;
-        g1Kids++;
-        g2Kids++;
+    int i = 0;
+    for (auto k1 : this->getKids()) {
+        int j = 0;
+        for (auto k2 : g2.getKids()) {
+            if (i == j && !(k1 == k2)) return false;
+            j++;
+        }
+        i++;
     }
+
     return true;
 }
 
-// TODO
 list<Kid> Game::shuffle() const {
-	return (list<Kid>());
+
+    list<Kid> result = {}, k = kids;
+    int index;
+
+    while (k.size()) {
+
+        index = rand() % k.size(); // random index in [0..k.size()]
+
+        int i = 0;
+        for (auto kid : k) {
+            if (i == index) {
+                result.push_back(kid);
+                k.remove(kid);
+                break;
+            }
+            i++;
+        }
+
+    }
+	return result;
 }
