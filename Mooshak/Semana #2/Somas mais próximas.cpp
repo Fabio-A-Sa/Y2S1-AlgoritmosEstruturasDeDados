@@ -33,17 +33,28 @@ void showResult (vector<int> result, int question) {
 vector<int> solve (vector<int> numbers, int question) {
 
     vector<int> result = {};
-    int a, b, minRange = 2147483647;
+    int a, b, minRange = 2147483647; // Mooshak não reconhece o INT_MAX?!
     for (int i = 0 ; i < numbers.size() ; i++) {
         for (int j = i + 1 ; j < numbers.size() ; j++) {
             if (abs(numbers[i]+numbers[j]-question) <= minRange) {
                 a = numbers[i];
                 b = numbers[j];
                 minRange = abs(a+b-question);
-                result.push_back(a+b); // sempre que troca
+                result.push_back(a+b);
             }
         }
     }
+
+    // Remove duplicates using iterators
+    for (vector<int>::iterator i = result.begin() ; i != result.end() ; i++) {
+        for (vector<int>::iterator j = i + 1 ; j != result.end() ; j++) {
+            if (*i == *j) {
+                result.erase(j);
+                j--;
+            }
+        }
+    }
+
     return result;
 }
 
@@ -52,7 +63,6 @@ int main () {
     int nNumbers, currentNumber, nQuestions, currentQuestion;
     vector<int> numbers = {}, questions = {};
 
-    /**
     cin >> nNumbers;
     for (int i = 0 ; i < nNumbers ; i++) {
         cin >> currentNumber;
@@ -65,12 +75,12 @@ int main () {
         cin >> currentQuestion;
         questions.push_back(currentQuestion);
     }
-    */
 
+    /**
     numbers = {5, 6, 8, 9};
     questions = {1, 2, 14, 16, 18, 1000};
     sort(numbers.begin(), numbers.end());
-
+    */
 
     for (auto question : questions) {
         vector<int> result = solve (numbers, question);
