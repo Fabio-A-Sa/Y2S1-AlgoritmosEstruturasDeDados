@@ -6,6 +6,10 @@
 #include <algorithm>
 using namespace std;
 
+void showResult (vector<int> result) {
+    cout << "Test" << endl;
+}
+
 vector<int> solve (vector<int> numbers, int question) {
 
     vector<int> result = {};
@@ -37,6 +41,12 @@ int main () {
     for (int i = 0 ; i < nQuestions ; i++) {
         cin >> currentQuestion;
         questions.push_back(currentQuestion);
+    }
+    sort(questions.begin(), questions.end());
+
+    for (auto question : questions) {
+        vector<int> result = solve (numbers, question);
+        showResult(result);
     }
 
     return 0;
