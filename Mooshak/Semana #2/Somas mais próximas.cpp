@@ -67,8 +67,8 @@ int main () {
     }
     */
 
-    numbers = {5 6 8 9};
-    questions = {1 2 14 16 18 1000};
+    numbers = {5, 6, 8, 9};
+    questions = {1, 2, 14, 16, 18, 1000};
     sort(numbers.begin(), numbers.end());
 
 
