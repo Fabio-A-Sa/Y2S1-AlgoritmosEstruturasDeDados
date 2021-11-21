@@ -7,26 +7,30 @@
 using namespace std;
 
 void showResult (vector<int> result) {
-    cout << "Test" << endl;
+    for (auto number : result) cout << number << " ";
+    cout << endl;
 }
 
 vector<int> solve (vector<int> numbers, int question) {
 
     vector<int> result = {};
-    int a, int b, int minRange = INT_MAX;
+    int a, b, minRange = INT_MAX;
     for (int i = 0 ; i < numbers.size() ; i++) {
         for (int j = i + 1 ; j < numbers.size() ; j++) {
-            if (abs() < minRange) {
-                minRange =
+            if (abs(numbers[i]+numbers[j]-question) < minRange) {
+                minRange = abs(a+b-question);
+                a = numbers[i];
+                b = numbers[j];
             }
         }
     }
-
+    result.push_back(a+b);
     return result;
 }
 
 int main () {
 
+    /**
     int nNumbers, currentNumber, nQuestions, currentQuestion;
     vector<int> numbers = {}, questions = {};
 
@@ -42,7 +46,11 @@ int main () {
         cin >> currentQuestion;
         questions.push_back(currentQuestion);
     }
-    sort(questions.begin(), questions.end());
+    */
+
+    vector<int> numbers = {12, 3, 17, 5, 34, 33};
+    vector<int> questions = {1, 51, 41, 21};
+    sort(numbers.begin(), numbers.end());
 
     for (auto question : questions) {
         vector<int> result = solve (numbers, question);
