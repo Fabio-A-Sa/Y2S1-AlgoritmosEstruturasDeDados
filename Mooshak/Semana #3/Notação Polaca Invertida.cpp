@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <vector>
 using namespace std;
 
 int calculator(int a, int b, char operation) {
@@ -17,45 +18,66 @@ int calculator(int a, int b, char operation) {
     }
 }
 
-void solve (const string &expression) {
+void solve (const vector<string> &expression) {
 
+    cout << "Expression: ";
+    for (auto c : expression) cout << c << " "; cout << endl;
     stack<int> numbers = {};
 
-    for (char c : expression) {
-        if (c != ' ' && c != '\n') {
+    for (string c : expression) {
 
-            if (isdigit(c)) {
-                numbers.push(c-48); // char to int using ASCII code :)
+        bool isNumber = true;
+        for (char digit : c) {
+            isNumber &= isdigit(digit);
+        }
+
+        if (isNumber) {
+            numbers.push(stoi(c)); // char to int using ASCII code :)
+
+        } else {
+            if (numbers.size() > 1) {
+                int b = numbers.top();
+                numbers.pop();
+                int a = numbers.top();
+                numbers.pop();
+                int result = calculator(a, b, c[0]);
+                numbers.push(result);
             } else {
-                if (numbers.size() > 1) {
-                    int a = numbers.top();
-                    numbers.pop();
-                    int b = numbers.top();
-                    numbers.pop();
-                    int result = calculator(a, b, c);
-                    numbers.push(result);
-                } else {
-                    cout << "Expressao Incorrecta" << endl;
-                    return;
-                }
+                cout << "Expressao Incorrecta" << endl;
+                return;
             }
         }
     }
-    cout << numbers.top() << endl;
-    numbers.pop();
+    cout << "Size of stack: " << numbers.size() << endl;
+    if (numbers.size() == 1) {
+        cout << numbers.top() << endl;
+    } else {
+        cout << "Expressao Incorrecta" << endl;
+    }
 }
 
 int main () {
 
     int loops;
     string currentExpression;
+    vector<string> expression;
     cin >> loops;
+    cin.ignore(1000, '\n');
 
     for (int i = 0 ; i < loops ; i++) {
-        cin.clear();
-        cin.ignore(1000, '\n');
         getline(cin, currentExpression);
-        solve(currentExpression);
+        string currentElement = "";
+        for (char c : currentExpression) {
+
+            if (c != ' ') currentElement += c;
+            else {
+                expression.push_back(currentElement);
+                currentElement = "";
+            }
+        }
+        expression.push_back(currentElement);
+        solve(expression);
+        expression.clear();
     }
 
     return 0;
