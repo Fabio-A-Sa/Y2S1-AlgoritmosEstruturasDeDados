@@ -4,6 +4,8 @@
 #include <iostream>
 #include <algorithm>
 #include <list>
+#include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -26,6 +28,13 @@ void Lists() {
 void Stack() {
 
     cout << "Stack:" << endl;
+    stack<int> numbers = {};
+
+}
+
+void Queues() {
+
+    cout << "Queue:" << endl;
 }
 
 int main () {
@@ -33,5 +42,6 @@ int main () {
     Arrays();
     Lists();
     Stack();
+    Queues();
     return 0;
 }
