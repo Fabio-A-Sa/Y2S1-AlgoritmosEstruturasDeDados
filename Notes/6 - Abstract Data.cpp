@@ -17,7 +17,7 @@ class SegmentationFaultException : public exception {
 };
 
 SegmentationFaultException::SegmentationFaultException() {};
-void SegmentationFaultException::showError() { cout << "Error. pop() not allowed in empty stack!" << endl; }
+void SegmentationFaultException::showError() { cout << "Error. pop() not allowed in empty deque!" << endl; }
 
 void Arrays() {
 
@@ -64,6 +64,27 @@ void Stack() {
 void Queues() {
 
     cout << endl << "Queue:" << endl;
+    queue<int> numbers = {};
+
+    if (!numbers.empty()) {
+        numbers.pop();
+    } else {
+        SegmentationFaultException e = SegmentationFaultException();
+        e.showError();
+    }
+
+    cout << "Input:" << endl;
+    for (int i = 0 ; i < 10 ; i++) {
+        cout << i << " ";
+        numbers.push(i);
+    }
+
+    cout << endl << "Output:" << endl;
+    while (!numbers.empty()) {
+        cout << numbers.front() << " ";     // Show header number
+        numbers.pop();                      // Erase header number
+    }
+    cout << endl;
 }
 
 int main () {
