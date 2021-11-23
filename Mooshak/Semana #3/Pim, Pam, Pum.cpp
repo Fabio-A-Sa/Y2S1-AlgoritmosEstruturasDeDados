@@ -9,19 +9,20 @@ using namespace std;
 int getWords (const string &phrase) {
     int result = 0;
     for (auto letter : phrase) if (letter == ' ') result++;
-    return result++;
+    return result + 1;
 }
 
-string getLoser (const string& phase, const list<string> &kids) {
+string getLoser (int words, list<string> kids) {
 
-    int words = getWords(phrase);
     int index = 0;
 
     while (kids.size() > 1) {
         index = (words-1+index) % kids.size();
-        list<Kid>::iterator it = kids.begin();
+        list<string>::iterator it = kids.begin();
         for (int i = 0 ; i < index ; i++) { it++; }
+        cout << "Person:" <<  *it << endl;
         kids.remove(*it);
+        index--;
     }
 
     return kids.front();
@@ -29,7 +30,7 @@ string getLoser (const string& phase, const list<string> &kids) {
 
 void showResults (const string& phrase, const list<string> &kids) {
 
-    string loser = getLoser(phrase, kids);
+    string loser = getLoser(getWords(phrase), kids);
     if (loser == "Carlos") {
        cout << "O Carlos nao se livrou" << endl;
     } else {
@@ -41,11 +42,13 @@ int main () {
 
     list<string> names = {};
     int loops, nNames;
-    string phrase, currentName;
+    string phrase, currentName, line;
     cin >> loops;
 
     for (int i = 0 ; i < loops ; i++) {
         getline(cin, phrase);
+        cin.clear();
+        cin.ignore(10000, '\n');
         cin >> nNames;
         for (int j = 0 ; j < nNames ; j++) {
             cin >> currentName;
