@@ -33,7 +33,7 @@ void showResults (const string& phrase, const list<string> &kids) {
        cout << "O Carlos nao se livrou" << endl;
     } else {
         cout << "O Carlos livrou-se (coitado do " << loser << "!)" << endl;
-    }
+    } 
 }
 
 int main () {
