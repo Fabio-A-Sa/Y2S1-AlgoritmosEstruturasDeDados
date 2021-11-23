@@ -7,7 +7,6 @@
 #include <iostream>
 using namespace std;
 
-
 unsigned int Game::numberOfWords(string phrase) {
     int result = 0;
     for (auto c : phrase) if (c == ' ') result++;
