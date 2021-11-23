@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <stack>
-#include <vector>
 using namespace std;
 
 int calculator(int a, int b, char operation) {
@@ -18,12 +17,12 @@ int calculator(int a, int b, char operation) {
     }
 }
 
-void solve (const vector<char> &expression) {
+void solve (const string &expression) {
 
     stack<int> numbers = {};
 
     for (char c : expression) {
-        if (c != ' ') {
+        if (c != ' ' && c != '\n') {
 
             if (isdigit(c)) {
                 numbers.push(c-48); // char to int using ASCII code :)
@@ -48,15 +47,14 @@ void solve (const vector<char> &expression) {
 
 int main () {
 
-    vector<char> expression = {};
     int loops;
     string currentExpression;
     cin >> loops;
 
     for (int i = 0 ; i < loops ; i++) {
-        getline(cin, currentExpression);
         cin.clear();
         cin.ignore(1000, '\n');
+        getline(cin, currentExpression);
         solve(currentExpression);
     }
 
