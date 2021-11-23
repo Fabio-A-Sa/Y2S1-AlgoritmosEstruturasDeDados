@@ -7,22 +7,31 @@
 
 using namespace std;
 
-void AbstractData() {
+void Arrays() {
 
     cout << "Arrays:" << endl;
     char name[] = {'F', 'E', 'U', 'P'};
     for (auto letter : name) cout << letter;
     cout << endl;
+}
+
+void Lists() {
 
     cout << "Lists:" << endl;
     list<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     for (auto number : numbers) cout << number << " ";
     cout << endl;
+}
 
+void Stack() {
+
+    cout << "Stack:" << endl;
 }
 
 int main () {
 
-    AbstractData();
+    Arrays();
+    Lists();
+    Stack();
     return 0;
 }
