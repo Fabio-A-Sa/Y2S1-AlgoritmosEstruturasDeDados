@@ -29,6 +29,18 @@ void Stack() {
 
     cout << "Stack:" << endl;
     stack<int> numbers = {};
+    cout << "Input:" << endl;
+    for (int i = 0 ; i < 10 ; i++) {
+        cout << i << " ";
+        numbers.push(i);
+    }
+    
+    cout << end << "Output:" << endl;
+    while (!numbers.empty()) {
+        cout << numbers.top() << " ";   // Show header number
+        numbers.pop();                  // Erase header number
+    }
+    cout << endl;
 
 }
 
