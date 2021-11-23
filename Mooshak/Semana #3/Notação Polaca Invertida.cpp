@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-int calculator(int a, int b, char operation) {
+int calculator (int a, int b, char operation) {
 
     switch (operation) {
         case '+': return a+b;
@@ -20,8 +20,6 @@ int calculator(int a, int b, char operation) {
 
 void solve (const vector<string> &expression) {
 
-    cout << "Expression: ";
-    for (auto c : expression) cout << c << " "; cout << endl;
     stack<int> numbers = {};
 
     for (string c : expression) {
@@ -48,7 +46,6 @@ void solve (const vector<string> &expression) {
             }
         }
     }
-    cout << "Size of stack: " << numbers.size() << endl;
     if (numbers.size() == 1) {
         cout << numbers.top() << endl;
     } else {
