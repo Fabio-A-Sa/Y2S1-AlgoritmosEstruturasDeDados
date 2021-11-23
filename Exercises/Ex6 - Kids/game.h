@@ -26,7 +26,7 @@ class Game
         queue<Kid> rearrange();
         bool operator==(Game& g2);
         list<Kid> shuffle() const;
-        void splitKids(list<Kid> &a, list<Kid> &b) const;
+        void splitKids(queue<Kid> &a, queue<Kid> &b) const;
 };
 
 #endif /* GAME_H_ */

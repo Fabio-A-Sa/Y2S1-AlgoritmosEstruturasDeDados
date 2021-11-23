@@ -34,11 +34,11 @@ void Game::setKids(const list<Kid>& l1) {
     this->kids = l1;
 }
 
-void Game::splitKids(list<Kid> &boys, list<Kid> &girls) const {
+void Game::splitKids(queue<Kid> &boys, queue<Kid> &girls) const {
 
     for (auto const &kid : kids) {
-        if (kid.getSex() == 'm') boys.push_back(kid);
-        else girls.push_back(kid);
+        if (kid.getSex() == 'm') boys.push(kid);
+        else girls.push(kid);
     }
 }
 
@@ -71,8 +71,8 @@ list<Kid> Game::removeOlder(unsigned id) {
 
 queue<Kid> Game::rearrange() {
 
-    queue<Kid> result = {};
-    list<Kid> sortedKids = {}, qBoys = {}, qGirls = {};
+    queue<Kid> result = {}, qBoys = {}, qGirls = {};
+    list<Kid> sortedKids = {};
     splitKids(qBoys, qGirls);
 
     int boys = qBoys.size(), girls = qGirls.size();
@@ -86,19 +86,26 @@ queue<Kid> Game::rearrange() {
         int qtdGirls = nGirls, qtdBoys = nBoys;
         while (qtdGirls) {
             sortedKids.push_back(qGirls.front());
-            qGirls.remove(qGirls.front());
+            qGirls.pop();
             qtdGirls--;
         }
         while (qtdBoys) {
             sortedKids.push_back(qBoys.front());
-            qBoys.remove(qBoys.front());
+            qBoys.pop();
             qtdBoys--;
         }
         loop--;
     }
 
-    for (auto girl : qGirls) result.push(girl);
-    for (auto boy : qBoys) result.push(boy);
+    while (qGirls.size()) {
+        result.push(qGirls.front());
+        qGirls.pop();
+    }
+    while (qBoys.size()) {
+        result.push(qBoys.front());
+        qBoys.pop();
+    }
+
     kids = sortedKids;
     return result;
 }
