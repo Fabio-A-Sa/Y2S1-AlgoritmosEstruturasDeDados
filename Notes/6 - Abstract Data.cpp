@@ -3,13 +3,14 @@
 
 #include <iostream>
 #include <algorithm>
+#include <exception>
 #include <list>
 #include <stack>
 #include <queue>
 
 using namespace std;
 
-class SegmentationFaultException : public Exception {
+class SegmentationFaultException : public exception {
     public:
         SegmentationFaultException();
         void showError();
@@ -39,9 +40,10 @@ void Stack() {
     cout << endl << "Stack:" << endl;
     stack<int> numbers = {};
 
-    try {
+    if (!numbers.empty()) {
         numbers.pop();
-    } catch (SegmentationFaultException e) {
+    } else {
+        SegmentationFaultException e = SegmentationFaultException();
         e.showError();
     }
 
