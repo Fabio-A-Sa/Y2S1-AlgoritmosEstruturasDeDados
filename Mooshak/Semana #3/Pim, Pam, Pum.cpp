@@ -7,25 +7,20 @@
 using namespace std;
 
 int getWords (const string &phrase) {
-
-    cout << "phrase: " << phrase << endl;
     int result = 0;
     for (auto letter : phrase) if (letter == ' ') result++;
-    return result + 1;
+    return phrase.size()? result + 1 : 0;
 }
 
 string getLoser (int words, list<string> kids) {
 
-    cout << "Number of words: " << words << endl;
     int index = 0;
 
     while (kids.size() > 1) {
         index = (words-1+index) % kids.size();
         list<string>::iterator it = kids.begin();
         for (int i = 0 ; i < index ; i++) { it++; }
-        cout << "Pessoa salva: " <<  *it << endl;
         kids.remove(*it);
-        cout << "Index do próximo: " << index << endl;
     }
 
     return kids.front();
@@ -45,15 +40,13 @@ int main () {
 
     list<string> names = {};
     int loops, nNames;
-    string phrase, currentName, line;
+    string phrase, currentName;
     cin >> loops;
 
     for (int i = 0 ; i < loops ; i++) {
         cin.clear();
         cin.ignore(10000, '\n');
         getline(cin, phrase);
-        //cin.clear();
-        //cin.ignore(10000, '\n');
         cin >> nNames;
         for (int j = 0 ; j < nNames ; j++) {
             cin >> currentName;
