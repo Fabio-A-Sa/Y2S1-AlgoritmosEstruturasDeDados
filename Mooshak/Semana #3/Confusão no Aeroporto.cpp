@@ -21,7 +21,7 @@ class Plane {
         int getMinute() { return minute; }
         string getName() { return name; }
         char getAorL() { return AorL; }
-        void incrementDelay(int increment = 1) { this->delay+=increment; }
+        void incrementDelay(int increment) { this->delay+=increment; }
         void finished () { this->runway = true; }
         bool getRunway() { return runway; }
         bool operator < (const Plane &p);
@@ -33,10 +33,9 @@ ostream & operator << (ostream & os,  Plane p) {
 }
 
 bool Plane::operator < (const Plane &p) {
-
     if (this->getMinute() == p.getMinute()) {
-        return 
-    }
+        return this->getAorL() < p.getAorL();
+    } else return this->getMinute() < p.getMinute();
 }
 
 vector<Plane> findPlanes (vector<Plane> planes, int clock) {
@@ -52,11 +51,15 @@ void solve (vector<Plane> planes, vector<int> times) {
     int lastTime = 0;
     for (int time : times) {
 
-        vector<Plane> availablePlanes = findPlanes(planes, clock);
+        vector<Plane> availablePlanes = findPlanes(planes, time);
         sort(availablePlanes.begin(), availablePlanes.end());
 
         if (!availablePlanes.empty()) {
-            availablePlanes[0].finished();
+            for (auto &plane : availablePlanes) {
+                plane.finished();
+                for (auto &plane : planes) if (!plane.getRunway()) plane.incrementDelay(1);
+                lastTime++;
+            }
         }
 
         int increment = time - lastTime;
