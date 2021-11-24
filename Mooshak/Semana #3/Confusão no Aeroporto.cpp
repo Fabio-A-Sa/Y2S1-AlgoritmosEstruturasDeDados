@@ -52,13 +52,10 @@ vector<Plane> findPlanes (vector<Plane> &planes, int clock) {
                 plane.runway = true;
                 plane2.runway = true;
             } else {
-                plane.delay+=1;
+                if (!plane2.runway) plane2.delay+=1;
+                cout << plane2.name << " incremented!" << endl;
             }
         }
-    }
-
-    for (auto & plane : planes) {
-        if (!plane.runway) plane.delay+=result.size();
     }
 
     return result;
@@ -69,10 +66,6 @@ void solve (vector<Plane> &planes, vector<int> times) {
     for (int &time : times) {
 
         vector<Plane> availablePlanes = findPlanes(planes, time);
-
-        for (Plane &plane : planes) {
-            if (!plane.runway) plane.delay += 1;
-        }
 
     }
 
