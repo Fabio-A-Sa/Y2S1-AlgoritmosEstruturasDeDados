@@ -20,6 +20,7 @@ class Plane {
         int getMinute() { return minute; }
         string getName() { return name; }
         char getAorL() { return AorL; }
+        void incrementDelay() { this->delay++; }
 };
 
 ostream & operator << (ostream & os,  Plane p) {
@@ -56,6 +57,7 @@ int main () {
             planes.push_back(p);
         }
 
+        cout << nLevantar << nAterrar;
         solve(planes);
         planes.clear();
     }
