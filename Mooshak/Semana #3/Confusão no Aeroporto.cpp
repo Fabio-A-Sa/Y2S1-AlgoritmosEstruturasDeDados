@@ -38,40 +38,44 @@ bool Plane::operator == (Plane p) {
     return runway == p.runway && AorL == p.AorL && minute == p.minute && name == p.name;
 }
 
-vector<Plane> findPlanes (vector<Plane> planes, int clock) {
+vector<Plane> findPlanes (vector<Plane> &planes, int clock) {
+
     vector<Plane> result = {};
     for (Plane plane : planes) {
         if (clock == plane.minute && !plane.runway) result.push_back(plane);
     }
+    sort(result.begin(), result.end());
+
+    for (auto & plane : planes) {
+        for (auto & plane2 : result) {
+            if (plane == plane2) {
+                plane.runway = true;
+                plane2.runway = true;
+            } else {
+                plane.delay+=1;
+            }
+        }
+    }
+
+    for (auto & plane : planes) {
+        if (!plane.runway) plane.delay+=result.size();
+    }
+
     return result;
 }
 
-void solve (vector<Plane> planes, vector<int> times) {
+void solve (vector<Plane> &planes, vector<int> times) {
 
-    int currentTime = 0;
-    for (int time : times) {
+    for (int &time : times) {
 
         vector<Plane> availablePlanes = findPlanes(planes, time);
-        sort(availablePlanes.begin(), availablePlanes.end());
-
-        if (!availablePlanes.empty()) {
-            for (int i = 0 ; i < availablePlanes.size() ; i++) {
-                availablePlanes[i].finished();
-                for (int j = i + 1 ; j < availablePlanes.size() ; j++) {
-                    availablePlanes[j].incrementDelay(1);
-                }
-            }
-        }
 
         for (Plane &plane : planes) {
-            if (!plane.getRunway()) plane.incrementDelay(0);
+            if (!plane.runway) plane.delay += 1;
         }
 
     }
 
-    for (Plane plane : planes) {
-        cout << plane;
-    }
 }
 
 bool notIn(vector<int> times, int time) {
@@ -107,6 +111,11 @@ int main () {
         cout << nLevantar <<  " " << nAterrar << endl;
         sort(times.begin(), times.end());
         solve(planes, times);
+
+        for (Plane plane : planes) {
+            cout << plane;
+        }
+
         planes.clear();
     }
 
