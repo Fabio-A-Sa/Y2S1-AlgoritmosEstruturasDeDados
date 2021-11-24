@@ -4,70 +4,69 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 class Plane {
 
-    char AorL;
-    string name;
-    int minute;
-    int delay;
-    bool runway;
-
     public:
+
+        char AorL;
+        string name;
+        int minute;
+        int delay;
+        bool runway;
+
         Plane (string name, int minute, char AorL) : name(name), minute(minute), delay(0), AorL(AorL), runway(false) {}
-        void setDelay(int delay) { this->delay = delay; }
-        int getDelay() { return delay; }
-        int getMinute() { return minute; }
-        string getName() { return name; }
-        char getAorL() { return AorL; }
-        void incrementDelay(int increment) { this->delay+=increment; }
-        void finished () { this->runway = true; }
-        bool getRunway() { return runway; }
-        bool operator < (const Plane &p);
+
+        bool operator < (Plane p);
+        bool operator == (Plane p);
 };
 
 ostream & operator << (ostream & os,  Plane p) {
-    os << p.getName() << " " << p.getDelay() << endl;
+    os << p.name << " " << p.delay << endl;
     return os;
 }
 
-bool Plane::operator < (const Plane &p) {
-    if (this->getMinute() == p.getMinute()) {
-        return this->getAorL() < p.getAorL();
-    } else return this->getMinute() < p.getMinute();
+bool Plane::operator < (Plane p) {
+    if (minute == p.minute) {
+        return AorL < p.AorL;
+    } else return minute < p.minute;
+}
+
+bool Plane::operator == (Plane p) {
+    return runway == p.runway && AorL == p.AorL && minute == p.minute && name == p.name;
 }
 
 vector<Plane> findPlanes (vector<Plane> planes, int clock) {
     vector<Plane> result = {};
     for (Plane plane : planes) {
-        if (clock == plane.getDelay()) result.push_back(plane);
+        if (clock == plane.minute && !plane.runway) result.push_back(plane);
     }
     return result;
 }
 
 void solve (vector<Plane> planes, vector<int> times) {
 
-    int lastTime = 0;
+    int currentTime = 0;
     for (int time : times) {
 
         vector<Plane> availablePlanes = findPlanes(planes, time);
         sort(availablePlanes.begin(), availablePlanes.end());
 
         if (!availablePlanes.empty()) {
-            for (auto &plane : availablePlanes) {
-                plane.finished();
-                for (auto &plane : planes) if (!plane.getRunway()) plane.incrementDelay(1);
-                lastTime++;
+            for (int i = 0 ; i < availablePlanes.size() ; i++) {
+                availablePlanes[i].finished();
+                for (int j = i + 1 ; j < availablePlanes.size() ; j++) {
+                    availablePlanes[j].incrementDelay(1);
+                }
             }
         }
 
-        int increment = time - lastTime;
         for (Plane &plane : planes) {
-            if (!plane.getRunway()) plane.incrementDelay(increment);:
+            if (!plane.getRunway()) plane.incrementDelay(0);
         }
 
-        lastTime = time;
     }
 
     for (Plane plane : planes) {
@@ -105,8 +104,9 @@ int main () {
             planes.push_back(p);
         }
 
-        cout << nLevantar << nAterrar;
-        solve(planes, sort(times.begin(), times.end()));
+        cout << nLevantar <<  " " << nAterrar << endl;
+        sort(times.begin(), times.end());
+        solve(planes, times);
         planes.clear();
     }
 
