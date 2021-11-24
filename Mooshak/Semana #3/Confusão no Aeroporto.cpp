@@ -30,7 +30,7 @@ ostream & operator << (ostream & os,  Plane p) {
 
 bool Plane::operator < (Plane p) {
     if (minute == p.minute) {
-        return AorL < p.AorL;
+        return AorL > p.AorL;
     } else return minute < p.minute;
 }
 
@@ -38,7 +38,7 @@ bool Plane::operator == (Plane p) {
     return runway == p.runway && AorL == p.AorL && minute == p.minute && name == p.name;
 }
 
-vector<Plane> findPlanes (vector<Plane> &planes, int clock) {
+void findPlanes (vector<Plane> &planes, int clock) {
 
     vector<Plane> result = {};
     for (Plane plane : planes) {
@@ -46,27 +46,28 @@ vector<Plane> findPlanes (vector<Plane> &planes, int clock) {
     }
     sort(result.begin(), result.end());
 
-    for (auto & plane : planes) {
-        for (auto & plane2 : result) {
-            if (plane == plane2) {
-                plane.runway = true;
-                plane2.runway = true;
-            } else {
-                if (!plane2.runway) plane2.delay+=1;
-                cout << plane2.name << " incremented!" << endl;
+    for (auto & plane : planes) {                       // todos os aviões
+        for (auto & plane2 : result) {                  // os selecionados -> os que têm a pista assegurada por ordem
+            if (plane == plane2) {                      // se o avião estiver na lista de selecionados (por ordem)
+                plane.runway = true;                        // voa
+                cout << plane.name << " voou" << endl;
             }
         }
+        if (!plane.runway) {                                // se ainda não voou, espera mais 1 minuto que se lixa
+            plane.delay+=1;
+            cout << plane.name << " incremented!" << endl;
+        }
     }
-
-    return result;
 }
 
 void solve (vector<Plane> &planes, vector<int> times) {
 
-    for (int &time : times) {
+    for (int time : times) {
 
-        vector<Plane> availablePlanes = findPlanes(planes, time);
-
+        findPlanes(planes, time);
+        for (Plane & plane : planes) {
+            if (plane.delay < time && !plane.runway) plane.delay = time;
+        }
     }
 
 }
