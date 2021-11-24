@@ -30,7 +30,7 @@ ostream & operator << (ostream & os,  Plane p) {
 
 bool Plane::operator < (Plane p) {
     if (minute == p.minute) {
-        return AorL > p.AorL;
+        return AorL < p.AorL;
     } else return minute < p.minute;
 }
 
@@ -46,16 +46,16 @@ void findPlanes (vector<Plane> &planes, int clock) {
     }
     sort(result.begin(), result.end());
 
-    for (auto & plane : planes) {                       // todos os aviões
-        for (auto & plane2 : result) {                  // os selecionados -> os que têm a pista assegurada por ordem
+    for (auto & plane2 : result) {                       // todos os aviões
+        cout << "current avião: " << plane2.name << endl;
+        for ( auto & plane : planes) {                  // os selecionados -> os que têm a pista assegurada por ordem
             if (plane == plane2) {                      // se o avião estiver na lista de selecionados (por ordem)
-                plane.runway = true;                        // voa
-                cout << plane.name << " voou" << endl;
+                plane.runway = true;
+                plane2.runway = true;// voa
+                cout << plane2.name << " voou" << endl;
+            } else {
+                if (!plane.runway) plane.delay++;
             }
-        }
-        if (!plane.runway) {                                // se ainda não voou, espera mais 1 minuto que se lixa
-            plane.delay+=1;
-            cout << plane.name << " incremented!" << endl;
         }
     }
 }
