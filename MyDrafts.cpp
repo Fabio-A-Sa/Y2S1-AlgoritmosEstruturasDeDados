@@ -2780,3 +2780,14 @@ int main () {
     return 0;
 }
 
+void solve (int a, int b, int c) {
+    cout << "Test: " << a << " " << b << " " << c << endl;
+}
+
+int main () {
+
+    int n1, n2, n3;
+    cin >> n1 >> n2 >> n3;
+    solve (n1, n2, n3);
+    return 0;
+}
