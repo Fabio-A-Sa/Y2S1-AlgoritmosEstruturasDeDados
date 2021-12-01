@@ -28,19 +28,27 @@ BST<WordMean> Dictionary::getWords() const {
 	return words;
 }
 
-bool WordMean::operator < (const WordMean &w) {
+bool WordMean::operator < (const WordMean &w) const {
     if (this->getWord() == w.getWord()) return this->getMeaning() < w.getMeaning();
     return this->getWord() < w.getWord();
 }
 
+bool WordMean::operator == (const WordMean &a) const {
+    return this->getWord() == a.getWord() && this->getMeaning() == a.getMeaning();
+}
+
 void Dictionary::readFile(ifstream &f) {
 
+    WordMean notFound = WordMean("", "");
+
     string currentWord, currentMeaning;
+
     while (!f.eof()) {
         getline(f, currentWord);
         getline(f, currentMeaning);
         WordMean current = WordMean(currentWord, currentMeaning);
-        bool answer = words.insert(b);
+        WordMean found = words.find(current);
+        if (found == notFound) words.insert(current);
     }
 }
 

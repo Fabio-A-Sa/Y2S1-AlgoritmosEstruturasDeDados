@@ -13,7 +13,8 @@ public:
     string getMeaning() const;
     void setMeaning(string m);
     void setWord(string w);
-    bool operator < (const WordMean &w);
+    bool operator < (const WordMean &w) const;
+    bool operator == (const WordMean &a) const;
 };
 
 class Dictionary
