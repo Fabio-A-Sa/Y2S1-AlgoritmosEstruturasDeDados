@@ -29,18 +29,16 @@ BST<WordMean> Dictionary::getWords() const {
 }
 
 bool WordMean::operator < (const WordMean &w) const {
-    if (this->getWord() == w.getWord()) return this->getMeaning() < w.getMeaning();
     return this->getWord() < w.getWord();
 }
 
 bool WordMean::operator == (const WordMean &a) const {
-    return this->getWord() == a.getWord() && this->getMeaning() == a.getMeaning();
+    return this->getWord() == a.getWord();
 }
 
 void Dictionary::readFile(ifstream &f) {
 
     WordMean notFound = WordMean("", "");
-
     string currentWord, currentMeaning;
 
     while (!f.eof()) {
@@ -52,16 +50,6 @@ void Dictionary::readFile(ifstream &f) {
     }
 }
 
-//TODO
-string Dictionary::consult(string word1, WordMean& previous, WordMean& next) const {
-    return "";
-}
-
-//TODO
-bool Dictionary::update(string word1, string mean1) {
-    return true;
-}
-
 void Dictionary::print() const {
 
     BSTItrIn<WordMean> itr(words);
@@ -70,4 +58,33 @@ void Dictionary::print() const {
         cout << itr.retrieve().getMeaning() << endl;
         itr.advance();
     }
+}
+
+string Dictionary::consult(string word1, WordMean& previous, WordMean& next) const {
+
+    WordMean toSearch = WordMean(word1, "");
+    WordMean notFound = WordMean("", "");
+    WordMean found = words.find(toSearch);
+    if (found == notFound) {
+
+        WordMean antes("", ""), depois ("","");
+
+        BSTItrIn<WordMean> itr(words);
+
+        while (previous.getWord() > word1 || next.getWord() < word1) {
+            previous = next;
+            itr.advance();
+            next = itr.retrieve();
+        }
+
+        return "word not found";
+
+    } else {
+        return found.getMeaning();
+    }
+}
+
+//TODO
+bool Dictionary::update(string word1, string mean1) {
+    return true;
 }
