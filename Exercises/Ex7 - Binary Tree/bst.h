@@ -457,7 +457,14 @@ bool iteratorBST<Comparable>::operator!= (const iteratorBST<Comparable>& it2) co
 
 template <class Comparable>
 int BST<Comparable>::size(const Comparable& el) const {
-    return -1;
+
+    auto found = this->find(el, root);
+    if (elementAt(found) == -1) return -1;
+
+    else {
+        int size = 0;
+        return size;
+    }
 }
 
 #endif
