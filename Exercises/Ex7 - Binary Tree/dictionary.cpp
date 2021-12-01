@@ -84,7 +84,17 @@ string Dictionary::consult(string word1, WordMean& previous, WordMean& next) con
     }
 }
 
-//TODO
 bool Dictionary::update(string word1, string mean1) {
-    return true;
+
+    WordMean attemp = WordMean(word1, mean1);
+    WordMean found = words.find(attemp);
+
+    if (attemp == WordMean("", "")) {
+        words.insert(attemp);
+    } else {
+        //words.remove(found);
+        found.setMeaning(mean1);
+        words.insert(found);
+    }
+    return attemp == WordMean("", "");
 }
