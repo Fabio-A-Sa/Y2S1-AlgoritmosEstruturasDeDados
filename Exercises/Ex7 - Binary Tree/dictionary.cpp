@@ -62,6 +62,12 @@ bool Dictionary::update(string word1, string mean1) {
     return true;
 }
 
-//TODO
 void Dictionary::print() const {
+
+    BSTItrIn<WordMean> itr(words);
+    while (!itr.isAtEnd()) {
+        cout << itr.retrieve().getWord() << endl;
+        cout << itr.retrieve().getMeaning() << endl;
+        itr.advance();
+    }
 }

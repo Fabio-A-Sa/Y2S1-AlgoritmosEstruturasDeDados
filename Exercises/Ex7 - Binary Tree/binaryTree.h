@@ -85,7 +85,7 @@ const BinaryTree<T>& BinaryTree<T>::operator= (const BinaryTree<T>& rhs) {
 
 template <class T>
 bool BinaryTree<T>::isEmpty() const {
-    return (root == 0) ? true : false;
+    return root == 0;
 }
 
 template <class T>
