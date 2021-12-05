@@ -56,8 +56,6 @@ string Dictionary::consult(string word1, WordMean& previous, WordMean& next) con
     WordMean found = words.find(toSearch);
     if (found == notFound) {
 
-        WordMean antes("", ""), depois ("","");
-
         BSTItrIn<WordMean> itr(words);
 
         while (previous.getWord() > word1 || next.getWord() < word1) {
