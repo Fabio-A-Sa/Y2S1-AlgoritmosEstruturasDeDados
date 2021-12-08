@@ -40,6 +40,7 @@ class Rectangle {
         }
 };
 
+// Complexity: O(log(n)) --> Binary search
 public int binarySearch(int[] values, int val, int left = 0, int right = sizeof(values)/sizeof(values[0])) {
 
     if (left == right) return left;
@@ -50,6 +51,8 @@ public int binarySearch(int[] values, int val, int left = 0, int right = sizeof(
         return binarySearch(values, val, left, middle);
     }
 }
+
+
 
 int main () {
     return 0;
