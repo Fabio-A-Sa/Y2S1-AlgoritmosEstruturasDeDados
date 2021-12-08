@@ -52,7 +52,18 @@ public int binarySearch(int[] values, int val, int left = 0, int right = sizeof(
     }
 }
 
+// Complexidade O(n*n) --> menos eficiente que QuickSort, IntroSort, MergeSort, que são todos O(n*log(n))
+void minSelectionSort (int[] values) {
 
+    int size = sizeof(values) / sizeof(values[0]);
+    for (int i = 1 ; i < size ; i++ ) {
+        int temp = values[i], j;
+        for (j = i ; j > 0 && temp < values[j-1] ; j-- ) {
+            numbers[j] = numbers[j-1];
+        }
+        numbers[j] = temp;
+    }
+}
 
 int main () {
     return 0;
