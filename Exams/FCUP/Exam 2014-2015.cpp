@@ -40,6 +40,17 @@ class Rectangle {
         }
 };
 
+public int binarySearch(int[] values, int val, int left = 0, int right = sizeof(values)/sizeof(values[0])) {
+
+    if (left == right) return left;
+    else {
+        int middle = (left + (right - left)) / 2;
+        if (values[middle] == val) return middle;
+        else if (values[middle] < val) return binarySearch(values, val, middle, right);
+        return binarySearch(values, val, left, middle);
+    }
+}
+
 int main () {
     return 0;
 }
