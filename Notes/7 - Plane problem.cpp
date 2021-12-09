@@ -20,19 +20,19 @@ public:
 
 class Cesta {
 public:
-    vector<Fruta*> frutas;
+    vector<Fruta*>* frutas;
     Cesta();
     Cesta(vector<Fruta*> frutas) { this->frutas = frutas;}
-    vector<Fruta*> getFruta() { return frutas ;}
+    vector<Fruta*> getFruta() { return *frutas ;}
     void pushFruta(Fruta &fruta) { frutas.push_back(&fruta); }
 };
 
 class Armario {
 public:
-    vector<Cesta*> cestas;
+    vector<Cesta*>* cestas;
     Armario();
     Armario(vector<Cesta*> cestas) { this->cestas = cestas;}
-    vector<Cesta*> getCestas() { return cestas; }
+    vector<Cesta*> getCestas() { return *cestas; }
 
 };
 
@@ -60,7 +60,7 @@ int main() {
     Armario armario = Armario(cestas);
 
     cout << "O armário inicialmente:" << endl;
-    for (Cesta *cesta : armario->getCestas()) {
+    for (Cesta *cesta : armario.getCestas()) {
         cout << "Cesta:" << endl;
         for (Fruta *fruta : cesta->getFruta())  {
             cout << fruta->name << endl;
