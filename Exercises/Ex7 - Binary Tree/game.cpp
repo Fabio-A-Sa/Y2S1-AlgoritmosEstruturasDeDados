@@ -31,11 +31,21 @@ BinaryTree<Circle>& Game::getGame() {
     return game;
 }
 
-
-//-----------------------------------------------------------------
-
-//TODO
+// Aided by Pedro Barbeira
 Game::Game(int height, vector<int>& points, vector<bool>& states) {
+
+    vector<BinaryTree<Circle>*> leaves(points.size(), nullptr);
+    for(int i = points.size()-1; i >= 0; i--){
+        if(i*2+1 > points.size()-1){
+            leaves[i] = new BinaryTree<Circle>(Circle(points[i], states[i]));
+        }
+        else{
+            leaves[i] = new BinaryTree<Circle>(Circle(points[i], states[i]), (*leaves[2*i+1]), (*leaves[2*i+2]));
+        }
+    }
+    game = (*leaves[0]);
+    for(auto it: leaves)
+        delete it;
 }
 
 //TODO
