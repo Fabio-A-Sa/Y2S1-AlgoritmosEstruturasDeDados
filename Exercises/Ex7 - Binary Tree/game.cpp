@@ -42,15 +42,47 @@ Game::Game(int height, vector<int>& points, vector<bool>& states) {
         else{
             leaves[i] = new BinaryTree<Circle>(Circle(points[i], states[i]), (*leaves[2*i+1]), (*leaves[2*i+2]));
         }
-    } 
+    }
     game = (*leaves[0]);
     for(auto it: leaves)
         delete it;
 }
 
-//TODO
+// Aided by Pedro Barbeira
 int Game::play() {
-	return 0;
+
+    BTItrLevel<Circle> it(game);
+    Circle c = it.retrieve();
+    bool over = false;
+    while(!it.isAtEnd()){
+        Circle& current = it.retrieve();
+        c.incNVisits();
+        if(c.getState()){
+            for(int p = c.getPoints(); p >= 0; p--) {
+                it.advance();
+                if (it.isAtEnd()) {
+                    over = true;
+                    break;
+                }
+            }
+        }
+        else{
+            for(int p = c.getPoints(); p > 0; p--){
+                it.advance();
+                if (it.isAtEnd()) {
+                    over = true;
+                    break;
+                }
+            }
+        }
+        if(over) break;
+        else {
+            c.changeState();
+            current = c;
+            c = it.retrieve();
+        }
+    }
+    return c.getPoints();
 }
 
 //TODO
