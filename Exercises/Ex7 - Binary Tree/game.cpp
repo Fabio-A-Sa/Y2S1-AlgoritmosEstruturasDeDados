@@ -85,8 +85,16 @@ int Game::play() {
     return c.getPoints();
 }
 
-//TODO
 int Game::mostVisited() const {
-	return 0;
+
+    BTItrLevel<Circle> it(game);
+    it.advance();
+    int max = 0;
+    while(!it.isAtEnd()){
+        Circle c = it.retrieve();
+        if(c.getNVisits() > max) max = c.getNVisits();
+        it.advance();
+    }
+    return max;
 }
 
