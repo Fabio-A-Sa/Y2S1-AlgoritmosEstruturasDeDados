@@ -97,4 +97,3 @@ int Game::mostVisited() const {
     }
     return max;
 }
-
