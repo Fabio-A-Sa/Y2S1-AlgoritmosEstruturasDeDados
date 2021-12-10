@@ -461,10 +461,14 @@ bool iteratorBST<Comparable>::operator!= (const iteratorBST<Comparable>& it2) co
 template <class Comparable>
 int BST<Comparable>::size(const Comparable& el) const {
 
-    Comparable solution = this->find(el);
+    BinaryNode<Comparable> *solution = this->find(el, this->root);
     if (solution == Comparable(-1)) return -1;
     else {
         int result = 0;
+        if (solution->left == NULL || solution->right == NULL) {
+            if (solution->left != NULL) result += size(solution->left->element);
+            if (solution->right != NULL) result += size(solution->right->element);
+        }
         return result;
     }
 }
