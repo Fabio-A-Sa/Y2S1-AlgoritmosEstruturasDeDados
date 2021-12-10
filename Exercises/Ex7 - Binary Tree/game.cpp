@@ -42,7 +42,7 @@ Game::Game(int height, vector<int>& points, vector<bool>& states) {
         else{
             leaves[i] = new BinaryTree<Circle>(Circle(points[i], states[i]), (*leaves[2*i+1]), (*leaves[2*i+2]));
         }
-    }
+    } 
     game = (*leaves[0]);
     for(auto it: leaves)
         delete it;
