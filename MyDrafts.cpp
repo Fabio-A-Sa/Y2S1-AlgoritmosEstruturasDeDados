@@ -4003,3 +4003,8 @@ bool BST<Comparable>::isAVLTree(BinaryNode<Comparable>* node) const {
     int rightDepth = BST<Comparable>::maxDepth(node->right);
     return abs(leftDepth - rightDepth) < 2 && isAVLTree(node->left) && isAVLTree(node->right);
 }
+
+template <class Comparable>
+bool BST<Comparable>::isAVL() const {
+    return isAVLTree(this->root);
+}
