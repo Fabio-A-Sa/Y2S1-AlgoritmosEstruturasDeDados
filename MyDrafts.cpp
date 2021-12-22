@@ -4063,3 +4063,10 @@ int FunWithBSTs::battle(const vector<int>& alice, const vector<int>& bruno) {
     if (!mBruno.empty()) return -mBruno.size();
     return 0;
 }
+
+int FunWithBSTs::numberMovies(const vector<pair<string, int>>& reviews) {
+
+    set<string> movies = {};
+    for (pair<string, int> review : reviews) movies.insert(review.first);
+    return movies.size();
+}
