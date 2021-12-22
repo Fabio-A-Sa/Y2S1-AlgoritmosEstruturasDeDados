@@ -3972,3 +3972,13 @@ int Game::mostVisited() const {
     return max;
 }
 
+template <class Comparable>
+int BST<Comparable>::maxDepth(BinaryNode<Comparable>* node) const {
+
+    if (node == NULL) return -1;
+    else {
+        int leftDepth = maxDepth(node->left);
+        int rightDepth = maxDepth(node->right);
+        return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    }
+}
