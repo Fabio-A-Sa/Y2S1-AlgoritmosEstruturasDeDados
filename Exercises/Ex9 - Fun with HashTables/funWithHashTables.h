@@ -4,6 +4,7 @@
 #ifndef _FUNHASHTABLES_H_
 #define _FUNHASHTABLES_H_
 
+#include "hashTable.h"
 #include <vector>
 #include <string>
 #include <list>

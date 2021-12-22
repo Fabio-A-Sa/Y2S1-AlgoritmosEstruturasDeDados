@@ -2,11 +2,8 @@
 // @author: Fábio Araújo de Sá
 
 #include "funWithHashTables.h"
-#include "hashTable.h"
-
 #include <vector>
 #include <iostream>
-#include <cctype>
 
 unsigned FunWithHashTables::hashInt(const int& i) {
   return i;
