@@ -4141,3 +4141,21 @@ bool HashTable<KeyType>::remove(const KeyType& k) {
 
     } return false;
 }
+
+template <class KeyType>
+bool HashTable<KeyType>::rehash(int n) {
+
+    if (n >= numActive + 1) {
+
+        vector<HashEntry> oldTable = this->table;
+        vector<HashEntry> newTable(n);
+        this->table = newTable;
+        clear();
+
+        for (int i = 0 ; i < oldTable.size() ; i++) {
+            if (oldTable[i].state == ACTIVE) this->insert(oldTable[i].key);
+        }
+        return true;
+
+    } return false;
+}
