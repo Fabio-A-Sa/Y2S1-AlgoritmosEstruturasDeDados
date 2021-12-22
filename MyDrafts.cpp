@@ -4176,3 +4176,17 @@ int max (const vector<int>& numbers) {
     return max;
 }
 
+int FunWithHashTables::sumPairs(const vector<int>& numbers) {
+
+    int hashTableSize = 2 * max(numbers);
+    HashTable<int> allSums = HashTable<int>(hashTableSize, hashInt);
+    allSums.clear();
+
+    for (int i = 0 ; i < numbers.size() - 1 ; i++) {
+        for (int j = i + 1 ; j < numbers.size() ; j++) {
+            allSums.insert(numbers[i] + numbers[j]);
+        }
+    }
+
+    return allSums.getNumActive();
+}
