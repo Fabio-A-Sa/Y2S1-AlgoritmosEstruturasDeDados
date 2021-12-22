@@ -45,7 +45,10 @@ int FunWithBSTs::battle(const vector<int>& alice, const vector<int>& bruno) {
 }
 
 int FunWithBSTs::numberMovies(const vector<pair<string, int>>& reviews) {
-  return 0;
+
+    set<string> movies = {};
+    for (pair<string, int> review : reviews) movies.insert(review.first);
+    return movies.size();
 }
 
 void FunWithBSTs::moreReviews(const vector<pair<string, int>>& reviews, int& m, int& n) {
