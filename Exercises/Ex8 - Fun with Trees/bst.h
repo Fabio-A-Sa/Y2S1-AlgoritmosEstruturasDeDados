@@ -548,4 +548,5 @@ void BST<Comparable>::rightRotate(const Comparable& x) {
     Y->right = find;
     this->root = Y;
 }
+
 #endif
