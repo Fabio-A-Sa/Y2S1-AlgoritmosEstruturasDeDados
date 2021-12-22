@@ -4159,3 +4159,20 @@ bool HashTable<KeyType>::rehash(int n) {
 
     } return false;
 }
+
+unsigned FunWithHashTables::hashInt(const int& i) {
+    return i;
+}
+
+unsigned FunWithHashTables::hashString(const string& s) {
+    hash<string> h;
+    return h(s);
+}
+
+int max (const vector<int>& numbers) {
+
+    int max = numbers[0];
+    for (int number : numbers) max = number > max ? number : max;
+    return max;
+}
+
