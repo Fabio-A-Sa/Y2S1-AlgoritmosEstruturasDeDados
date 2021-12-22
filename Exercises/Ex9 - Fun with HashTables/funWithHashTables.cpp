@@ -57,6 +57,22 @@ int FunWithHashTables::dnaMotifs(string dna, int k, unordered_set<string>& motif
     return maxOccurrence;
 }
 
+vector<string> toWords(const string &text) {
+
+    vector<string> allWords = {};
+    string currentWord = "";
+    for (char letter : text) {
+        letter = tolower(letter);
+        if (letter == ' ' && !currentWord.empty()) {
+            allWords.push_back(currentWord);
+            currentWord = "";
+        } else if (isalpha(letter)) currentWord += letter;
+    }
+    allWords.push_back(currentWord);
+
+    return allWords;
+}
+
 void FunWithHashTables::findLanguage(string text, const unordered_map<string, vector<string>>& dict, unordered_map<string, int>& answer) {
 }
 
