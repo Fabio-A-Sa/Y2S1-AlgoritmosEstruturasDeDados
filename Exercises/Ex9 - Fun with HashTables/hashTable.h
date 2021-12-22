@@ -99,7 +99,16 @@ bool HashTable<KeyType>::insert(const KeyType& k) {
 
 template <class KeyType>
 bool HashTable<KeyType>::remove(const KeyType& k) {
-    return false;
+
+    if (contains(k)) {
+
+        int position = findPos(k);
+        HashEntry h = {DELETED, k};
+        this->table[position] = h;
+        numActive--;
+        return true;
+
+    } return false;
 }
 
 template <class KeyType>
