@@ -2,7 +2,6 @@
 // @author: Fábio Araújo de Sá
 
 #include "funWithBSTs.h"
-#include "bst.h"
 
 int FunWithBSTs::newBag(const vector<int>& collection, const vector<int>& bag) {
   return 0;

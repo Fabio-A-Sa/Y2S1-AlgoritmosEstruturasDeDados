@@ -4,8 +4,11 @@
 #ifndef _FUNBST_H_
 #define _FUNBST_H_
 
+#include "bst.h"
 #include <vector>
 #include <string>
+#include <set>
+#include <map>
 
 using namespace std;
 
