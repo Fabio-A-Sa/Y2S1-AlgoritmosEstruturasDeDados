@@ -4190,3 +4190,24 @@ int FunWithHashTables::sumPairs(const vector<int>& numbers) {
 
     return allSums.getNumActive();
 }
+
+int FunWithHashTables::dnaMotifs(string dna, int k, unordered_set<string>& motifs) {
+
+    unordered_map<string, int> allMotifs = {};
+    for (int i = 0 ; i < dna.size() - k + 1; i++) {
+        string motif = dna.substr(i, k);
+        if (allMotifs.find(motif) == allMotifs.end()) allMotifs[motif] = 1;
+        else allMotifs[motif]++;
+    }
+
+    int maxOccurrence = 0;
+    for (unordered_map<string, int>::iterator it = allMotifs.begin() ; it != allMotifs.end() ; it++) {
+        maxOccurrence = maxOccurrence > it->second ? maxOccurrence : it->second;
+    }
+
+    for (unordered_map<string, int>::iterator it = allMotifs.begin() ; it != allMotifs.end() ; it++) {
+        if (it->second == maxOccurrence) motifs.insert(it->first);
+    }
+
+    return maxOccurrence;
+}
