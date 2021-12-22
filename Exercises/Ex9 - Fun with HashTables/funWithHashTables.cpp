@@ -14,8 +14,26 @@ unsigned FunWithHashTables::hashString(const string& s) {
   return h(s);
 }
 
+int max (const vector<int>& numbers) {
+
+    int max = numbers[0];
+    for (int number : numbers) max = number > max ? number : max;
+    return max;
+}
+
 int FunWithHashTables::sumPairs(const vector<int>& numbers) {
-  return 0;
+
+    int hashTableSize = 2 * max(numbers);
+    HashTable<int> allSums = HashTable<int>(hashTableSize, hashInt);
+    allSums.clear();
+
+    for (int i = 0 ; i < numbers.size() - 1 ; i++) {
+        for (int j = i + 1 ; j < numbers.size() ; j++) {
+            allSums.insert(numbers[i] + numbers[j]);
+        }
+    }
+
+    return allSums.getNumActive();
 }
 
 int FunWithHashTables::dnaMotifs(string dna, int k, unordered_set<string>& motifs) {
