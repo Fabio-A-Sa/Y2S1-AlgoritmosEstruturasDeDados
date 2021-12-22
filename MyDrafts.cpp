@@ -3982,3 +3982,15 @@ int BST<Comparable>::maxDepth(BinaryNode<Comparable>* node) const {
         return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
     }
 }
+
+template <class Comparable>
+int BST<Comparable>::balance(const Comparable& x) const {
+
+    BinaryNode<Comparable> *find = this->find(x, this->root);
+    if (find == NULL) return 0;
+    else {
+        int answerLeft = maxDepth(find->left);
+        int answerRight = maxDepth(find->right);
+        return answerRight - answerLeft;
+    }
+}
