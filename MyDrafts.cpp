@@ -4008,3 +4008,17 @@ template <class Comparable>
 bool BST<Comparable>::isAVL() const {
     return isAVLTree(this->root);
 }
+
+template <class Comparable>
+void BST<Comparable>::rightRotate(const Comparable& x) {
+
+    BinaryNode<Comparable> *find = this->find(x, this->root);
+    if (find == NULL || find->left == NULL) return;
+
+    // De acordo com o exemplo/esquema dado:
+    BinaryNode<Comparable> *Y = find->left;
+    BinaryNode<Comparable> *T2 = Y->right;
+    find->left = T2;
+    Y->right = find;
+    this->root = Y;
+}
