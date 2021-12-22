@@ -83,29 +83,17 @@ bool HashTable<KeyType>::contains(const KeyType& k) {
     return (table[pos].state == ACTIVE && table[pos].key == k);
 }
 
-// ----------------------------------------------------------
-// Exercicio 1: Tabelas de Dispersão
-// ----------------------------------------------------------
 
-// ..............................
-// a) Inserindo elementos
-// TODO
 template <class KeyType>
 bool HashTable<KeyType>::insert(const KeyType& k) {
     return false;
 }
 
-// ..............................
-// b) Removendo elementos
-// TODO
 template <class KeyType>
 bool HashTable<KeyType>::remove(const KeyType& k) {
     return false;
 }
 
-// ..............................
-// c) Refazendo a tabela
-// TODO
 template <class KeyType>
 bool HashTable<KeyType>::rehash(int n) {
     return false;
