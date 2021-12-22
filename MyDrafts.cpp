@@ -4087,3 +4087,29 @@ void FunWithBSTs::moreReviews(const vector<pair<string, int>>& reviews, int& m, 
         if (it->second == m) n++;
     }
 }
+
+vector<string> FunWithBSTs::topMovies(const vector<pair<string, int>>& reviews, double k) {
+
+    vector<string> answer = {};
+    map<string, int> totalPoints = {};
+    map<string, int> occurrence = {};
+
+    for (const pair<string, int> &review : reviews) {
+
+        if (totalPoints.find(review.first) != totalPoints.end()) totalPoints[review.first] += review.second;
+        else totalPoints[review.first] = review.second;
+
+        if (occurrence.find(review.first) != occurrence.end()) occurrence[review.first]++;
+        else occurrence[review.first] = 1;
+    }
+
+    set<string> nonRepeted = {};
+    for (const pair<string, int> &review : reviews) {
+        if ((float) totalPoints[review.first] / occurrence[review.first] >= k) nonRepeted.insert(review.first);
+    }
+
+    answer.assign(nonRepeted.begin(), nonRepeted.end());
+
+    sort(answer.begin(), answer.end());
+    return answer;
+}
