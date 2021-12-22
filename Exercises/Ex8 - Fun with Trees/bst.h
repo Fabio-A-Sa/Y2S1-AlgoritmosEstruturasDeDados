@@ -499,8 +499,26 @@ bool BST<Comparable>::isEqual(BinaryNode<Comparable>* n1, BinaryNode<Comparable>
 }
 
 template <class Comparable>
+int BST<Comparable>::maxDepth(BinaryNode<Comparable>* node) const {
+
+    if (node == NULL) return -1;
+    else {
+        int leftDepth = maxDepth(node->left);
+        int rightDepth = maxDepth(node->right);
+        return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    }
+}
+
+template <class Comparable>
 int BST<Comparable>::balance(const Comparable& x) const {
-  return 0;
+
+    BinaryNode<Comparable> *find = this->find(x, this->root);
+    if (find == NULL) return 0;
+    else {
+        int answerLeft = maxDepth(find->left);
+        int answerRight = maxDepth(find->right);
+        return answerRight - answerLeft;
+    }
 }
 
 template <class Comparable>
