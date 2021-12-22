@@ -73,6 +73,11 @@ vector<string> toWords(const string &text) {
     return allWords;
 }
 
+bool in(const string &w, const vector<string> &words) {
+    for (const string &word : words) if (word == w) return true;
+    return false;
+}
+
 void FunWithHashTables::findLanguage(string text, const unordered_map<string, vector<string>>& dict, unordered_map<string, int>& answer) {
 }
 
