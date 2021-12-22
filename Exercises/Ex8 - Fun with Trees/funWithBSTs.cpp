@@ -1,5 +1,5 @@
-// AED 2021/2022 - Aula Pratica 07
-// Pedro Ribeiro (DCC/FCUP) [06/12/2012]
+// Created on December, 2021
+// @author: Fábio Araújo de Sá
 
 #include "funWithBSTs.h"
 #include "bst.h"

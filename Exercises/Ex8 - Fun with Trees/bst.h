@@ -80,8 +80,6 @@ public:
     void rightRotate(const Comparable& x);
 };
 
-// Note that all "matching" is based on the < method.
-
 template <class Comparable>
 BST<Comparable>::BST(const Comparable& notFound): root(NULL), ITEM_NOT_FOUND(notFound)
 { }
@@ -500,29 +498,16 @@ bool BST<Comparable>::isEqual(BinaryNode<Comparable>* n1, BinaryNode<Comparable>
            isEqual(n1->right, n2->right);
 }
 
-// ----------------------------------------------------------
-// Exercicio 4: Brincando com arvores
-// ----------------------------------------------------------
-
-// ..............................
-// a) Desequilibrio de um no
-// TODO
 template <class Comparable>
 int BST<Comparable>::balance(const Comparable& x) const {
   return 0;
 }
 
-// ..............................
-// b) E uma arvore AVL?
-// TODO
 template <class Comparable>
 bool BST<Comparable>::isAVL() const {
   return false;
 }
 
-// ..............................
-// c) Rotação a direita
-// TODO
 template <class Comparable>
 void BST<Comparable>::rightRotate(const Comparable& x) {
 }
