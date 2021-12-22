@@ -25,16 +25,8 @@ int FunWithHashTables::dnaMotifs(string dna, int k, unordered_set<string>& motif
   return 0;
 }
 
-// ----------------------------------------------------------
-// Exercicio 3: Torre de Babel
-// ----------------------------------------------------------
-// TODO
 void FunWithHashTables::findLanguage(string text, const unordered_map<string, vector<string>>& dict, unordered_map<string, int>& answer) {
 }
 
-// ----------------------------------------------------------
-// Exercicio 4: Palavras Alienígenas
-// ----------------------------------------------------------
-// TODO
 void FunWithHashTables::wordIndex(const vector<string> &words, vector<int>& answer) {
 }
