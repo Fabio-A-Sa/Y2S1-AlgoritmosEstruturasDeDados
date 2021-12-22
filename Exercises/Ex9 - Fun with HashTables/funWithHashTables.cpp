@@ -79,6 +79,26 @@ bool in(const string &w, const vector<string> &words) {
 }
 
 void FunWithHashTables::findLanguage(string text, const unordered_map<string, vector<string>>& dict, unordered_map<string, int>& answer) {
+
+    vector<string> allWords = toWords(text);
+    unordered_multimap<string, string> occurrence = {};
+
+    for (string word : allWords) {
+        for (auto it = dict.begin() ; it != dict.end() ; it++) {
+            if (in(word, it->second)) occurrence.insert(make_pair(word, it->first));
+        }
+    }
+
+    for (auto it = occurrence.begin(); it != occurrence.end(); it++)
+        cout << "<" << it->first << ", " << it->second
+             << ">  ";
+
+    cout << endl;
+
+    for (auto it = occurrence.begin() ; it != occurrence.end() ; it ++) {
+        if (answer.find(it->second) == answer.end()) answer.insert(make_pair(it->second, 1));
+        else answer[it->second]++;
+    }
 }
 
 void FunWithHashTables::wordIndex(const vector<string> &words, vector<int>& answer) {
