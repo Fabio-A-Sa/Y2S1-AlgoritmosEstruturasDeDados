@@ -5,8 +5,11 @@
 #include <vector>
 #include <iostream>
 
-unsigned FunWithHashTables::hashInt(const int& i) {
-  return i;
+int max (const vector<int>& numbers) {
+
+    int max = numbers[0];
+    for (int number : numbers) max = number > max ? number : max;
+    return max;
 }
 
 unsigned FunWithHashTables::hashString(const string& s) {
