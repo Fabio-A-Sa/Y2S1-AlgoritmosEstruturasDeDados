@@ -4070,3 +4070,20 @@ int FunWithBSTs::numberMovies(const vector<pair<string, int>>& reviews) {
     for (pair<string, int> review : reviews) movies.insert(review.first);
     return movies.size();
 }
+
+void FunWithBSTs::moreReviews(const vector<pair<string, int>>& reviews, int& m, int& n) {
+
+    map<string, int> totalReview = {};
+    m = 0;
+    for (pair<string, int> review : reviews) {
+        if (totalReview.find(review.first) != totalReview.end()) totalReview[review.first] += 1;
+        else totalReview[review.first] = 1;
+
+        m = totalReview[review.first] > m ? totalReview[review.first] : m;
+    }
+
+    n = 0;
+    for (map<string, int>::iterator it = totalReview.begin(); it != totalReview.end(); it++) {
+        if (it->second == m) n++;
+    }
+}
