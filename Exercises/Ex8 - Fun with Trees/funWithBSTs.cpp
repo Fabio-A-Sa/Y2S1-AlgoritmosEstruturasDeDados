@@ -15,7 +15,33 @@ int FunWithBSTs::newBag(const vector<int>& collection, const vector<int>& bag) {
 }
 
 int FunWithBSTs::battle(const vector<int>& alice, const vector<int>& bruno) {
-  return 0;
+
+    multiset<int> mAlice; for (int card : alice) mAlice.insert(card);
+    multiset<int> mBruno; for (int card : bruno) mBruno.insert(card);
+
+    multiset<int>::iterator iteratorAlice;
+    multiset<int>::iterator iteratorBruno;
+
+    while (!mAlice.empty() && !mBruno.empty()) {
+
+        iteratorAlice = mAlice.end(); iteratorAlice--;
+        iteratorBruno = mBruno.end(); iteratorBruno--;
+
+        int maxAlice = *iteratorAlice; mAlice.erase(iteratorAlice);
+        int maxBruno = *iteratorBruno; mBruno.erase(iteratorBruno);
+
+        if (maxAlice > maxBruno) {
+            maxAlice -= maxBruno;
+            mAlice.insert(maxAlice);
+        } else if (maxAlice < maxBruno) {
+            maxBruno -= maxAlice;
+            mBruno.insert(maxBruno);
+        } else continue;
+    }
+
+    if (!mAlice.empty()) return mAlice.size();
+    if (!mBruno.empty()) return -mBruno.size();
+    return 0;
 }
 
 int FunWithBSTs::numberMovies(const vector<pair<string, int>>& reviews) {
