@@ -4,7 +4,14 @@
 #include "funWithBSTs.h"
 
 int FunWithBSTs::newBag(const vector<int>& collection, const vector<int>& bag) {
-  return 0;
+
+    set<int> unRepeted;
+    for (int cromo : collection) unRepeted.insert(cromo);
+    int beforeInsertion = unRepeted.size();
+
+    for (int newCromo : bag) unRepeted.insert(newCromo);
+
+    return unRepeted.size() - beforeInsertion;
 }
 
 int FunWithBSTs::battle(const vector<int>& alice, const vector<int>& bruno) {
