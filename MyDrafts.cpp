@@ -4113,3 +4113,17 @@ vector<string> FunWithBSTs::topMovies(const vector<pair<string, int>>& reviews, 
     sort(answer.begin(), answer.end());
     return answer;
 }
+
+template <class KeyType>
+bool HashTable<KeyType>::insert(const KeyType& k) {
+
+    if (numEmpty > 1 && !contains(k)) {
+        int position = findPos(k);
+        HashEntry h = {ACTIVE, k};
+        this->table[position] = h;
+        numActive++;
+        numEmpty--;
+        return true;
+    }
+    return false;
+}
