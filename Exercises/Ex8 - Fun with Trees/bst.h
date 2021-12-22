@@ -522,8 +522,17 @@ int BST<Comparable>::balance(const Comparable& x) const {
 }
 
 template <class Comparable>
+bool BST<Comparable>::isAVLTree(BinaryNode<Comparable>* node) const {
+
+    if (node == NULL) return true;
+    int leftDepth = BST<Comparable>::maxDepth(node->left);
+    int rightDepth = BST<Comparable>::maxDepth(node->right);
+    return abs(leftDepth - rightDepth) < 2 && isAVLTree(node->left) && isAVLTree(node->right);
+}
+
+template <class Comparable>
 bool BST<Comparable>::isAVL() const {
-  return false;
+    return isAVLTree(this->root);
 }
 
 template <class Comparable>
