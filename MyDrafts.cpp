@@ -4127,3 +4127,17 @@ bool HashTable<KeyType>::insert(const KeyType& k) {
     }
     return false;
 }
+
+template <class KeyType>
+bool HashTable<KeyType>::remove(const KeyType& k) {
+
+    if (contains(k)) {
+
+        int position = findPos(k);
+        HashEntry h = {DELETED, k};
+        this->table[position] = h;
+        numActive--;
+        return true;
+
+    } return false;
+}
