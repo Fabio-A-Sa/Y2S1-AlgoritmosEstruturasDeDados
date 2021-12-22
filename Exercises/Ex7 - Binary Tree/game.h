@@ -1,3 +1,6 @@
+// Created on December, 2021
+// @author: Fábio Araújo de Sá
+
 #ifndef GAME_H_
 #define GAME_H_
 
