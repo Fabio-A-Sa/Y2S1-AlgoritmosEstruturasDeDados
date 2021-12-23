@@ -89,15 +89,12 @@ void FunWithHashTables::findLanguage(string text, const unordered_map<string, ve
         }
     }
 
-    for (auto it = occurrence.begin(); it != occurrence.end(); it++)
-        cout << "<" << it->first << ", " << it->second
-             << ">  ";
-
-    cout << endl;
+    for (auto it = dict.begin() ; it != dict.end() ; it ++) {
+        if (answer.find(it->first) == answer.end()) answer.insert(make_pair(it->first, 0));
+    }
 
     for (auto it = occurrence.begin() ; it != occurrence.end() ; it ++) {
-        if (answer.find(it->second) == answer.end()) answer.insert(make_pair(it->second, 1));
-        else answer[it->second]++;
+        answer[it->second]++;
     }
 }
 
