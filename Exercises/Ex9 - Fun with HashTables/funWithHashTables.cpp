@@ -63,7 +63,7 @@ vector<string> toWords(const string &text) {
     string currentWord = "";
     for (char letter : text) {
         letter = tolower(letter);
-        if (letter == ' ' && !currentWord.empty()) {
+        if ((letter == ' ' || letter == '-' )&& !currentWord.empty()) {
             allWords.push_back(currentWord);
             currentWord = "";
         } else if (isalpha(letter)) currentWord += letter;
