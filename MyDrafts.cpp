@@ -4276,3 +4276,23 @@ bool in(const string &w, const vector<string> &words) {
     for (const string &word : words) if (word == w) return true;
     return false;
 }
+
+void FunWithHashTables::findLanguage(string text, const unordered_map<string, vector<string>>& dict, unordered_map<string, int>& answer) {
+
+    vector<string> allWords = toWords(text);
+    unordered_multimap<string, string> occurrence = {};
+
+    for (string word : allWords) {
+        for (auto it = dict.begin() ; it != dict.end() ; it++) {
+            if (in(word, it->second)) occurrence.insert(make_pair(word, it->first));
+        }
+    }
+
+    for (auto it = dict.begin() ; it != dict.end() ; it ++) {
+        if (answer.find(it->first) == answer.end()) answer.insert(make_pair(it->first, 0));
+    }
+
+    for (auto it = occurrence.begin() ; it != occurrence.end() ; it ++) {
+        answer[it->second]++;
+    }
+}
