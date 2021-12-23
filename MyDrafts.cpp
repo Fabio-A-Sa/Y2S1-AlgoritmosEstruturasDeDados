@@ -4255,3 +4255,19 @@ void FunWithHashTables::findLanguage(string text, const unordered_map<string, ve
         else answer[it->second]++;
     }
 }
+
+vector<string> toWords(const string &text) {
+
+    vector<string> allWords = {};
+    string currentWord = "";
+    for (char letter : text) {
+        letter = tolower(letter);
+        if ((letter == ' ' || letter == '-' )&& !currentWord.empty()) {
+            allWords.push_back(currentWord);
+            currentWord = "";
+        } else if (isalpha(letter)) currentWord += letter;
+    }
+    allWords.push_back(currentWord);
+
+    return allWords;
+}
