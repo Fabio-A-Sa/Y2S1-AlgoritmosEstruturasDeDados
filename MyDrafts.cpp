@@ -4305,15 +4305,15 @@ void FunWithHashTables::wordIndex(const vector<string> &words, vector<int>& answ
 
     int counter = 1;
     currentWord = "";
-    for (int i = 0 ; i < 26 ; i++) {
+    for (int i = 0; i < 26; i++) {
         currentWord = alphabet[i];
         allWords.insert(make_pair(currentWord, counter));
         counter++;
     }
 
-    for (int i = 0 ; i < 25 ; i++) {
+    for (int i = 0; i < 25; i++) {
         currentWord = alphabet[i];
-        for (int j = i + 1 ; j < 26 ; j++) {
+        for (int j = i + 1; j < 26; j++) {
             currentWord += alphabet[j];
             allWords.insert(make_pair(currentWord, counter));
             counter++;
@@ -4321,67 +4321,91 @@ void FunWithHashTables::wordIndex(const vector<string> &words, vector<int>& answ
         }
     }
 
-    for (int i = 0 ; i < 24 ; i++) {
+    for (int i = 0; i < 24; i++) {
         currentWord = alphabet[i];
-        for (int j = i + 1 ; j < 25 ; j++) {
+        for (int j = i + 1; j < 25; j++) {
             currentWord += alphabet[j];
-            for (int k = j + 1 ; k < 26 ; k++) {
+            for (int k = j + 1; k < 26; k++) {
                 currentWord += alphabet[k];
                 allWords.insert(make_pair(currentWord, counter));
                 counter++;
-                currentWord = alphabet[i]; currentWord += alphabet[j];
+                currentWord = alphabet[i];
+                currentWord += alphabet[j];
             }
             currentWord = alphabet[i];
         }
         currentWord = "";
     }
 
-    for (int i = 0 ; i < 23 ; i++) {
+    for (int i = 0; i < 23; i++) {
         currentWord = alphabet[i];
-        for (int j = i + 1 ; j < 24 ; j++) {
+        for (int j = i + 1; j < 24; j++) {
             currentWord += alphabet[j];
-            for (int k = j + 1 ; k < 25 ; k++) {
+            for (int k = j + 1; k < 25; k++) {
                 currentWord += alphabet[k];
-                for (int w = k + 1 ; w < 26 ; w++) {
+                for (int w = k + 1; w < 26; w++) {
                     currentWord += alphabet[w];
                     allWords.insert(make_pair(currentWord, counter));
                     counter++;
-                    currentWord = alphabet[i]; currentWord += alphabet[j];
+                    currentWord = alphabet[i];
+                    currentWord += alphabet[j];
                     currentWord += alphabet[k];
                 }
-                currentWord = alphabet[i]; currentWord += alphabet[j];
+                currentWord = alphabet[i];
+                currentWord += alphabet[j];
             }
             currentWord = alphabet[i];
         }
         currentWord = "";
     }
 
-    for (int i = 0 ; i < 22 ; i++) {
+    for (int i = 0; i < 22; i++) {
         currentWord = alphabet[i];
-        for (int j = i + 1 ; j < 23 ; j++) {
+        for (int j = i + 1; j < 23; j++) {
             currentWord += alphabet[j];
-            for (int k = j + 1 ; k < 24 ; k++) {
+            for (int k = j + 1; k < 24; k++) {
                 currentWord += alphabet[k];
-                for (int w = k + 1 ; w < 25 ; w++) {
+                for (int w = k + 1; w < 25; w++) {
                     currentWord += alphabet[w];
-                    for (int z = w + 1 ; z < 26 ; z++) {
+                    for (int z = w + 1; z < 26; z++) {
                         currentWord += alphabet[z];
                         allWords.insert(make_pair(currentWord, counter));
                         counter++;
-                        currentWord = alphabet[i]; currentWord += alphabet[j];
-                        currentWord += alphabet[k]; currentWord += alphabet[w];
+                        currentWord = alphabet[i];
+                        currentWord += alphabet[j];
+                        currentWord += alphabet[k];
+                        currentWord += alphabet[w];
                     }
-                    currentWord = alphabet[i]; currentWord += alphabet[j];
+                    currentWord = alphabet[i];
+                    currentWord += alphabet[j];
                     currentWord += alphabet[k];
                 }
-                currentWord = alphabet[i]; currentWord += alphabet[j];
+                currentWord = alphabet[i];
+                currentWord += alphabet[j];
             }
             currentWord = alphabet[i];
         }
         currentWord = "";
     }
 
-    for (string word : words) {
+    for (string word: words) {
         answer.push_back(allWords[word]);
+    }
+}
+
+bool isValid1 (string text) {
+
+    bool answer = true;
+    for (char letter : text) {
+        answer = answer && (letter == '0' || letter == '1');
+    }
+    return answer;
+}
+
+bool isValid2 (string text) {
+
+    if (text.size() == 1) return (text == 1 || text == 0);
+    else {
+        return (text[0] == 1 || text[0] == 0) && isValid2(text.substr(1, text.size()-1));
     }
 }
