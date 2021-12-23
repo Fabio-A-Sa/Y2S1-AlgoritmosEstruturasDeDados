@@ -5,7 +5,12 @@
 #include <list>
 using namespace std;
 
+
+class Graph {
+    
+};
+
 int main () {
-    cout << "Hello world" << endl;
-    return 0;
+
+
 }
