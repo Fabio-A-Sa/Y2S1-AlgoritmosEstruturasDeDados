@@ -99,4 +99,90 @@ void FunWithHashTables::findLanguage(string text, const unordered_map<string, ve
 }
 
 void FunWithHashTables::wordIndex(const vector<string> &words, vector<int>& answer) {
+
+    unordered_map<string, int> allWords = {};
+    string alphabet = "abcdefghijklmnopqrstuvwxyz";
+    string currentWord;
+
+    int counter = 1;
+    currentWord = "";
+    for (int i = 0 ; i < 26 ; i++) {
+        currentWord = alphabet[i];
+        allWords.insert(make_pair(currentWord, counter));
+        counter++;
+    }
+
+    for (int i = 0 ; i < 25 ; i++) {
+        currentWord = alphabet[i];
+        for (int j = i + 1 ; j < 26 ; j++) {
+            currentWord += alphabet[j];
+            allWords.insert(make_pair(currentWord, counter));
+            counter++;
+            currentWord = alphabet[i];
+        }
+    }
+
+    for (int i = 0 ; i < 24 ; i++) {
+        currentWord = alphabet[i];
+        for (int j = i + 1 ; j < 25 ; j++) {
+            currentWord += alphabet[j];
+            for (int k = j + 1 ; k < 26 ; k++) {
+                currentWord += alphabet[k];
+                allWords.insert(make_pair(currentWord, counter));
+                counter++;
+                currentWord = alphabet[i]; currentWord += alphabet[j];
+            }
+            currentWord = alphabet[i];
+        }
+        currentWord = "";
+    }
+
+    for (int i = 0 ; i < 23 ; i++) {
+        currentWord = alphabet[i];
+        for (int j = i + 1 ; j < 24 ; j++) {
+            currentWord += alphabet[j];
+            for (int k = j + 1 ; k < 25 ; k++) {
+                currentWord += alphabet[k];
+                for (int w = k + 1 ; w < 26 ; w++) {
+                    currentWord += alphabet[w];
+                    allWords.insert(make_pair(currentWord, counter));
+                    counter++;
+                    currentWord = alphabet[i]; currentWord += alphabet[j];
+                    currentWord += alphabet[k];
+                }
+                currentWord = alphabet[i]; currentWord += alphabet[j];
+            }
+            currentWord = alphabet[i];
+        }
+        currentWord = "";
+    }
+
+    for (int i = 0 ; i < 22 ; i++) {
+        currentWord = alphabet[i];
+        for (int j = i + 1 ; j < 23 ; j++) {
+            currentWord += alphabet[j];
+            for (int k = j + 1 ; k < 24 ; k++) {
+                currentWord += alphabet[k];
+                for (int w = k + 1 ; w < 25 ; w++) {
+                    currentWord += alphabet[w];
+                    for (int z = w + 1 ; z < 26 ; z++) {
+                        currentWord += alphabet[z];
+                        allWords.insert(make_pair(currentWord, counter));
+                        counter++;
+                        currentWord = alphabet[i]; currentWord += alphabet[j];
+                        currentWord += alphabet[k]; currentWord += alphabet[w];
+                    }
+                    currentWord = alphabet[i]; currentWord += alphabet[j];
+                    currentWord += alphabet[k];
+                }
+                currentWord = alphabet[i]; currentWord += alphabet[j];
+            }
+            currentWord = alphabet[i];
+        }
+        currentWord = "";
+    }
+
+    for (string word : words) {
+        answer.push_back(allWords[word]);
+    }
 }
