@@ -102,13 +102,17 @@ void Graph::DFS(int v) {
 int Graph::howManyComponents() {
 
     int total = 0;
-    nodes[v].visited = true;
-    total
-    cout << "Visited node: " << v << endl;      // Mostra o nó que visita
-    for (Edge edge : nodes[v].adjacents) {      // Para cada aresta a visitar
-        int dest = edge.destination;            // Encontra o nó de destino
-        if (!nodes[dest].visited) {             // Se esse nó ainda não estiver visitado
-            DFS(dest);                          // Visita-o recursivamente
+
+    for (Node node : nodes) {                   // Garantir que nenhum nó foi antes visitado
+        node.visited = false;
+    }
+
+    for (int i = 1 ; i < nodes.size() ; i++) {
+        if (!node[i].visited) {
+            cout << "Connected components: ";
+            total++;
+            DFS(i);
+            cout << endl;
         }
     }
 
