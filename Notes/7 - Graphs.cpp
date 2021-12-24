@@ -107,8 +107,8 @@ int Graph::howManyComponents() {
         nodes[i].visited = false;
     }
 
-    for (int i = 1 ; i <= size ; i++) {
-        if (!nodes[i].visited) {
+    for (int i = 1 ; i <= size ; i++) {                   // Para cada conjunto que não foi visitado, visita o seu início
+        if (!nodes[i].visited) {                          // E incrementa o contador
             cout << "Connected components: ";
             total++;
             DFS(i);
