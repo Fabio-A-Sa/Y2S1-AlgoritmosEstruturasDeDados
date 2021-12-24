@@ -22,10 +22,12 @@ class Graph {
 
         /**
          * Um nó é representado por uma lista de arestas adjacentes, que podem ou não ter
-         * direção ou peso
+         * direção ou peso.
+         * Foi acrescentado um novo parâmetro, para a pesquisa DFS (que tem de ter algo que verifique se o nó foi visitado)
          */
         struct Node {
             list<Edge> adjacents;
+            bool visited;
         };
 
         /**
@@ -54,6 +56,12 @@ class Graph {
          * Adiciona uma ligação entre a source e o destino, com ou sem peso associado
          */
         void addEdge (int source, int destination, int weight = 1);
+
+        /**
+         * Depth First Search - vai percorrer o grafo de forma recursiva: primeiro a parte da direita
+         * e só depois a parte da esquerda
+         */
+         void DFS(int v);
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -72,6 +80,9 @@ void Graph::addEdge(int source, int destination, int weight) {
         newEdge.weight = weight;
         nodes[destination].adjacents.push_back(newEdge);
     }
+}
+
+void Graph::DFS(int v) {
 }
 
 int main () {
