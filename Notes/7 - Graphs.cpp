@@ -89,11 +89,11 @@ void Graph::addEdge(int source, int destination, int weight) {
 void Graph::DFS(int v) {
 
     nodes[v].visited = true;                    // Marcar o nó como visitado
-    cout << v << " " << endl;                   // Mostra o nó que visita
+    cout << v << " ";                           // Mostra o nó que visita
     for (Edge edge : nodes[v].adjacents) {      // Para cada aresta a visitar
         int dest = edge.destination;            // Encontra o nó de destino
         if (!nodes[dest].visited) {             // Se esse nó ainda não estiver visitado
-            DFS(dest);                       // Visita-o recursivamente
+            DFS(dest);                          // Visita-o recursivamente
         }
     }
 }
@@ -120,7 +120,7 @@ int Graph::howManyComponents() {
 
 int main () {
 
-    cout << "Create and fill graphs\n" << endl;
+    cout << "\nCreate and fill graphs\n" << endl;
 
     Graph graphNonDirectional(9, false);
     graphNonDirectional.addEdge(1, 2);
@@ -149,8 +149,11 @@ int main () {
 
     cout << "DFS Search Sequence: " << endl;
     graphNonDirectional.DFS(1);
+    cout << endl << endl;
 
-    cout << "Connected components of graph 1: " << graphNonDirectional.howManyComponents() << endl;
-    cout << "Connected components of graph 2: " << notConnected.howManyComponents() << endl;
+    cout << "Connected components of graph 1: " << endl;
+    cout << graphNonDirectional.howManyComponents() << endl;
+    cout << "Connected components of graph 2: " << endl;
+    cout << notConnected.howManyComponents() << endl;
 
 }
