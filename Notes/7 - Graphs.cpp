@@ -61,7 +61,7 @@ class Graph {
          * Depth First Search - vai percorrer o grafo de forma recursiva: primeiro a parte da direita
          * e só depois a parte da esquerda
          */
-         void DFS(int v);
+        void DFS(int v);
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -83,19 +83,34 @@ void Graph::addEdge(int source, int destination, int weight) {
 }
 
 void Graph::DFS(int v) {
+
+    nodes[v].visited = true;                    // Marcar o nó como visitado
+    cout << "Visited node: " << v << endl;      // Mostra o nó que visita
+    for (Edge edge : nodes[v].adjacents) {      // Para cada aresta a visitar
+        int dest = edge.destination;            // Encontra o nó de destino
+        if (!nodes[dest].visited) {             // Se esse nó ainda não estiver visitado
+            DFS(dest);                       // Visita-o recursivamente
+        }
+    }
 }
 
 int main () {
 
-    Graph graph(9, false);
-    graph.addEdge(1, 2);
-    graph.addEdge(1, 3);
-    graph.addEdge(1, 4);
-    graph.addEdge(2, 4);
-    graph.addEdge(3, 4);
-    graph.addEdge(4, 5);
-    graph.addEdge(4, 6);
-    graph.addEdge(4, 7);
-    graph.addEdge(5, 8);
-    graph.addEdge(7, 9);
+    cout << "Create and fill graph" << endl;
+    Graph graphNonDirectional(9, false);
+    graphNonDirectional.addEdge(1, 2);
+    graphNonDirectional.addEdge(1, 3);
+    graphNonDirectional.addEdge(1, 4);
+    graphNonDirectional.addEdge(2, 4);
+    graphNonDirectional.addEdge(3, 4);
+    graphNonDirectional.addEdge(4, 5);
+    graphNonDirectional.addEdge(4, 6);
+    graphNonDirectional.addEdge(4, 7);
+    graphNonDirectional.addEdge(5, 8);
+    graphNonDirectional.addEdge(7, 9);
+
+    cout << "DFS Search" << endl;
+    graphNonDirectional.DFS(1);
+
+    cout << "Finish search" << endl;
 }
