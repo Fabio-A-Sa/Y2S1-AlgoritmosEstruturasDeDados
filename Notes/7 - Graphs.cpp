@@ -80,9 +80,10 @@ void Graph::addEdge(int source, int destination, int weight) {
     newEdge.weight = weight;
     nodes[source].adjacents.push_back(newEdge);
     if (!hasDirection) {
-        newEdge.destination = destination;
-        newEdge.weight = weight;
-        nodes[destination].adjacents.push_back(newEdge);
+        Edge anotherEdge;
+        anotherEdge.destination = source;
+        anotherEdge.weight = weight;
+        nodes[destination].adjacents.push_back(anotherEdge);
     }
 }
 
