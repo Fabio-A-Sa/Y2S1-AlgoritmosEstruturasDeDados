@@ -102,11 +102,11 @@ int Graph::howManyComponents() {
 
     int total = 0;
 
-    for (Node node : nodes) {                   // Garantir que nenhum nó foi antes visitado
-        node.visited = false;
+    for (int i = 1 ; i <= size ; i++) {                   // Garantir que nenhum nó foi antes visitado
+        nodes[i].visited = false;
     }
 
-    for (int i = 1 ; i < nodes.size() ; i++) {
+    for (int i = 1 ; i <= size ; i++) {
         if (!nodes[i].visited) {
             cout << "Connected components: ";
             total++;
@@ -136,12 +136,12 @@ int main () {
 
     Graph notConnected(14, false);
     notConnected.addEdge(1, 11);
-    notConnected.addEdge(2, 12);
-    notConnected.addEdge(11, 12);
     notConnected.addEdge(11, 7);
+    notConnected.addEdge(11, 12);
+    notConnected.addEdge(12, 2);
     notConnected.addEdge(12, 8);
     notConnected.addEdge(3, 13);
-    notConnected.addEdge(4, 13);
+    notConnected.addEdge(13, 4);
     notConnected.addEdge(13, 14);
     notConnected.addEdge(14, 9);
     notConnected.addEdge(14, 5);
@@ -152,8 +152,9 @@ int main () {
     cout << endl << endl;
 
     cout << "Connected components of graph 1: " << endl;
-    cout << graphNonDirectional.howManyComponents() << endl;
+    cout << graphNonDirectional.howManyComponents() << endl << endl;
     cout << "Connected components of graph 2: " << endl;
-    cout << notConnected.howManyComponents() << endl;
+    cout << notConnected.howManyComponents() << endl << endl;
 
+    return 0;
 }
