@@ -116,6 +116,7 @@ int Graph::howManyComponents() {
         }
     }
 
+    cout << "Total: ";
     return total;
 }
 
