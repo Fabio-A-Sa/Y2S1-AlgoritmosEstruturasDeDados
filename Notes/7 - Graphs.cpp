@@ -56,16 +56,22 @@ class Graph {
         void addEdge (int source, int destination, int weight = 1);
 };
 
-Graph::Graph(int nodes, bool dir) {
+Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
     this->size = nodes;
     this->hasDirection= dir;
-    this->nodes(nodes+1);
 }
 
 void Graph::addEdge(int source, int destination, int weight) {
     if (source < 1 || source > size || destination < 1 || destination > size) return;
-    nodes[source].adjacents.push_back({destination, weight});
-    if (!hasDirection) nodes[destination].adjacents.push_back({source, weight});
+    Edge newEdge;
+    newEdge.destination = destination;
+    newEdge.weight = weight;
+    nodes[source].adjacents.push_back(newEdge);
+    if (!hasDirection) {
+        newEdge.destination = destination;
+        newEdge.weight = weight;
+        nodes[destination].adjacents.push_back(newEdge);
+    }
 }
 
 int main () {
@@ -76,5 +82,9 @@ int main () {
     graph.addEdge(1, 4);
     graph.addEdge(2, 4);
     graph.addEdge(3, 4);
-    graph.addEdge()
+    graph.addEdge(4, 5);
+    graph.addEdge(4, 6);
+    graph.addEdge(4, 7);
+    graph.addEdge(5, 8);
+    graph.addEdge(7, 9);
 }
