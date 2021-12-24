@@ -62,6 +62,11 @@ class Graph {
          * e só depois a parte da esquerda
          */
         void DFS(int v);
+
+        /**
+         * Baseado na pesquisa DFS, retorna o número de componentes conexosdo grafo em questão
+         */
+        int howManyComponents();
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -94,9 +99,26 @@ void Graph::DFS(int v) {
     }
 }
 
+int Graph::howManyComponents() {
+
+    int total = 0;
+    nodes[v].visited = true;
+    total
+    cout << "Visited node: " << v << endl;      // Mostra o nó que visita
+    for (Edge edge : nodes[v].adjacents) {      // Para cada aresta a visitar
+        int dest = edge.destination;            // Encontra o nó de destino
+        if (!nodes[dest].visited) {             // Se esse nó ainda não estiver visitado
+            DFS(dest);                          // Visita-o recursivamente
+        }
+    }
+
+    return total;
+}
+
 int main () {
 
-    cout << "Create and fill graph" << endl;
+    cout << "Create and fill graphs" << endl;
+
     Graph graphNonDirectional(9, false);
     graphNonDirectional.addEdge(1, 2);
     graphNonDirectional.addEdge(1, 3);
@@ -109,8 +131,23 @@ int main () {
     graphNonDirectional.addEdge(5, 8);
     graphNonDirectional.addEdge(7, 9);
 
+    Graph notConnected(14, false);
+    notConnected.addEdge(1, 11);
+    notConnected.addEdge(2, 12);
+    notConnected.addEdge(11, 12);
+    notConnected.addEdge(11, 7);
+    notConnected.addEdge(12, 8);
+    notConnected.addEdge(3, 13);
+    notConnected.addEdge(4, 13);
+    notConnected.addEdge(13, 14);
+    notConnected.addEdge(14, 9);
+    notConnected.addEdge(14, 5);
+    notConnected.addEdge(6, 10);
+
     cout << "DFS Search" << endl;
     graphNonDirectional.DFS(1);
-
     cout << "Finish search" << endl;
+
+    cout << "Connected components of graph 1: " << graphNonDirectional.howManyComponents();
+    cout << "Connected components of graph 2: " << notConnected.howManyComponents();
 }
