@@ -239,6 +239,6 @@ int main () {
     cout << "1: "; graphNonDirectional.computingDistances(1); cout << endl;
     cout << "5: "; graphNonDirectional.computingDistances(5); cout << endl;
     cout << "7: "; graphNonDirectional.computingDistances(7); cout << endl;
-
+ 
     return 0;
 }
