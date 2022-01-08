@@ -63,9 +63,14 @@ class Graph {
         void DFS(int v);
 
         /**
-         * Baseado na pesquisa DFS, retorna o número de componentes conexosdo grafo em questão
+         * Baseado na pesquisa DFS, retorna o número de componentes conexos do grafo em questão
          */
         int howManyComponents();
+
+        /**
+         * Breath First Search - percorre o grafo com uma fila e por ordem de patamares
+         */
+        void BFS(int v);
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -120,8 +125,14 @@ int Graph::howManyComponents() {
     return total;
 }
 
+void Graph::BFS(int v) {
+
+    
+}
+
 int main () {
 
+    cout << "\n\n##### DFS #####" << endl;
     cout << "\nCreate and fill graphs\n" << endl;
 
     Graph graphNonDirectional(9, false);
@@ -157,6 +168,10 @@ int main () {
     cout << graphNonDirectional.howManyComponents() << endl << endl;
     cout << "Connected components of graph 2: " << endl;
     cout << notConnected.howManyComponents() << endl << endl;
+
+    cout << "##### BFS #####" << endl;
+
+
 
     return 0;
 }
