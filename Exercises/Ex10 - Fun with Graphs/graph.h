@@ -1,5 +1,5 @@
-// AED 2021/2022 - Aula Pratica 09
-// Pedro Ribeiro (DCC/FCUP) [03/01/2022]
+// Created on January, 2022
+// @author: Fábio Araújo de Sá
 
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
