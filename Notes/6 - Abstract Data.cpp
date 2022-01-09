@@ -125,7 +125,13 @@ void priorityQueue() {
 
 void heapSort() {
 
-    
+    vector<int> numbers = getRandomNumbers();
+    cout << "\nInitial content: " << endl;
+    showContent(numbers);
+
+    make_heap(numbers.begin(), numbers.end());
+    cout << "\nSorted content: " << endl;
+    showContent(numbers);
 }
 
 int main () {
@@ -135,7 +141,7 @@ int main () {
     //Lists();
     //Stack();
     //Queues();
-    priorityQueue();
+    //priorityQueue();
     heapSort();
     return 0;
 }
