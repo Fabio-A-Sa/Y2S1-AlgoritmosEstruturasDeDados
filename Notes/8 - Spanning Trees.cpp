@@ -6,21 +6,21 @@
 #include <list>
 using namespace std;
 
+struct Edge {
+    int destination;
+    int weight;
+};
+
+struct Node {
+    list<Edge> adjacents;
+    bool visited;
+    int distance;
+    int parent;
+};
+
 class Graph {
 
     private:
-
-        struct Edge {
-            int destination;
-            int weight;
-        };
-
-        struct Node {
-            list<Edge> adjacents;
-            bool visited;
-            int distance;
-            int parent;
-        };
 
         int size;
         bool hasDirection;
@@ -30,6 +30,7 @@ class Graph {
 
         Graph(int nodes, bool dir = false);
         void addEdge (int source, int destination, int weight = 1);
+        vector<Node> getNodes();
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -51,8 +52,42 @@ void Graph::addEdge(int source, int destination, int weight) {
     }
 }
 
+vector<Node> Graph::getNodes() {
+    return this->nodes;
+}
+
+void fillGraph(Graph &graph) {
+
+    graph.addEdge(1, 2, 4);
+    graph.addEdge(1, 8, 8);
+    graph.addEdge(2, 8, 11);
+    graph.addEdge(2, 3, 8);
+    graph.addEdge(8, 9, 7);
+    graph.addEdge(7, 8, 1);
+    graph.addEdge(7, 9, 6);
+    graph.addEdge(3, 9, 2);
+    graph.addEdge(3, 6, 4);
+    graph.addEdge(3, 4, 7);
+    graph.addEdge(4, 6, 14);
+    graph.addEdge(6, 7, 2);
+    graph.addEdge(4, 5, 9);
+    graph.addEdge(5, 6, 10);
+}
+
+void resetNodes(Graph &graph) {
+
+    for (Node node : graph.getNodes()) {
+        node.distance = INT_MAX;
+        cout << node.distance << endl;
+        node.parent = NULL;
+    }
+}
+
 int main() {
 
+    Graph graph = Graph(9, false);
+    fillGraph(graph);
+    resetNodes(graph);
 
     return 0;
 }
