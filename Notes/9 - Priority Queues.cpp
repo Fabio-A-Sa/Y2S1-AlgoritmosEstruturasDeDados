@@ -6,7 +6,7 @@
 
 void usingPriorityQueue() {
 
-    
+
 }
 
 int main () {
