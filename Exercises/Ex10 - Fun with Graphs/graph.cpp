@@ -68,6 +68,19 @@ int Graph::connectedComponents() {
     return total;
 }
 
+void Graph::dfs_Number(int v, int &total) {
+
+    nodes[v].visited = true;
+    total++;
+
+    for (auto e : nodes[v].adj) {
+        int w = e.dest;
+        if (!nodes[w].visited) {
+            dfs_Number(w, total);
+        }
+    }
+}
+
 int Graph::giantComponent() {
     return 0;
 }
