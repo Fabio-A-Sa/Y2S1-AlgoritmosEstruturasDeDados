@@ -193,5 +193,14 @@ bool Graph::colorsDFS(int v) {
 }
 
 bool Graph::hasCycle() {
+
+    resetNodes();
+
+    for (int i = 0 ; i <= n ; i++) {
+        if (nodes[i].color == WHITE) {
+            bool answer = colorsDFS(i);
+            if (answer) return answer; else continue;
+        }
+    }
     return false;
 }
