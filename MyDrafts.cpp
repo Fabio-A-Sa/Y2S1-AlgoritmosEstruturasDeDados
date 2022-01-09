@@ -5162,3 +5162,63 @@ void Graph::bfs(int v) {
         }
     }
 }
+
+void Graph::resetNodes() {
+
+    for (int i = 1 ; i <= n ; i++) {
+        nodes[i].visited = false;
+        nodes[i].distance = 0;
+        nodes[i].color = WHITE;
+    }
+}
+
+int Graph::outDegree(int v) {
+    if (v < 1 || v > n) return -1;
+    return nodes[v].adj.size();
+}
+
+int Graph::connectedComponents() {
+
+    int total = 0;
+    resetNodes();
+
+    for (int i = 1 ; i <= nodes.size()-1 ; i++) {
+        if (!nodes[i].visited) {
+            total++;
+            dfs(i);
+        }
+    }
+
+    return total;
+}
+
+void Graph::dfs_Number(int v, int &total) {
+
+    nodes[v].visited = true;
+    total++;
+
+    for (auto e : nodes[v].adj) {
+        int w = e.dest;
+        if (!nodes[w].visited) {
+            dfs_Number(w, total);
+        }
+    }
+}
+
+int Graph::giantComponent() {
+
+    int max = INT_MIN;
+
+    for (auto node : nodes) node.visited = false;
+
+    for (int i = 1 ; i <= nodes.size()-1 ; i++) {
+        if (!nodes[i].visited) {
+            int attemp = 0;
+            dfs_Number(i, attemp);
+            max = attemp > max ? attemp : max;
+        }
+    }
+
+    return max;
+}
+
