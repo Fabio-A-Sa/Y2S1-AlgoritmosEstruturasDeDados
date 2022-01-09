@@ -54,7 +54,18 @@ int Graph::outDegree(int v) {
 }
 
 int Graph::connectedComponents() {
-    return 0;
+
+    int total = 0;
+    resetNodes();
+
+    for (int i = 1 ; i <= nodes.size()-1 ; i++) {
+        if (!nodes[i].visited) {
+            total++;
+            dfs(i);
+        }
+    }
+
+    return total;
 }
 
 int Graph::giantComponent() {
