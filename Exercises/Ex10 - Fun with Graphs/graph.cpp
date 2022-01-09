@@ -98,6 +98,18 @@ int Graph::giantComponent() {
     return max;
 }
 
+void Graph::topologicalDFS(int v, list<int> &order) {
+
+    nodes[v].visited = true;
+    for (Edge e : nodes[v].adj) {
+        int node = e.dest;
+        if (!nodes[node].visited) {
+            topologicalDFS(node, order);
+        }
+    }
+    order.push_front(v);
+}
+
 list<int> Graph::topologicalSorting() {
     list<int> order;
     return order;
