@@ -176,6 +176,22 @@ int Graph::diameter() {
     return max;
 }
 
+bool Graph::colorsDFS(int v) {
+
+    nodes[v].color = GRAY;
+
+    for (Edge edge : nodes[v].adj) {
+        int dest = edge.dest;
+        if (nodes[dest].color == GRAY) {
+            return true;
+        } else {
+            colorsDFS(dest);
+        }
+    }
+
+    nodes[v].color = BLACK;
+}
+
 bool Graph::hasCycle() {
     return false;
 }
