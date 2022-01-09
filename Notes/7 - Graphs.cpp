@@ -28,6 +28,7 @@ class Graph {
         struct Node {
             list<Edge> adjacents;
             bool visited;
+            int distance;
         };
 
         /**
@@ -72,6 +73,11 @@ class Graph {
          * Breath First Search - percorre o grafo com uma fila e por ordem de patamares
          */
         void BFS(int v);
+
+        /**
+         * Show distances of all nodes starting at given parameter
+         */
+        void computingDistances(int v);
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -128,21 +134,57 @@ int Graph::howManyComponents() {
 
 void Graph::BFS(int v) {
 
+    for (int i = 1 ; i <= size ; i++) {                // marcar todos como não visitado
+        nodes[i].visited = false;
+    }
+
     queue<int> visitedNodes = {};
-    visitedNodes.push(v); // primeiro nó visitado;
-    nodes[v].visited = true; // marcar como visitado
+    visitedNodes.push(v);                           // primeiro nó visitado;
+    nodes[v].visited = true;                        // marcar como visitado
 
     while (!visitedNodes.empty()) {
-        visitedNodes.pop();
-        for (Edge e : nodes[v].adjacents) {
-            Node destination = e.destination;
-            if (!destination.visited) {
-                visitedNodes.push(destination);
-                destination.visited = true;
+
+        int node = visitedNodes.front();
+        visitedNodes.pop();                         // retirar o primeiro elemento da fila
+        cout << node << " " ;
+
+        for (Edge e : nodes[node].adjacents) {      // Vai a cada adjacência
+            int n = e.destination;                  // Vê qual é o nó
+            if (!nodes[n].visited) {                // Se o nó ainda não tiver visitado
+                visitedNodes.push(n);               // Acrescenta à fila
+                nodes[n].visited = true;            // Marca-o como visitado
             }
         }
     }
+}
 
+void Graph::computingDistances(int v) {
+
+    for (int i = 1 ; i <= size ; i++) {
+        nodes[i].visited = false;                   // marcar todos como não visitados
+        nodes[i].distance = 0;                      // marcar todos como distância nula
+    }
+
+    queue<int> visitedNodes = {};
+    visitedNodes.push(v);                           // primeiro nó visitado;
+    nodes[v].distance = 0;                          // distância à origem = 0 unidades
+    nodes[v].visited = true;                        // marcar como visitado
+
+    while (!visitedNodes.empty()) {
+
+        int node = visitedNodes.front();
+        visitedNodes.pop();                                     // retirar o primeiro elemento da fila
+        cout << node << "->" << nodes[node].distance << " ";
+
+        for (Edge e : nodes[node].adjacents) {                  // Vai a cada adjacência
+            int n = e.destination;                              // Vê qual é o nó
+            if (!nodes[n].visited) {                            // Se o nó ainda não tiver visitado
+                visitedNodes.push(n);                           // Acrescenta à fila
+                nodes[n].visited = true;                        // Marca-o como visitado
+                nodes[n].distance = nodes[node].distance + 1;   // A sua distância é origem++
+            }
+        }
+    }
 }
 
 int main () {
@@ -184,9 +226,19 @@ int main () {
     cout << "Connected components of graph 2: " << endl;
     cout << notConnected.howManyComponents() << endl << endl;
 
-    cout << "##### BFS #####" << endl;
+    cout << "\n##### BFS #####" << endl << endl;
 
+    cout << "BFS Search starting in 1: ";
+    graphNonDirectional.BFS(1); cout << endl;
+    cout << "BFS Search starting in 5: ";
+    graphNonDirectional.BFS(5); cout << endl;
+    cout << "BFS Search starting in 7: ";
+    graphNonDirectional.BFS(7); cout << endl << endl;
 
+    cout << "Showing distances of all nodes, starting in node:" << endl;
+    cout << "1: "; graphNonDirectional.computingDistances(1); cout << endl;
+    cout << "5: "; graphNonDirectional.computingDistances(5); cout << endl;
+    cout << "7: "; graphNonDirectional.computingDistances(7); cout << endl;
 
     return 0;
 }
