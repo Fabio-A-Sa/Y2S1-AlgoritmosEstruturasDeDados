@@ -111,7 +111,17 @@ void Graph::topologicalDFS(int v, list<int> &order) {
 }
 
 list<int> Graph::topologicalSorting() {
-    list<int> order;
+
+    resetNodes();
+
+    list<int> order = {};
+
+    for (int i = 1 ; i <= n ; i++) {
+        if (!nodes[i].visited) {
+            topologicalDFS(i, order);
+        }
+    }
+
     return order;
 }
 
