@@ -112,19 +112,56 @@ Node extractMinimum(vector<Node> &nodes) {
     return minimumNode;
 }
 
+bool equals(const Node &n1, const Node &n2) {
+    return n1.visited == n2.visited && n1.distance == n2.visited
+           && n1.parent == n2.parent;
+}
+
+bool in(const vector<Node> &nodes, const Node &searchNode) {
+
+    for (Node node : nodes) {
+        if (equals(node, searchNode)) return true;
+    }
+    return false;
+}
+
+int getIndex(Graph graph, const Node &n) {
+
+    for (int i = 1 ; i < graph.getNodes().size() ; i++) {
+        if (equals(n, graph.getNodes()[i])) return i;
+    }
+    return -1;
+}
+
 void PrimAlgorithm(Graph &graph, int node = 0) {
 
     vector<Node> graphNodes = graph.getNodes();
 
     Node root = !node && !graphNodes.empty() ?
                                graphNodes[1] : graphNodes[node];
-
+    root.distance = 0;
 
     while (!graphNodes.empty()) {
         Node u = extractMinimum(graphNodes);
-        
+        for (Edge e : u.adjacents) {
+            int dest = e.destination;
+            if (in(graphNodes, graph.getNodes()[dest]) && e.weight < graph.getNodes()[dest].distance) {
+                graph.getNodes()[dest].parent = getIndex(graph, u);
+                graph.getNodes()[dest].distance = e.weight;
+            }
+        }
     }
+}
 
+void showResults(Graph graph) {
+
+    cout << "\nShowing Prim Algorithm results" << endl;
+    vector<Node> graphNodes = graph.getNodes();
+    for (int i = 1 ; i < graphNodes.size() ; i++) {
+        cout << "Node: " << i << endl;
+        cout << "Distance: " << graphNodes[i].distance << endl;
+        cout << "Parent: " << graphNodes[i].parent << endl << endl;
+    }
 }
 
 int main() {
@@ -133,6 +170,7 @@ int main() {
     fillGraph(graph);
     resetNodes(graph);
     PrimAlgorithm(graph);
+    showResults(graph);
 
     return 0;
 }
