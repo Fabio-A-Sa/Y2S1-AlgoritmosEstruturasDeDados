@@ -2,11 +2,6 @@
 // Pedro Ribeiro (DCC/FCUP) [03/01/2022]
 
 #include "funWithGraphs.h"
-#include "graph.h"
-
-#include <vector>
-#include <iostream>
-
 
 // ----------------------------------------------------------
 // Some Example Graphs
@@ -169,5 +164,3 @@ Graph FunWithGraphs::graph8() {
 
     return g;
 }
-
-
