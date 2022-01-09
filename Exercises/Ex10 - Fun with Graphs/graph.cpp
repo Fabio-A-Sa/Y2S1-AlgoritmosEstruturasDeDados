@@ -161,7 +161,19 @@ int Graph::distance(int a, int b) {
 }
 
 int Graph::diameter() {
-    return 0;
+
+    if (connectedComponents() > 1) return -1;
+
+    int max = INT_MIN;
+
+    for (int i = 1 ; i <= n ; i++) {
+        fillDistances(i);
+        for (const Node &node : nodes) {
+            max = node.distance > max ? node.distance : max;
+        }
+    }
+
+    return max;
 }
 
 bool Graph::hasCycle() {
