@@ -49,7 +49,8 @@ void Graph::resetNodes() {
 }
 
 int Graph::outDegree(int v) {
-    return 0;
+    if (v < 1 || v > n) return -1;
+    return nodes[v].adj.size();
 }
 
 int Graph::connectedComponents() {
