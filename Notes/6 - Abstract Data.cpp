@@ -88,9 +88,18 @@ void Queues() {
     cout << endl;
 }
 
+// @Overload
 void showContent(const vector<int> &numbers) {
-    cout << "Content:"  << endl;
     for (int number : numbers) cout << number << " ";
+    cout << endl;
+}
+
+// @Overload
+void showContent(priority_queue<int> numbers) {
+    while (!numbers.empty()) {
+        cout << numbers.top() << " ";
+        numbers.pop();
+    }
     cout << endl;
 }
 
@@ -98,7 +107,15 @@ void priorityQueue() {
 
     vector<int> numbers = {};
     for (int i = 0 ; i < 20 ; i++) numbers.push_back(1 + rand() % 100);
+
+    cout << "\nInitial content: " << endl;
     showContent(numbers);
+
+    priority_queue<int> sortedNumbers;
+    for (int number : numbers) sortedNumbers.push(number);
+
+    cout << "\nSorted content: " << endl;
+    showContent(sortedNumbers);
 }
 
 int main () {
