@@ -7,6 +7,7 @@
 #include <list>
 #include <stack>
 #include <queue>
+#include <priority_queue>
 
 using namespace std;
 
@@ -87,11 +88,25 @@ void Queues() {
     cout << endl;
 }
 
+void showContent(const vector<int> &numbers) {
+    cout << "Content:"  << endl;
+    for (int number : numbers) cout << number << " ";
+    cout << endl;
+}
+
+void priorityQueue() {
+
+    vector<int> numbers = {};
+    for (int i = 0 ; i < 20 ; i++) numbers.push_back(1 + 100 % rand());
+    showContent(numbers);
+}
+
 int main () {
 
-    Arrays();
-    Lists();
-    Stack();
-    Queues();
+    //Arrays();
+    //Lists();
+    //Stack();
+    //Queues();
+    priorityQueue();
     return 0;
 }
