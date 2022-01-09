@@ -39,6 +39,15 @@ void Graph::bfs(int v) {
     }
 }
 
+void Graph::resetNodes() {
+
+    for (int i = 1 ; i <= n ; i++) {
+        nodes[i].visited = false;
+        nodes[i].distance = 0;
+        nodes[i].color = WHITE;
+    }
+}
+
 int Graph::outDegree(int v) {
     return 0;
 }
