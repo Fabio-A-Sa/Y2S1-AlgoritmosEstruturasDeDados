@@ -103,11 +103,16 @@ void showContent(priority_queue<int> numbers) {
     cout << endl;
 }
 
-void priorityQueue() {
+vector<int> getRandomNumbers() {
 
     vector<int> numbers = {};
     for (int i = 0 ; i < 20 ; i++) numbers.push_back(1 + rand() % 100);
+    return numbers;
+}
 
+void priorityQueue() {
+
+    vector<int> numbers = getRandomNumbers();
     cout << "\nInitial content: " << endl;
     showContent(numbers);
 
@@ -118,6 +123,11 @@ void priorityQueue() {
     showContent(sortedNumbers);
 }
 
+void heapSort() {
+
+    
+}
+
 int main () {
 
     srand(time(NULL));
@@ -126,5 +136,6 @@ int main () {
     //Stack();
     //Queues();
     priorityQueue();
+    heapSort();
     return 0;
 }
