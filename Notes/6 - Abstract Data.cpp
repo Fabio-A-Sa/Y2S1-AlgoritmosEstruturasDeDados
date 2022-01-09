@@ -8,6 +8,7 @@
 #include <stack>
 #include <ctime>
 #include <queue>
+#include <map>
 
 using namespace std;
 
@@ -123,6 +124,27 @@ void priorityQueue() {
     showContent(sortedNumbers);
 }
 
+void verify(const vector<int> &numbers)  {
+
+    cout << "\nVerification:\n" << endl;
+
+    map<int, int> indexNumber = {};
+    for (int i = 0 ; i < numbers.size() ; i++) {
+        indexNumber.insert(make_pair(i+1, numbers[i]));
+    }
+
+    for (int i = 0 ; i < numbers.size() ; i++) {
+        int index1 = (i+1)*2;
+        int index2 = (i+1)*2+1;
+        if (index2 < numbers.size()) {
+            cout << "Parent: " << numbers[i] << endl;
+            cout << "Child 1: " << numbers[index1-1] << " correct? " << (numbers[index1-1] == indexNumber[index1]) << endl;
+            cout << "Child 2: " << numbers[index2-1] << " correct? " << (numbers[index2-1] == indexNumber[index2]) << endl;
+            cout << endl;
+        }
+    }
+}
+
 void heapSort() {
 
     vector<int> numbers = getRandomNumbers();
@@ -132,6 +154,7 @@ void heapSort() {
     make_heap(numbers.begin(), numbers.end());
     cout << "\nSorted content: " << endl;
     showContent(numbers);
+    verify(numbers);
 }
 
 int main () {
