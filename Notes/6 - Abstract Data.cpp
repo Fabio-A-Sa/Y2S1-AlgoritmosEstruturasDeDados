@@ -160,11 +160,11 @@ void heapSort() {
 int main () {
 
     srand(time(NULL));
-    //Arrays();
-    //Lists();
-    //Stack();
-    //Queues();
-    //priorityQueue();
+    Arrays();
+    Lists();
+    Stack();
+    Queues();
+    priorityQueue();
     heapSort();
     return 0;
 }
