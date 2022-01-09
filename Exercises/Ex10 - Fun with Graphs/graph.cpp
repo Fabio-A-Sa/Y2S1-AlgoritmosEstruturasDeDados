@@ -152,7 +152,12 @@ void Graph::fillDistances(int v) {
 }
 
 int Graph::distance(int a, int b) {
-    return 0;
+
+    if (a == b) return 0;
+
+    fillDistances(a);
+
+    return nodes[b].distance ? nodes[b].distance : -1;
 }
 
 int Graph::diameter() {
