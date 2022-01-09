@@ -125,6 +125,32 @@ list<int> Graph::topologicalSorting() {
     return order;
 }
 
+void Graph::fillDistances(int v) {
+
+    resetNodes();
+
+    queue<int> visitedNodes = {};
+    visitedNodes.push(v);
+    nodes[v].distance = 0;
+    nodes[v].visited = true;
+
+    while (!visitedNodes.empty()) {
+
+        int node = visitedNodes.front();
+        visitedNodes.pop();
+        cout << node << "->" << nodes[node].distance << " ";
+
+        for (Edge e : nodes[node].adj) {
+            int a = e.dest;
+            if (!nodes[a].visited) {
+                visitedNodes.push(a);
+                nodes[a].visited = true;
+                nodes[a].distance = nodes[node].distance + 1;
+            }
+        }
+    }
+}
+
 int Graph::distance(int a, int b) {
     return 0;
 }
