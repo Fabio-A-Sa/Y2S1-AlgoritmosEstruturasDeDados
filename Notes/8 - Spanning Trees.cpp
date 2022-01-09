@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <vector>
 #include <list>
 using namespace std;
 
@@ -31,6 +32,7 @@ class Graph {
         Graph(int nodes, bool dir = false);
         void addEdge (int source, int destination, int weight = 1);
         vector<Node> getNodes();
+        void setNodes(const vector<Node> &nodes);
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -54,6 +56,10 @@ void Graph::addEdge(int source, int destination, int weight) {
 
 vector<Node> Graph::getNodes() {
     return this->nodes;
+}
+
+void Graph::setNodes(const vector<Node> &nodes) {
+    this->nodes = nodes;
 }
 
 void fillGraph(Graph &graph) {
@@ -82,8 +88,42 @@ void resetNodes(Graph &graph) {
     }
 }
 
-void PrimAlgorithm(Graph &graph, int root = 1) {
+Node extractMinimum(vector<Node> &nodes) {
 
+    int minimumDistance = INT_MAX;
+    Node minimumNode;
+
+    // Find Node with minimum distance
+    for (int i = 0 ; i < nodes.size() ; i++) {
+        if (nodes[i].distance < minimumDistance) {
+            minimumDistance = nodes[i].distance;
+        }
+    }
+
+    // Extract and remove minimum
+    for (vector<Node>::iterator it = nodes.begin() ; it != nodes.end() ; it++) {
+        if (it->distance == minimumDistance) {
+            minimumNode = *it;
+            nodes.erase(it);
+            break;
+        }
+    }
+
+    return minimumNode;
+}
+
+void PrimAlgorithm(Graph &graph, int node = 0) {
+
+    vector<Node> graphNodes = graph.getNodes();
+
+    Node root = !node && !graphNodes.empty() ?
+                               graphNodes[1] : graphNodes[node];
+
+
+    while (!graphNodes.empty()) {
+        Node u = extractMinimum(graphNodes);
+        
+    }
 
 }
 
