@@ -33,6 +33,7 @@ class Graph {
         void addEdge (int source, int destination, int weight = 1);
         vector<Node> getNodes();
         void setNodes(const vector<Node> &nodes);
+        Node* getNode(int index);
 };
 
 Graph::Graph(int nodes, bool dir) : nodes(nodes+1) {
@@ -62,8 +63,15 @@ void Graph::setNodes(const vector<Node> &nodes) {
     this->nodes = nodes;
 }
 
+Node* Graph::getNode(int index) {
+    return &nodes[index];
+}
+
 void fillGraph(Graph &graph) {
 
+    /**
+     * Slide 9, MST Part 1
+     */
     graph.addEdge(1, 2, 4);
     graph.addEdge(1, 8, 8);
     graph.addEdge(2, 8, 11);
@@ -82,9 +90,9 @@ void fillGraph(Graph &graph) {
 
 void resetNodes(Graph &graph) {
 
-    for (Node node : graph.getNodes()) {
-        node.distance = INT_MAX;
-        node.parent = NULL;
+    for (Node &node : graph.getNodes()) {
+        node.distance = -1;
+        node.parent = -1;
     }
 }
 
@@ -112,12 +120,12 @@ Node extractMinimum(vector<Node> &nodes) {
     return minimumNode;
 }
 
-bool equals(const Node &n1, const Node &n2) {
-    return n1.visited == n2.visited && n1.distance == n2.visited
-           && n1.parent == n2.parent;
+bool equals(const Node &n1, const Node *n2) {
+    return n1.visited == n2->visited && n1.distance == n2->visited
+           && n1.parent == n2->parent;
 }
 
-bool in(const vector<Node> &nodes, const Node &searchNode) {
+bool in(const vector<Node> &nodes, Node *searchNode) {
 
     for (Node node : nodes) {
         if (equals(node, searchNode)) return true;
@@ -128,7 +136,7 @@ bool in(const vector<Node> &nodes, const Node &searchNode) {
 int getIndex(Graph graph, const Node &n) {
 
     for (int i = 1 ; i < graph.getNodes().size() ; i++) {
-        if (equals(n, graph.getNodes()[i])) return i;
+        if (equals(n, graph.getNode(i))) return i;
     }
     return -1;
 }
@@ -143,11 +151,11 @@ void PrimAlgorithm(Graph &graph, int node = 0) {
 
     while (!graphNodes.empty()) {
         Node u = extractMinimum(graphNodes);
-        for (Edge e : u.adjacents) {
+        for (Edge &e : u.adjacents) {
             int dest = e.destination;
-            if (in(graphNodes, graph.getNodes()[dest]) && e.weight < graph.getNodes()[dest].distance) {
-                graph.getNodes()[dest].parent = getIndex(graph, u);
-                graph.getNodes()[dest].distance = e.weight;
+            if (in(graphNodes, graph.getNode(dest)) && e.weight < graph.getNode(dest)->distance) {
+                graph.getNode(dest)->parent = getIndex(graph, u);
+                graph.getNode(dest)->distance = e.weight;
             }
         }
     }
@@ -155,7 +163,7 @@ void PrimAlgorithm(Graph &graph, int node = 0) {
 
 void showResults(Graph graph) {
 
-    cout << "\nShowing Prim Algorithm results" << endl;
+    cout << "\nShowing Prim Algorithm results" << endl << endl;
     vector<Node> graphNodes = graph.getNodes();
     for (int i = 1 ; i < graphNodes.size() ; i++) {
         cout << "Node: " << i << endl;
@@ -165,6 +173,9 @@ void showResults(Graph graph) {
 }
 
 int main() {
+
+    cout << "\n\nNota: o algoritmo não funciona pois não influencia diretamente os dados contidos"
+            "No grafo, somente as cópias. Ao criar um grafo de apontadores a situação fica normalizada!\n" << endl;
 
     Graph graph = Graph(9, false);
     fillGraph(graph);
