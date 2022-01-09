@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <queue>
 using namespace std;
 
 class Graph {
@@ -127,7 +128,21 @@ int Graph::howManyComponents() {
 
 void Graph::BFS(int v) {
 
-    
+    queue<int> visitedNodes = {};
+    visitedNodes.push(v); // primeiro nó visitado;
+    nodes[v].visited = true; // marcar como visitado
+
+    while (!visitedNodes.empty()) {
+        visitedNodes.pop();
+        for (Edge e : nodes[v].adjacents) {
+            Node destination = e.destination;
+            if (!destination.visited) {
+                visitedNodes.push(destination);
+                destination.visited = true;
+            }
+        }
+    }
+
 }
 
 int main () {
