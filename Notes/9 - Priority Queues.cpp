@@ -2,13 +2,15 @@
 // @author: Fábio Araújo de Sá
 
 #include <iostream>
-#include <vector>
-using namespace std;
+#include <priority_queue>
 
+void usingPriorityQueue() {
 
+    
+}
 
-int main() {
+int main () {
 
-
+    usingPriorityQueue();
     return 0;
 }
