@@ -78,9 +78,13 @@ void resetNodes(Graph &graph) {
 
     for (Node node : graph.getNodes()) {
         node.distance = INT_MAX;
-        cout << node.distance << endl;
         node.parent = NULL;
     }
+}
+
+void PrimAlgorithm(Graph &graph, int root = 1) {
+
+
 }
 
 int main() {
@@ -88,6 +92,7 @@ int main() {
     Graph graph = Graph(9, false);
     fillGraph(graph);
     resetNodes(graph);
+    PrimAlgorithm(graph);
 
     return 0;
 }
