@@ -82,7 +82,20 @@ void Graph::dfs_Number(int v, int &total) {
 }
 
 int Graph::giantComponent() {
-    return 0;
+
+    int max = INT_MIN;
+
+    for (auto node : nodes) node.visited = false;
+
+    for (int i = 1 ; i <= nodes.size()-1 ; i++) {
+        if (!nodes[i].visited) {
+            int attemp = 0;
+            dfs_Number(i, attemp);
+            max = attemp > max ? attemp : max;
+        }
+    }
+
+    return max;
 }
 
 list<int> Graph::topologicalSorting() {
