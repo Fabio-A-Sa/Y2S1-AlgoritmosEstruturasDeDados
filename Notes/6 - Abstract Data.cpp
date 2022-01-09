@@ -6,8 +6,8 @@
 #include <exception>
 #include <list>
 #include <stack>
+#include <ctime>
 #include <queue>
-#include <priority_queue>
 
 using namespace std;
 
@@ -97,12 +97,13 @@ void showContent(const vector<int> &numbers) {
 void priorityQueue() {
 
     vector<int> numbers = {};
-    for (int i = 0 ; i < 20 ; i++) numbers.push_back(1 + 100 % rand());
+    for (int i = 0 ; i < 20 ; i++) numbers.push_back(1 + rand() % 100);
     showContent(numbers);
 }
 
 int main () {
 
+    srand(time(NULL));
     //Arrays();
     //Lists();
     //Stack();
