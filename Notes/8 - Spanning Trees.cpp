@@ -182,5 +182,11 @@ int main() {
     PrimAlgorithm(graph);
     showResults(graph);
 
+    Graph graph2 = Graph(9, false);
+    fillGraph(graph2);
+    resetNodes(graph2);
+    PrimAlgorithm(graph);
+    showResults(graph);
+
     return 0;
 }
