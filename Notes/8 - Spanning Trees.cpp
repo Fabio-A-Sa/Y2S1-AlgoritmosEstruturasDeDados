@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 using namespace std;
 
 struct Edge {
@@ -16,6 +17,12 @@ struct Node {
     bool visited;
     int distance;
     int parent;
+};
+
+struct KruskalEdge {
+    int u;
+    int v;
+    int weight;
 };
 
 class Graph {
@@ -172,46 +179,75 @@ void showResults(Graph graph, const string &algorithmName) {
 }
 
 void makeSet(Node &node) {
-    node.parent = node;
+
 }
 
-bool keySort(const Edge &e1, const Edge &e2) {
+bool keySort(const KruskalEdge &e1, const KruskalEdge &e2) {
     return e1.weight < e2.weight;
 }
 
-vector<Edge> getSortedEdges(Graph graph) {
+bool in (const vector<KruskalEdge> &edges, const KruskalEdge &newEdge) {
+    for (KruskalEdge edge : edges) {
+        if ((edge.u == newEdge.u && edge.v == newEdge.v) ||
+            (edge.u == newEdge.v && edge.v == newEdge.u)) return true;
+    }
+    return false;
+}
 
-    vector<Edge> answer = {};
-    for (Node node : graph.getNodes()) {
+vector<KruskalEdge> getSortedEdges(Graph graph) {
+
+    vector<KruskalEdge> answer = {};
+    for (int i = 1 ; i < graph.getNodes().size() ; i++) {
+        Node node = graph.getNodes()[i];
         for (Edge edge : node.adjacents) {
-            answer.push_back(answer);
+            KruskalEdge newEdge = {i, edge.destination, edge.weight};
+            if (!in(answer, newEdge)) answer.push_back(newEdge);
         }
     }
     sort(answer.begin(), answer.end(), keySort);
     return answer;
 }
 
-void KruskalAlgorithm(Graph graph) {
+int findSet(int node) {
+    return 1;
+}
+
+void unionSets(int u, int v) {
+
+}
+
+list<KruskalEdge>  KruskalAlgorithm(Graph graph) {
+
+    list<KruskalEdge> minimalSpanningTree = {};
 
     for (Node node : graph.getNodes()) {
         makeSet(node);
     }
 
-    vector<Edge> edges = getSortedEdges(graph);
+    vector<KruskalEdge> edges = getSortedEdges(graph);
 
-    // Verification
-    for (Edge edge : edges) {
-        cout << "Edge with lenght: " << edge.weight << endl;
+    /*
+     * Output de verificação
+     * Nota: não haverá necessáriamente um número de E = V - 1 pois o grafo inicial contém ciclos
+     */
+    for (KruskalEdge edge : edges) {
+        cout << "Nodes " << edge.u << " and " << edge.v << " have an edge with weight = " << edge.weight << endl;
     }
 
-    // More content
+    for (KruskalEdge edge : edges) {
+        if (findSet(edge.u) != findSet(edge.v)) {
+            minimalSpanningTree.push_back(edge);
+            unionSets(edge.u, edge.v);
+        }
+    }
 
+    return minimalSpanningTree;
 }
 
 int main() {
 
-    cout << "\n\nNota: o algoritmo não funciona pois não influencia diretamente os dados contidos"
-            "No grafo, somente as cópias. Ao criar um grafo de apontadores a situação fica normalizada!\n" << endl;
+    cout << "\n\nNota: o algoritmo de Prim não funciona pois não influencia diretamente os dados contidos"
+            "mas sim somente as cópias. Ao criar um grafo de apontadores a situação fica normalizada!\n" << endl;
 
     Graph graph = Graph(9, false);
     fillGraph(graph);
@@ -222,7 +258,7 @@ int main() {
     Graph graph2 = Graph(9, false);
     fillGraph(graph2);
     resetNodes(graph2);
-    KruskalAlgorithm(graph2);
+    list<> answer = KruskalAlgorithm(graph2);
     //showResults(graph2, "Kruskal");
 
     return 0;
