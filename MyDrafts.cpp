@@ -5788,3 +5788,22 @@ int main () {
     disjointSets();
     return 0;
 }
+
+void showResults(Graph graph, const string &algorithmName) {
+
+    cout << "\nShowing " << algorithmName << " Algorithm results" << endl << endl;
+    vector<Node> graphNodes = graph.getNodes();
+    for (int i = 1 ; i < graphNodes.size() ; i++) {
+        cout << "Node: " << i << endl;
+        cout << "Distance: " << graphNodes[i].distance << endl;
+        cout << "Parent: " << graphNodes[i].parent << endl << endl;
+    }
+}
+
+void makeSet(Node &node) {
+
+}
+
+bool keySort(const KruskalEdge &e1, const KruskalEdge &e2) {
+    return e1.weight < e2.weight;
+}
