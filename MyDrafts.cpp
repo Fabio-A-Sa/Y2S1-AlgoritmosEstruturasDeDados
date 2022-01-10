@@ -5807,3 +5807,65 @@ void makeSet(Node &node) {
 bool keySort(const KruskalEdge &e1, const KruskalEdge &e2) {
     return e1.weight < e2.weight;
 }
+
+bool in (const vector<KruskalEdge> &edges, const KruskalEdge &newEdge) {
+    for (KruskalEdge edge : edges) {
+        if ((edge.u == newEdge.u && edge.v == newEdge.v) ||
+            (edge.u == newEdge.v && edge.v == newEdge.u)) return true;
+    }
+    return false;
+}
+
+vector<KruskalEdge> getSortedEdges(Graph graph) {
+
+    vector<KruskalEdge> answer = {};
+    for (int i = 1 ; i < graph.getNodes().size() ; i++) {
+        Node node = graph.getNodes()[i];
+        for (Edge edge : node.adjacents) {
+            KruskalEdge newEdge = {i, edge.destination, edge.weight};
+            if (!in(answer, newEdge)) answer.push_back(newEdge);
+        }
+    }
+    sort(answer.begin(), answer.end(), keySort);
+    return answer;
+}
+
+int findSet(int node) {
+    return 1;
+}
+
+void unionSets(int u, int v) {
+
+}
+
+list<KruskalEdge>  KruskalAlgorithm(Graph graph) {
+
+    list<KruskalEdge> minimalSpanningTree = {};
+
+    for (Node node : graph.getNodes()) {
+        makeSet(node);
+    }
+
+    vector<KruskalEdge> edges = getSortedEdges(graph);
+
+    /*
+     * Output de verificação
+     * Nota: não haverá necessáriamente um número de E = V - 1 pois o grafo inicial contém ciclos
+     */
+    for (KruskalEdge edge : edges) {
+        cout << "Nodes " << edge.u << " and " << edge.v << " have an edge with weight = " << edge.weight << endl;
+    }
+
+    /**
+     * Para já, como o findSet não está implementado, sou obrigado a retornar sempre o mesmo valor. Numa situação
+     * normal, o conjunto dos edges têm de ser diferentes para não existirem ciclos na Spanning Tree
+     */
+    for (KruskalEdge edge : edges) {
+        if (findSet(edge.u) == findSet(edge.v)) {
+            minimalSpanningTree.push_back(edge);
+            unionSets(edge.u, edge.v);
+        }
+    }
+
+    return minimalSpanningTree;
+}
