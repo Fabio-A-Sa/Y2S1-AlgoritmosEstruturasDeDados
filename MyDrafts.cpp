@@ -5869,3 +5869,32 @@ list<KruskalEdge>  KruskalAlgorithm(Graph graph) {
 
     return minimalSpanningTree;
 }
+
+void showKruskalsResults(const list<KruskalEdge> &edges) {
+
+    cout << "\n\nResults of Kruskal's Algortithm\n" << endl;
+    for (list<KruskalEdge>::const_iterator it = edges.begin() ; it != edges.end() ; it++) {
+        cout << "Nodes u = " << it->u << " and v = " << it->v << " have weight = " << it->weight << endl;
+    }
+    return;
+}
+
+int main() {
+
+    cout << "\n\nNota: os algoritmos não funcionam pois não influenciam diretamente os dados contidos"
+            "no Grafo mas sim somente as cópias. Ao criar um grafo de apontadores a situação fica normalizada!\n" << endl;
+
+    Graph graph = Graph(9, false);
+    fillGraph(graph);
+    resetNodes(graph);
+    PrimAlgorithm(graph, 1);
+    showResults(graph, "Prim");
+
+    Graph graph2 = Graph(9, false);
+    fillGraph(graph2);
+    resetNodes(graph2);
+    list<KruskalEdge> answer = KruskalAlgorithm(graph2);
+    showKruskalsResults(answer);
+
+    return 0;
+}
