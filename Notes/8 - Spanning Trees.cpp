@@ -234,8 +234,12 @@ list<KruskalEdge>  KruskalAlgorithm(Graph graph) {
         cout << "Nodes " << edge.u << " and " << edge.v << " have an edge with weight = " << edge.weight << endl;
     }
 
+    /**
+     * Para já, como o findSet não está implementado, sou obrigado a retornar sempre o mesmo valor. Numa situação
+     * normal, o conjunto dos edges têm de ser diferentes para não existirem ciclos na Spanning Tree
+     */
     for (KruskalEdge edge : edges) {
-        if (findSet(edge.u) != findSet(edge.v)) {
+        if (findSet(edge.u) == findSet(edge.v)) {
             minimalSpanningTree.push_back(edge);
             unionSets(edge.u, edge.v);
         }
@@ -246,9 +250,11 @@ list<KruskalEdge>  KruskalAlgorithm(Graph graph) {
 
 void showKruskalsResults(const list<KruskalEdge> &edges) {
 
-    for (KruskalEdge edge : edges) {
-        cout << "ni" << edge.u << endl;
+    cout << "\n\nResults of Kruskal's Algortithm\n" << endl;
+    for (list<KruskalEdge>::const_iterator it = edges.begin() ; it != edges.end() ; it++) {
+        cout << "Nodes u = " << it->u << " and v = " << it->v << " have weight = " << it->weight << endl;
     }
+    return;
 }
 
 int main() {
