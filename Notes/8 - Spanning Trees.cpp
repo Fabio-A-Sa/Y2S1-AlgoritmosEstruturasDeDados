@@ -160,15 +160,20 @@ void PrimAlgorithm(Graph &graph, int node = 0) {
     }
 }
 
-void showResults(Graph graph) {
+void showResults(Graph graph, const string &algorithmName) {
 
-    cout << "\nShowing Prim Algorithm results" << endl << endl;
+    cout << "\nShowing " << algorithmName << " Algorithm results" << endl << endl;
     vector<Node> graphNodes = graph.getNodes();
     for (int i = 1 ; i < graphNodes.size() ; i++) {
         cout << "Node: " << i << endl;
         cout << "Distance: " << graphNodes[i].distance << endl;
         cout << "Parent: " << graphNodes[i].parent << endl << endl;
     }
+}
+
+void KruskalAlgorithm(Graph graph) {
+
+
 }
 
 int main() {
@@ -179,14 +184,14 @@ int main() {
     Graph graph = Graph(9, false);
     fillGraph(graph);
     resetNodes(graph);
-    PrimAlgorithm(graph);
-    showResults(graph);
+    PrimAlgorithm(graph, 1);
+    showResults(graph, "Prim");
 
     Graph graph2 = Graph(9, false);
     fillGraph(graph2);
     resetNodes(graph2);
-    PrimAlgorithm(graph);
-    showResults(graph);
+    KruskalAlgorithm(graph2);
+    //showResults(graph2, "Kruskal");
 
     return 0;
 }
