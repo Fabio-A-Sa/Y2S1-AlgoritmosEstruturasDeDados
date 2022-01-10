@@ -166,5 +166,6 @@ int main () {
     Queues();
     priorityQueue();
     heapSort();
+    disjointSets();
     return 0;
 }
