@@ -5732,3 +5732,59 @@ void heapSort() {
     showContent(numbers);
     verify(numbers);
 }
+
+struct Tree {
+    int node;
+    Tree* parent;
+    int rank;
+};
+
+vector<Tree*> makeSets(int number) {
+
+    vector<Tree*> answer;
+    for (int i = 0 ; i < number ; i++) {
+        Tree newTree = {i, nullptr, 0};
+        newTree.parent = &newTree;
+        answer.push_back(&newTree);
+    }
+    return answer;
+}
+
+Tree* findSet(Tree *tree) {
+
+    if (tree->parent == tree) return tree;
+    return findSet(tree->parent);
+}
+
+void unionSet(Tree *t1, Tree *t2) {
+
+    Tree *t1Root = findSet(t1);
+    Tree *t2Root = findSet(t2);
+    t1Root->parent = t2Root;
+}
+
+void disjointSets() {
+
+    vector<Tree*> trees = makeSets(10);
+
+    unionSet(trees[2], trees[3]);
+
+    for (int i = 0 ; i < 10 ; i++) {
+        Tree* t = trees[i];
+        cout << "Tree " << t->node << " have parent " << (*t->parent).node << " and rank = " << t->rank << endl;
+    }
+
+}
+
+int main () {
+
+    srand(time(NULL));
+    Arrays();
+    Lists();
+    Stack();
+    Queues();
+    priorityQueue();
+    heapSort();
+    disjointSets();
+    return 0;
+}
