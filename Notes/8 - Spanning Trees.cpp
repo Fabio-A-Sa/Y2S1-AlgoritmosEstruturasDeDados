@@ -171,8 +171,40 @@ void showResults(Graph graph, const string &algorithmName) {
     }
 }
 
+void makeSet(Node &node) {
+    node.parent = node;
+}
+
+bool keySort(const Edge &e1, const Edge &e2) {
+    return e1.weight < e2.weight;
+}
+
+vector<Edge> getSortedEdges(Graph graph) {
+
+    vector<Edge> answer = {};
+    for (Node node : graph.getNodes()) {
+        for (Edge edge : node.adjacents) {
+            answer.push_back(answer);
+        }
+    }
+    sort(answer.begin(), answer.end(), keySort);
+    return answer;
+}
+
 void KruskalAlgorithm(Graph graph) {
 
+    for (Node node : graph.getNodes()) {
+        makeSet(node);
+    }
+
+    vector<Edge> edges = getSortedEdges(graph);
+
+    // Verification
+    for (Edge edge : edges) {
+        cout << "Edge with lenght: " << edge.weight << endl;
+    }
+
+    // More content
 
 }
 
