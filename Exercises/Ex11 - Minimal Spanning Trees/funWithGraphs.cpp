@@ -1,5 +1,5 @@
-// AED 2021/2022 - Aula Pratica 10
-// Pedro Ribeiro (DCC/FCUP) [09/01/2022]
+// Created on January, 2022
+// @author: Fábio Araújo de Sá
 
 #include "funWithGraphs.h"
 #include "graph.h"
@@ -84,23 +84,10 @@ Graph FunWithGraphs::graph4() {
     return g;
 }
 
-// ------------------------------------------------------------------------
-
-// ----------------------------------------------------------
-// Exercicio 2: Heaps Binários
-// ----------------------------------------------------------
-
-// ..............................
-// a) Um pequeno jogo
-// TODO
 int FunWithGraphs::game(const vector<int>& v) {
      return 0;
 }
 
-// ----------------------------------------------------------
-// Exercicio 6: Uma cidade "quadriculada"
-// ----------------------------------------------------------
-// TODO
 int FunWithGraphs::gridCity(const vector<pair<int, int>>& plants, const vector<pair<int, int>>& houses) {
     return 0;
 }
