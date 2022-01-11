@@ -84,6 +84,27 @@ Graph FunWithGraphs::graph4() {
     return g;
 }
 
+/*
+ * Exercício 1
+ *
+ * Algoritmo de Prim usando o quarto grafo do exemplo e começando no nó 1 (nó arbitrário)
+ *
+ * Adicionar o nó 1
+ * Adicionar o nó 2, com a aresta 1-2 de custo 2
+ * Adicionar o nó 4, com a aresta 1-4 de custo 3
+ * Adicionar o nó 3, com a aresta 2-3 de custo 5
+ *
+ * Assim já foram adicionados |V| vértices, e qualquer aresta a mais iria originar um ciclo
+ *
+ * Algoritmo de Kruskal usando o quarto grafo do exemplo
+ *
+ * Adicionar a aresta 1-2, de custo 1
+ * Adicionar a aresta 1-4, de custo 3
+ * Adicionar a aresta 2-3, de custo 5
+ *
+ * Assim já foram adicionadas |V| - 1 arestas, e qualquer aresta a mais iria originar um ciclo
+ */
+
 int FunWithGraphs::game(const vector<int>& v) {
      return 0;
 }
