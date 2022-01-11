@@ -48,5 +48,30 @@ int Graph::prim(int r) {
 }
 
 int Graph::kruskal() {
-    return 0;
+
+    vector<Edge> minimalSpanningTree = {};
+    vector<Edge> allEdges = {};
+    DisjointSets<int> set;
+
+    for (int i = 0 ; i <= n ; i++) {
+        set.makeSet(i);
+        for (Edge edge : nodes[i].adj) {
+            edge.origin = i;
+            allEdges.push_back(edge);
+        }
+    }
+
+    sort(allEdges.begin(), allEdges.end(), [](const Edge &e1, const Edge &e2) { return e1.weight < e2.weight; });
+
+    for (Edge edge : allEdges) {
+        if (set.find(edge.origin) != set.find(edge.dest)) {
+            minimalSpanningTree.push_back(edge);
+            set.unite(edge.origin, edge.dest);
+        }
+    }
+
+    int total = 0;
+    for (Edge edge : minimalSpanningTree)
+        total += edge.weight;
+    return total;
 }
