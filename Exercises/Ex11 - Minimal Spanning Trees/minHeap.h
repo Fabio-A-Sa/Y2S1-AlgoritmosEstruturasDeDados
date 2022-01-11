@@ -40,8 +40,6 @@ public:
     K removeMin(); // remove and return key with smaller value
 };
 
-// ----------------------------------------------
-
 // Make a value go "up the tree" until it reaches its position
 template <class K, class V>
 void MinHeap<K,V>::upHeap(int i) {
