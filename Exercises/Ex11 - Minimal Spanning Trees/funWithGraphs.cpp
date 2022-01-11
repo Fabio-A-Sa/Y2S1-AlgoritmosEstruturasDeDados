@@ -118,7 +118,18 @@ int sum(int number) {
 }
 
 int FunWithGraphs::game(const vector<int>& v) {
-     return 0;
+
+    MinHeap<int, int> heap(v.size(), -1);
+    for (int number : v) heap.insert(number, sum(number));
+
+    while (heap.getSize() > 1) {
+        int min1 = heap.removeMin();
+        int min2 = heap.removeMin();
+        int subtr = abs(min1 - min2);
+        heap.insert(subtr, sum(subtr));
+    }
+
+    return heap.removeMin();
 }
 
 int FunWithGraphs::gridCity(const vector<pair<int, int>>& plants, const vector<pair<int, int>>& houses) {
