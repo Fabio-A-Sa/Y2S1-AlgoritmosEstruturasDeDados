@@ -105,6 +105,18 @@ Graph FunWithGraphs::graph4() {
  * Assim já foram adicionadas |V| - 1 arestas, e qualquer aresta a mais iria originar um ciclo
  */
 
+int sum(int number) {
+
+    int result = 0;
+    int digit;
+    while (number) {
+        digit = number % 10;
+        number = number / 10;
+        result += digit;
+    }
+    return result;
+}
+
 int FunWithGraphs::game(const vector<int>& v) {
      return 0;
 }
