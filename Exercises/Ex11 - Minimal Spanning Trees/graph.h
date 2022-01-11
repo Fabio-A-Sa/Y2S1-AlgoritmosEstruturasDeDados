@@ -17,6 +17,7 @@ class Graph {
     private:
 
         struct Edge {
+            int origin; // origin node
             int dest;   // Destination node
             int weight; // An integer weight
         };
