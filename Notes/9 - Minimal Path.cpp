@@ -58,8 +58,39 @@ vector<Node> Graph::getNodes() {
     return this->nodes;
 }
 
+void fillGraph(Graph &graph) {
+
+    /**
+     * Slide 5, Shortest Path
+     */
+    graph.addEdge(1, 2, 4);
+    graph.addEdge(1, 8, 8);
+    graph.addEdge(2, 8, 11);
+    graph.addEdge(2, 3, 8);
+    graph.addEdge(8, 9, 7);
+    graph.addEdge(7, 8, 1);
+    graph.addEdge(7, 9, 6);
+    graph.addEdge(3, 9, 2);
+    graph.addEdge(3, 6, 4);
+    graph.addEdge(3, 4, 7);
+    graph.addEdge(4, 6, 14);
+    graph.addEdge(6, 7, 2);
+    graph.addEdge(4, 5, 9);
+    graph.addEdge(5, 6, 10);
+}
+
+void resetNodes(Graph &graph) {
+
+    for (Node &node : graph.getNodes()) {
+        node.distance = -1;
+        node.parent = -1;
+    }
+}
+
 int main () {
 
+    Graph graph(5, true);
+    fillGraph(graph);
 
     return 0;
 }
