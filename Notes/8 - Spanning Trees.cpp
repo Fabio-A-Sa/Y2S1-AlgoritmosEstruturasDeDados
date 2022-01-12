@@ -257,6 +257,11 @@ void showKruskalsResults(const list<KruskalEdge> &edges) {
     return;
 }
 
+void shortestPath(Graph graph) {
+
+
+}
+
 int main() {
 
     cout << "\n\nNota: os algoritmos não funcionam pois não influenciam diretamente os dados contidos"
@@ -273,6 +278,12 @@ int main() {
     resetNodes(graph2);
     list<KruskalEdge> answer = KruskalAlgorithm(graph2);
     showKruskalsResults(answer);
+    
+    Graph graph3 = Graph(9, false);
+    fillGraph(graph3);
+    resetNodes(graph3);
+    int shorterPath = shortestPath(graph3);
+    cout << "Shorter Path: " << shorterPath << endl;
 
     return 0;
 }
