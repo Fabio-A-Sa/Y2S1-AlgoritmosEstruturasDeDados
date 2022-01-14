@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <map>
 using namespace std;
 
 struct Edge {
@@ -90,10 +91,22 @@ void resetNodes(Graph &graph) {
     }
 }
 
+map<int, char> getKeys() {
+
+    map<int, char> keys = {};
+    keys.insert(make_pair('s', 1));
+    keys.insert(make_pair('t', 2));
+    keys.insert(make_pair('x', 3));
+    keys.insert(make_pair('y', 4));
+    keys.insert(make_pair('z', 5));
+    return keys;
+}
+
 int main () {
 
     Graph graph(5, true);
     fillGraph(graph);
+    map<int, char> keys = getKeys();
 
     return 0;
 }
