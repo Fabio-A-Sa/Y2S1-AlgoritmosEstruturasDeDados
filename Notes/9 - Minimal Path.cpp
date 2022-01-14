@@ -63,20 +63,23 @@ void fillGraph(Graph &graph) {
     /**
      * Slide 5, Shortest Path
      */
-    graph.addEdge(1, 2, 4);
-    graph.addEdge(1, 8, 8);
-    graph.addEdge(2, 8, 11);
-    graph.addEdge(2, 3, 8);
-    graph.addEdge(8, 9, 7);
-    graph.addEdge(7, 8, 1);
-    graph.addEdge(7, 9, 6);
-    graph.addEdge(3, 9, 2);
-    graph.addEdge(3, 6, 4);
-    graph.addEdge(3, 4, 7);
-    graph.addEdge(4, 6, 14);
-    graph.addEdge(6, 7, 2);
-    graph.addEdge(4, 5, 9);
-    graph.addEdge(5, 6, 10);
+
+    int s = 1;
+    int t = 2;
+    int x = 3;
+    int y = 4;
+    int z = 5;
+
+    graph.addEdge(s, t, 10);
+    graph.addEdge(s, y, 5);
+    graph.addEdge(t, y, 2);
+    graph.addEdge(t, x, 1);
+    graph.addEdge(x, z, 4);
+    graph.addEdge(y, t, 3);
+    graph.addEdge(y, x, 9);
+    graph.addEdge(y, z, 2);
+    graph.addEdge(z, s, 7);
+    graph.addEdge(z, x, 6);
 }
 
 void resetNodes(Graph &graph) {
