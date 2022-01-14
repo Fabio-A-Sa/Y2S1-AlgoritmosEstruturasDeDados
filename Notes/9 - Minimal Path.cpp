@@ -104,9 +104,19 @@ map<int, char> getKeys() {
 
 int main () {
 
+    cout << "Algorithm" << endl << endl;
     Graph graph(5, true);
     fillGraph(graph);
     map<int, char> keys = getKeys();
+
+    for (int i = 1 ; i <= graph.getNodes().size() ; i++) {
+        Node currentNode = graph.getNodes()[i];
+        cout << "Node " << keys[i] << ": " << endl;
+        for (Edge edge : currentNode.adjacents) {
+            cout << "Node " << keys[i] << " to Node " << keys[edge.destination] << " weight = " << edge.weight << endl;
+        }
+        cout << endl;
+    }
 
     return 0;
 }
