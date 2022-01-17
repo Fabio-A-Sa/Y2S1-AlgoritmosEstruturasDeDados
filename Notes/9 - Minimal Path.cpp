@@ -113,7 +113,7 @@ int main () {
         Node currentNode = graph.getNodes()[i];
         cout << "Node " << keys[i] << ": " << endl;
         for (Edge edge : currentNode.adjacents) {
-            cout << "Node " << keys[i] << " to Node " << keys[edge.destination] << " weight = " << edge.weight << endl;
+           8 cout << "Node " << keys[i] << " to Node " << keys[edge.destination] << " weight = " << edge.weight << endl;
         }
         cout << endl;
     }
