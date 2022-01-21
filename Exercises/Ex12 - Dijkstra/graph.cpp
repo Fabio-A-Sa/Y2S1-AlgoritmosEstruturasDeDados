@@ -40,12 +40,11 @@ void Graph::dijkstra(int s) {
 }
 
 int Graph::dijkstra_distance(int a, int b) {
-    return -1;
+    dijkstra(a);
+    if (nodes[b].dist == INF) return -1;
+    return nodes[b].dist;
 }
 
-// ..............................
-// b) Caminho mais curto entre dois nós
-// TODO
 list<int> Graph::dijkstra_path(int a, int b) {
     list<int> path;
     return path;
