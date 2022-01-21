@@ -49,3 +49,16 @@ list<int> Graph::dijkstra_path(int a, int b) {
     list<int> path;
     return path;
 }
+
+list<int> Graph::dijkstra_path(int a, int b) {
+    dijkstra(a);
+    list<int> path;
+    if (nodes[b].dist == INF) return path;
+    path.push_back(b);
+    int v = b;
+    while (v != a) {
+        v = nodes[v].pred;
+        path.push_front(v);
+    }
+    return path;
+}
