@@ -16,7 +16,6 @@ class FunWithGraphs {
     static map<string, int> index;
 
 public:
-    // Some example graphs
     static Graph graph1();
     static Graph graph2();
     static Graph graph3();

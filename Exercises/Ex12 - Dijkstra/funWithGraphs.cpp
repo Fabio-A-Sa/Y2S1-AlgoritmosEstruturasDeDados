@@ -4,10 +4,6 @@
 #include "funWithGraphs.h"
 #include "graph.h"
 
-// ----------------------------------------------------------
-// Some Example Graphs
-// ----------------------------------------------------------
-
 Graph FunWithGraphs::graph1() {
     Graph g(7, false);
     g.addEdge(1, 2, 12);
