@@ -46,11 +46,6 @@ int Graph::dijkstra_distance(int a, int b) {
 }
 
 list<int> Graph::dijkstra_path(int a, int b) {
-    list<int> path;
-    return path;
-}
-
-list<int> Graph::dijkstra_path(int a, int b) {
     dijkstra(a);
     list<int> path;
     if (nodes[b].dist == INF) return path;
