@@ -6503,3 +6503,23 @@ Graph FunWithGraphs::graph4() {
     g.addEdge(4, 3, -8);
     return g;
 }
+
+class FunWithGraphs {
+    static Graph *g;
+    static map<string, int> index;
+
+public:
+    static Graph graph1();
+    static Graph graph2();
+    static Graph graph3();
+    static Graph graph4();
+};
+
+Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
+}
+
+void Graph::addEdge(int src, int dest, int weight) {
+    if (src<1 || src>n || dest<1 || dest>n) return;
+    nodes[src].adj.push_back({dest, weight});
+    if (!hasDir) nodes[dest].adj.push_back({src, weight});
+}
