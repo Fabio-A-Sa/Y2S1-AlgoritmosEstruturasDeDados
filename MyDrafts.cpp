@@ -6549,3 +6549,10 @@ void Graph::dijkstra(int s) {
         }
     }
 }
+
+int Graph::dijkstra_distance(int a, int b) {
+    dijkstra(a);
+    if (nodes[b].dist == INF) return -1;
+    return nodes[b].dist;
+}
+
