@@ -77,7 +77,7 @@ Implemented features:
 
 <br>
 
-### Project 2 - STCP++
+#### Project 2 - STCP++
 
 A project done in two weeks with [Carolina Brandão](https://github.com/CarolBrandak) and [Gabriel Machado Jr.](https://github.com/gabrieltmjr). <br>
 The “Sociedade de Transportes Colectivos do Porto (STCP)” is the company that manages the bus network in the municipality of Porto (and also in some neighboring areas). It is intended to implement a system capable of providing help to those who want to use the STCP network to move around, such as a Google Maps, through Algorithms that manipulate Graphs. <br>
@@ -87,14 +87,14 @@ All data, coordinates, lines and stops used are real and were provided by Profes
 <p align = "center" >
   <img 
        title = "ID strategy"
-       src = "Images//Project1_IDs.png" 
-       alt = "Credits: Gabriel Machado Jr." 
+       src = "Images//Project2_Dataset.png" 
+       alt = "Credits: Pedro Ribeiro" 
        />
 </p>
 <p align = "center" >There are 2487 different stops in Porto city. Image credits: Pedro Ribeiro.</p>
 <br>
 
-## Project Grade: X / 20
+### Project Grade: X / 20
 
 <br>
 
