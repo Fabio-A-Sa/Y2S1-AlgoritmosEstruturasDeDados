@@ -15,3 +15,5 @@
  - [x] Carolina Brandão
  - [x] Fábio Sá         
  - [x] Gabriel Machado Jr.
+
+### Final Grade: 18.6 / 20
