@@ -23,7 +23,7 @@ Notes that I take during theoretical lectures.<br/>
 Varied exercises of easy, medium and difficult level, about the subject taught in the present week. They complement the weekly work developed during the practical classes. <br/>
 <br>
 
-### Project 1 - Airline Database Management, AirED
+### Project 1 - Airline Database Management, AirED (Grade: 18.6 / 20)
 
 A project done in one month with [Carolina Brandão](https://github.com/CarolBrandak) and [Gabriel Machado Jr.](https://github.com/gabrieltmjr). <br>
 It is intended to implement an information management system that must store and manage information related to planes, flights, passengers and luggage.
@@ -73,28 +73,44 @@ Implemented features:
 - [x] Secure Data: files have the ability to self-heal if there is data corruption during the execution of program, using redundancy based on [RAID](https://pt.wikipedia.org/wiki/RAID);
 - [x] [ON DELETE CASCADE](https://www.mysqltutorial.org/mysql-on-delete-cascade/) implicit behavior, activation whenever delete certain component, based on SQL databases management systems (DBMS);
 
-## Project Grade: 18,6 / 20
-
 <br>
 
-#### Project 2 - STCP++
+### Project 2 - STCP++ (Grade: X / 20)
 
 A project done in two weeks with [Carolina Brandão](https://github.com/CarolBrandak) and [Gabriel Machado Jr.](https://github.com/gabrieltmjr). <br>
 The “Sociedade de Transportes Colectivos do Porto (STCP)” is the company that manages the bus network in the municipality of Porto (and also in some neighboring areas). It is intended to implement a system capable of providing help to those who want to use the STCP network to move around, such as a Google Maps, through Algorithms that manipulate Graphs. <br>
 All data, coordinates, lines and stops used are real and were provided by Professor [Pedro Ribeiro](https://www.dcc.fc.up.pt/~pribeiro/).
 
-<br/>
 <p align = "center" >
   <img 
-       title = "ID strategy"
+       title = "Dataset"
        src = "Images//Project2_Dataset.png" 
        alt = "Credits: Pedro Ribeiro" 
        />
 </p>
-<p align = "center" >There are 2487 different stops in Porto city. Image credits: Pedro Ribeiro.</p>
+<p align = "center" >There are 2487 different bus stops in Porto. Image credits: Pedro Ribeiro.</p>
 <br>
 
-### Project Grade: X / 20
+Implemented features:
+
+- [x] Search the nearest stop by name, code and coordinates (latitude and longitude);
+- [x] [Beadth-First Search](https://pt.wikipedia.org/wiki/Busca_em_largura), to find the shorter path between origin/destiny stops, based on the fewest stops traveled;
+- [x] Search the shorter path between origin/destiny stops, based on the total distance traveled using [Dijkstra Algorithm](https://en.wikipedia.org/wiki/Dijkstra's_algorithm) adaptation;
+- [x] Search the cheapest way between origin/destiny stops, based on the total zones traveled using Dijkstra too;
+
+<p align = "center" >
+  <img 
+       title = "Dataset"
+       src = "Images//Project2_Dijkstra.png" 
+       alt = "Credits: Gabriel Machado Jr." 
+       />
+</p>
+<p align = "center" >Dijkstra implementation. Image credits: Gabriel Machado Jr.</p>
+<br>
+
+- [x] Search the most comfortable way between origin/destiny stops, based on the total lines traveled using Dijkstra too;
+- [x] Allow the person to decide how far they can walk from one stop or line to another;
+- [x] Allow the person to decide which stops, zones, lines or areas they do not want to travel;
 
 <br>
 
