@@ -1,6 +1,6 @@
 # Algoritmos e Estruturas de Dados (AED) - Year 2, Semester 1 (Y2S1)
 
-This repository contains all the exercises and assessments of the UC Algorithms and Data Structures, taught by [Pedro Ribeiro](https://www.dcc.fc.up.pt/~pribeiro/) and [Carla Lopes](https://sigarra.up.pt/feup/pt/func_geral.formview?p_codigo=211625) at [Integrated Master in Informatics and Computing Engineering](https://sigarra.up.pt/feup/pt/cur_geral.cur_view?pv_curso_id=742) [MIEIC] at the [Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/pt/web_page.Inicial) [FEUP]. <br/>
+This repository contains all the exercises and assessments of the UC Algorithms and Data Structures, taught by [Pedro Ribeiro](https://www.dcc.fc.up.pt/~pribeiro/) and [Ana Paula Rocha](https://sigarra.up.pt/feup/pt/func_geral.formview?p_codigo=211625) at [Integrated Master in Informatics and Computing Engineering](https://sigarra.up.pt/feup/pt/cur_geral.cur_view?pv_curso_id=742) [MIEIC] at the [Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/pt/web_page.Inicial) [FEUP]. <br/>
 
 <br/>
 <p align = "center" >
@@ -22,13 +22,17 @@ Notes that I take during theoretical lectures.<br/>
 ### Exercises
 Varied exercises of easy, medium and difficult level, about the subject taught in the present week. They complement the weekly work developed during the practical classes. <br/>
 
-### Project
+### Project 1 - 
 
-Soon <br>
+Project Grade: 18,6 / 20
 
-***Bibliography:*** 
+<br>
 
-Soon <br>
+### Project 2 - 
+
+Project Grade: X / 20
+
+<br>
 
 **@ Fábio Araújo de Sá** <br/>
 **2021/2022**
