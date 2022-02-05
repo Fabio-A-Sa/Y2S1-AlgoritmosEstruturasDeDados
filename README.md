@@ -19,16 +19,30 @@ Pieces of code for exercises and assessments, notes that I take during practical
 ### Notes
 Notes that I take during theoretical lectures.<br/>
 
-### Exercises
+### Exercises / Mooshak
 Varied exercises of easy, medium and difficult level, about the subject taught in the present week. They complement the weekly work developed during the practical classes. <br/>
 
-### Project 1 - 
+### Project 1 - Airline Database Management, AirED
+
+A project done in one month with [Carolina Brandão](https://github.com/CarolBrandak) and [Gabriel Machado Jr.](https://github.com/gabrieltmjr). <br>
+It is intended to implement an information management system that must store and manage information related to planes, flights, passengers and luggage.
+
+Implemented features:
+- [x] Simpler and non-recursive interface, based on the Stack data structure;
+- [x] Efficient search to the nearest transport, using Binary Search Tree data structure;
+- [x] Efficient search to flights, planes, services, luggage using linear-search in lists and binary-search in sorted vectors;
+- [x] Two types of luggage: hand-luggage and hold-luggage, depends on the user input and volume/weight proprieties;
+- [x] Automatic compound unique IDs, to better performance and avoid collisions in system population and manipulation;
+- [x] Secure Data during the execution of program, using redundancy based on [RAID 1](https://pt.wikipedia.org/wiki/RAID);
+- [x] [ON DELETE CASCADE](https://www.mysqltutorial.org/mysql-on-delete-cascade/) implicit behavior, activation whenever delete certain component, based on SQL databases management systems (DBMS);
 
 Project Grade: 18,6 / 20
 
 <br>
 
-### Project 2 - 
+### Project 2 - STCP++
+
+A project done in two weeks with [Carolina Brandão](https://github.com/CarolBrandak) and [Gabriel Machado Jr.](https://github.com/gabrieltmjr). <br>
 
 Project Grade: X / 20
 
