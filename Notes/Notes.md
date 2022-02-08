@@ -65,3 +65,21 @@ Assim a altura pode ser expressada em h = log(n) e as pesquisas, inserções e r
 
 ### 1.2 - Red Black Trees
 
+Adaptação colorida das árvores 2-3-4. A altura de uma Red Black Tree é de aproximadamente h = 2 log (n+1), sendo n o número de nós.<br>
+Segue as seguintes características:
+
+ - Cada nó pode ter 2, 3 ou 4 filhos;
+ - O nó root é preto;
+ - As folhas são pretas;
+ - Filhos de nós vermelhos são pretos;
+ - Para cada nó, o caminho para os nós descendentes passam pelo mesmo número de nós pretos;
+
+#### Vantagens
+- Complexidade temporal O(h) -> O(2log(n+1)) -> O(log(n)) para pesquisa, para inserção e para remoção, até mesmo considerando as rotações para manter a integridade estrutural e os piores casos;
+- Necessitam de menos reestruturamentos do que as AVL;
+- A recoloração de um nó é O(1);
+
+#### Desvantagens
+- Necessitam de memória extra, pois cada nó tem de registar a sua cor;
+- A nível assintótico, é ligeiramente menos eficiente do que as AVL (diferença de O(1.44log(n) para O(2log(n))));
+
