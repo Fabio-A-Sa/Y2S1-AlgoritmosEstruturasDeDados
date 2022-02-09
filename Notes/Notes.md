@@ -249,3 +249,5 @@ int main () {
 }
 ````
 
+## 2 - HashTables
+
