@@ -107,5 +107,20 @@ A STL implementa Red Black Trees para as seguintes estruturas de dados:
 Alguns exemplos de funcionamento:
 
 ````c++
-int
+void setRandomFill(set<int> &numbers , int requestedSize) {                          
+                                                                                     
+     string answer = numbers.empty() ? "empty" : "not empty";                        
+     cout << answer << endl;                                                         
+                                                                                     
+     // fill set with random numbers                                                 
+     while (numbers.size() != requestedSize) {                                       
+         numbers.insert(rand() % 100);                                               
+     }                                                                               
+                                                                                     
+     // show sorting non-repeated numbers                                            
+     // 1, 3, 10, 22, 27, 43, 58, 82, 83, 92                                         
+     for (set<int>::iterator i = numbers.begin() ; i != numbers.end() ; i++) {       
+         cout << "Number: " << *i << endl;                                           
+     }                                                                               
+}                                                                                    
 ````
