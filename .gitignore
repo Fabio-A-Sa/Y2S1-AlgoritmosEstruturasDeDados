@@ -1,3 +1,4 @@
 a.exe       # windows
 a.out       # mac
 .idea/
+.DS_Store
