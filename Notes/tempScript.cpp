@@ -8,7 +8,6 @@
 #include <ctime>
 using namespace std;
 
-// @Overload
 void showContent(const set<int> &numbers) {
     for (set<int>::iterator i = numbers.begin() ; i != numbers.end() ; i++) {
         cout << *i << ", ";
@@ -16,7 +15,6 @@ void showContent(const set<int> &numbers) {
     cout << endl;
 }
 
-// @Overload
 void showContent(const multiset<int> &numbers) {
     for (multiset<int>::iterator i = numbers.begin() ; i != numbers.end() ; i++) {
         cout << *i << ", ";
@@ -24,7 +22,7 @@ void showContent(const multiset<int> &numbers) {
     cout << endl;
 }
 
-void setRandomFill(set<int> &numbers , int requestedSize) {
+void randomFill(set<int> &numbers , int requestedSize) {
 
     string answer = numbers.empty() ? "empty" : "not empty"; cout << answer << endl;
 
@@ -34,7 +32,7 @@ void setRandomFill(set<int> &numbers , int requestedSize) {
     showContent(numbers);
 }
 
-void multisetRandomFill(multiset<int> &numbers , int requestedSize) {
+void randomFill(multiset<int> &numbers , int requestedSize) {
 
     string answer = numbers.empty() ? "empty" : "not empty"; cout << answer << endl;
 
@@ -44,26 +42,73 @@ void multisetRandomFill(multiset<int> &numbers , int requestedSize) {
     showContent(numbers);
 }
 
-void exists(const set<int> &numbers, int attemp) {
-    string answer = numbers.find(attemp) != numbers.end() ? "O número " + to_string(attemp) + " existe no conjunto!" :
-                                                                "O número " + to_string(attemp) + " não existe no conjunto!";
-    cout << answer << endl; return;
+bool exists(const set<int> &numbers, int attemp) {
+    return numbers.find(attemp) != numbers.end();
+}
+
+bool exists(const multiset<int> &numbers, int attemp) {
+    return numbers.find(attemp) != numbers.end();
+}
+
+void eraseElement(set<int> &numbers, int element) {
+    if (exists(numbers, element)) {
+        numbers.erase(numbers.find(element));
+    } else cout << "Elemento não encontrado" << endl;
+}
+
+void eraseElementByPosition(set<int> &numbers , int position) {
+    if (position >= numbers.size()) return;
+    set<int>::iterator it = numbers.begin();
+    advance(it, position-1);
+    numbers.erase(it);
+}
+
+void eraseElement(multiset<int> &numbers, int element) {
+    if (exists(numbers, element)) {
+        numbers.erase(numbers.find(element));
+    } else cout << "Elemento não encontrado" << endl;
+    showContent(numbers);
+}
+
+void eraseElementByPosition(multiset<int> &numbers , int position) {
+    if (position >= numbers.size()) return;
+    set<int>::iterator it = numbers.begin();
+    advance(it, position-1);
+    numbers.erase(it);
+    showContent(numbers);
 }
 
 int main () {
 
     srand(time(NULL));
+
+    // Set
     set<int> numbers1;
+    randomFill(numbers1, 10);               // 0, 1, 3, 5, 6, 7, 9, 13, 16, 18
+    exists(numbers1, 13);                   // O número 13 existe no conjunto
+    eraseElement(numbers1, 18);             // 0, 1, 3, 5, 6, 7, 9, 13, 16
+    eraseElementByPosition(numbers1, 3);    // 0, 1, 5, 6, 7, 9, 13, 16
+
+    // Multiset
     multiset<int> numbers2;
+    randomFill(numbers2, 10);               // 2, 7, 8, 10, 10, 14, 14, 14, 15, 18
+    exists(numbers2, 10);                   // O número 10 existe no conjunto!
+    eraseElement(numbers2, 14);             // 2, 7, 8, 10, 10, 14, 14, 15, 18
+    eraseElementByPosition(numbers2, 4);    // 2, 7, 8, 10, 14, 14, 15, 18
 
-    setRandomFill(numbers1, 10); // 0, 1, 3, 5, 6, 7, 9, 13, 16, 18
-    multisetRandomFill(numbers2, 10); // 2, 7, 8, 10, 10, 14, 14, 14, 15, 18
+    // Os sets podem conter vários tipos de dados
+    set<pair<string, int> > names;
+    names.insert(make_pair("Fabio", 3));
+    names.insert(make_pair("Araújo", 1));
+    names.insert(make_pair("Josefino", 10));
+    names.insert(make_pair("Fabio", 1));
+    names.insert(make_pair("Josefino", 5));
+    names.insert(make_pair("Fabio", 2));
+    names.insert(make_pair("Sá", 1));
 
-    exists(numbers1, 13); // O número 13 existe no conjunto!
-    exists(numbers2, 10); // 
-
-    //eraseElement(numbers1, 18);
-    //eraseElementByPosition(numbers1, 3);
+    for (set<pair<string, int> >::iterator it = names.begin() ; it != names.end() ; it++) {
+        cout << "Pair: " << it->first << " -> " << it->second << endl;
+    }
 
     return 0;
 }
