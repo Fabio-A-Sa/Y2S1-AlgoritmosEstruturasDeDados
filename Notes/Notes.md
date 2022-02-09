@@ -99,10 +99,10 @@ Minimiza o número de acessos ao disco, permitindo mais que dois filhos por nó.
 ### 1.5 - BSTs in STL
 
 A STL implementa Red Black Trees para as seguintes estruturas de dados:
-  - set, armazena somente dados de valores não repetidos e ordenados;
-  - multiset, o mesmo que um set mas permite valores repetidos. Ao ordenar ordena primeiro first e depois second. Ao eliminar só elimina um dos repetidos;
-  - map, parecido com um dicionário de Python. Para cada chave possui um valor. Qualquer inicialização names["test"] resulta no valor 0;
-  - multimap, o mesmo que um map mas permite valores repetidos. Ao ordenar ordena apenas pelo valor de first. Ao eliminar elimina apenas o primeiro par;
+  - `set`, armazena somente dados de valores não repetidos e ordenados;
+  - `multiset`, o mesmo que um set mas permite valores repetidos. Ao ordenar ordena primeiro first e depois second. Ao eliminar só elimina um dos repetidos;
+  - `map`, parecido com um dicionário de Python. Para cada chave possui um valor. Qualquer inicialização names["test"] resulta no valor 0;
+  - `multimap, o mesmo que um map mas permite valores repetidos. Ao ordenar ordena apenas pelo valor de first. Ao eliminar elimina apenas o primeiro par;
 
 #### Alguns exemplos de funcionamento:
 
@@ -251,4 +251,38 @@ int main () {
 <br>
 
 ## 2 - HashTables
+
+Guarda itens numa tabela de modo a que a inserção, pesquisa e remoção sejam numa complexidade temporal baixa, num caso favorável até mesmo O(1). O index da tabela, para cada objecto a alocar, é construído com base numa hashFunction. Exemplos baseados em modular hashing: <br>
+
+```c++
+int HashTable::intHash(int value) {
+    return value % this->table.size();
+}
+
+@Overload
+int HashTable::stringHash(const string &value) {
+    return value.size() % this->table.size();
+}
+
+@Overload
+int HashTable::stringHash(const string &value) {
+    int total = 0;
+    for (char letter : value) total += (int) letter;
+    return total % this->table.size();
+}
+
+int HashTable::objectHash(const Person &person) {
+    return stringHash(person.name) ^ person.age ^ person.grade;
+}
+
+template <class F>
+int HashTable::templateHash(const F &value) {
+    return std::hash(T);
+}
+```
+
+Os principais problemas deste método são:
+  - Colisões
+  - Gasto de memória;
+  - Obter uma eficiente `hashFunction`, isto é, que minimize as colisões entre objectos;
 
