@@ -106,7 +106,7 @@ A STL implementa Red Black Trees para as seguintes estruturas de dados:
 
 #### Alguns exemplos de funcionamento:
 
-##### 1.5.1 - Para inserção, listagem, remoção em sets / multisets
+##### 1.5.1 - Listagem, inserção, remoção, pesquisa e ordenação em sets / multisets
 
 ````c++
 void showContent(const set<int> &numbers) {                                        
@@ -177,4 +177,10 @@ int main () {
                                                                                                    
     return 0;                                                                                      
 }                                                                                                                                                                  
+````
+
+##### 1.5.2 - Listagem, inserção, remoção, pesquisa e ordenação em maps / multimaps
+
+````c++
+hello world
 ````
