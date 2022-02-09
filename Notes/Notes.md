@@ -123,7 +123,7 @@ void setRandomFill(set<int> &numbers , int requestedSize) {
                                                                        
     // fill set with random numbers                                    
     while (numbers.size() != requestedSize) {                          
-        numbers.insert(rand() % 100);                                  
+        numbers.insert(rand() % 20);                                  
     }                                                                  
     showContent(numbers);     
 }    

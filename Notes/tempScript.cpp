@@ -26,26 +26,28 @@ void showContent(const multiset<int> &numbers) {
 
 void setRandomFill(set<int> &numbers , int requestedSize) {
 
-    string answer = numbers.empty() ? "empty" : "not empty";
-    cout << answer << endl;
+    string answer = numbers.empty() ? "empty" : "not empty"; cout << answer << endl;
 
-    // fill set with random numbers
     while (numbers.size() != requestedSize) {
-        numbers.insert(rand() % 100);
+        numbers.insert(rand() % 20);
     }
-    showContent(numbers); // 1, 3, 10, 22, 27, 43, 58, 82, 83, 92
+    showContent(numbers);
 }
 
 void multisetRandomFill(multiset<int> &numbers , int requestedSize) {
 
-    string answer = numbers.empty() ? "empty" : "not empty";
-    cout << answer << endl;
+    string answer = numbers.empty() ? "empty" : "not empty"; cout << answer << endl;
 
-    // fill set with random numbers
     while (numbers.size() != requestedSize) {
-        numbers.insert(rand() % 100);
+        numbers.insert(rand() % 20);
     }
-    showContent(numbers); // 1, 3, 10, 22, 27, 43, 58, 82, 83, 92
+    showContent(numbers);
+}
+
+void exists(const set<int> &numbers, int attemp) {
+    string answer = numbers.find(attemp) != numbers.end() ? "O número " + to_string(attemp) + " existe no conjunto!" :
+                                                                "O número " + to_string(attemp) + " não existe no conjunto!";
+    cout << answer << endl; return;
 }
 
 int main () {
@@ -54,8 +56,14 @@ int main () {
     set<int> numbers1;
     multiset<int> numbers2;
 
-    setRandomFill(numbers1, 10); // 1, 3, 10, 22, 27, 43, 58, 82, 83, 92
-    multisetRandomFill(numbers2, 10); // 1, 3, 3, 22, 27, 43, 50, 50, 83, 92
+    setRandomFill(numbers1, 10); // 0, 1, 3, 5, 6, 7, 9, 13, 16, 18
+    multisetRandomFill(numbers2, 10); // 2, 7, 8, 10, 10, 14, 14, 14, 15, 18
+
+    exists(numbers1, 13); // O número 13 existe no conjunto!
+    exists(numbers2, 10); // 
+
+    //eraseElement(numbers1, 18);
+    //eraseElementByPosition(numbers1, 3);
 
     return 0;
 }
