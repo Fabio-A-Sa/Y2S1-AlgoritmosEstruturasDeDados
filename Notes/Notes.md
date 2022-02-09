@@ -285,17 +285,22 @@ Os principais problemas deste método são:
   - Colisões, exploradas a seguir
   - Gasto de memória, pois a tabela é uma estrutura auxiliar;
   - Obter uma eficiente `hashFunction`, isto é, que minimize as colisões entre objectos;
-<br>
 
 ### 2.1 - Collisions
 
-
+Há dois métodos principais para implementar a tabela de hash e acima de tudo que lidam com as colisões que daí possam derivar.
+Para os dois exemplos abaixo, considera-se a relação lambda = número de elementos a albergar / número de índices disponíveis.
 
 #### 2.1.1 - Open Addressing
 
+As chaves são guardadas na própria tabela e se o valor não der para ser guardado no index retornado pela função hash, tenta colocar-se na posição index+1, até conseguir ter espaço livre. <br>
+Neste caso em concreto, se a função lambda = 1/8, então para cada hash teremos mais 7 índices vazios para suportar as colisões. Ao remover, colocar um número `del` para que não exista `lazy detection`, ou seja, para que a próxima inserção não seja colocada ali.
+Apesar de ser o método que gasta menos memória (não tem de possuir apontadores nem listas ligadas como o tópico 2.1.2), quando lambda for  terá de se fazer um `rehash` completo, além de poderem existir grandes intervalos completamente preenchidos ou esparços, que invalidam a complexidade temporal almejada (O(1)), passando a ser na pior situação O(n).
+
 #### 2.1.2 - Separate Chaining
 
-
+Cada índice da tabela corresponde, na verdade, a uma lista ligada de elementos que alberga objectos com o mesmo hash. Assim a função labda é superior a 1, por exemplo 8, o que significa que cada index comporta até 7 colisões com o objecto primário.
+A maior desvantagem é mesmo a
 
 ### 2.2 - HashTables in STL
 
