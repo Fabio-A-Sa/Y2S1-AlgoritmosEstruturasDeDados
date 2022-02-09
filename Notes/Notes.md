@@ -98,4 +98,14 @@ Minimiza o número de acessos ao disco, permitindo mais que dois filhos por nó.
 
 ### 1.5 - BSTs in STL
 
+A STL implementa Red Black Trees para as seguintes estruturas de dados:
+  - set, armazena somente dados de valores não repetidos e ordenados;
+  - multiset, o mesmo que um set mas permite valores repetidos;
+  - map, parecido com um dicionário de Python. Para cada chave possui um valor;
+  - multimap, o mesmo que um map mas permite valores repetidos;
 
+Alguns exemplos de funcionamento:
+
+````c++
+int
+````
