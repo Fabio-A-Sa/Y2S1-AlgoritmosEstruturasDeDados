@@ -300,7 +300,8 @@ Apesar de ser o método que gasta menos memória (não tem de possuir apontadore
 #### 2.1.2 - Separate Chaining
 
 Cada índice da tabela corresponde, na verdade, a uma lista ligada de elementos que alberga objectos com o mesmo hash. Assim a função labda é superior a 1, por exemplo 8, o que significa que cada index comporta até 7 colisões com o objecto primário.
-A maior desvantagem é mesmo a
+A maior desvantagem é mesmo a utilização quase indevida de memória extra, a performence vai sendo deteorada gradualmente até haver necessidade de fazer `rehash` completo.
+A complexidade de pesquisa é O(n), sendo n o tamanho da lista de cada index na tabela.
 
 ### 2.2 - HashTables in STL
 
