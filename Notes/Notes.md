@@ -282,7 +282,20 @@ int HashTable::templateHash(const F &value) {
 ```
 
 Os principais problemas deste método são:
-  - Colisões
-  - Gasto de memória;
+  - Colisões, exploradas a seguir
+  - Gasto de memória, pois a tabela é uma estrutura auxiliar;
   - Obter uma eficiente `hashFunction`, isto é, que minimize as colisões entre objectos;
+<br>
+
+### 2.1 - Collisions
+
+
+
+#### 2.1.1 - Open Addressing
+
+#### 2.1.2 - Separate Chaining
+
+
+
+### 2.2 - HashTables in STL
 
