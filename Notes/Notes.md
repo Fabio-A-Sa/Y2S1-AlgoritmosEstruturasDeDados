@@ -43,3 +43,11 @@
   - Heap
   - Disjoint Sets
 
+<br>
+
+## 1 - Balanced Binary Search Trees
+
+Há sempre hipótese de melhorar o desempenho de uma pesquisa usando uma árvore binária de pesquisa pois as pesquisas têm praticamente a mesma complexidade: `O(h)`, e como se trata de árvores binárias equilibradas, h = log(n), sendo n o número de nós. <br>
+No fundo, para cada árvore binária equilobrada presente nos tópicos seguintes, temos complexidade `O(log(n))` para uma pesquisa.
+
+### 1.1 - AVL
