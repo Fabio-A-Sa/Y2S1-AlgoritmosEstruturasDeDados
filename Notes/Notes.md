@@ -104,23 +104,39 @@ A STL implementa Red Black Trees para as seguintes estruturas de dados:
   - map, parecido com um dicionário de Python. Para cada chave possui um valor;
   - multimap, o mesmo que um map mas permite valores repetidos;
 
-Alguns exemplos de funcionamento:
+#### Alguns exemplos de funcionamento:
+
+##### 1.5.1 - Para inserção, listagem, remoção em sets / multisets
 
 ````c++
-void setRandomFill(set<int> &numbers , int requestedSize) {                          
-                                                                                     
-     string answer = numbers.empty() ? "empty" : "not empty";                        
-     cout << answer << endl;                                                         
-                                                                                     
-     // fill set with random numbers                                                 
-     while (numbers.size() != requestedSize) {                                       
-         numbers.insert(rand() % 100);                                               
-     }                                                                               
-                                                                                     
-     // show sorting non-repeated numbers                                            
-     // 1, 3, 10, 22, 27, 43, 58, 82, 83, 92                                         
-     for (set<int>::iterator i = numbers.begin() ; i != numbers.end() ; i++) {       
-         cout << "Number: " << *i << endl;                                           
-     }                                                                               
-}                                                                                    
+void showContent(const set<int> &numbers) {                                      
+    for (set<int>::iterator i = numbers.begin() ; i != numbers.end() ; i++) {    
+        cout << *i << ", ";                                                      
+    }                                                                            
+    cout << endl;                                                                
+}                                                                                
+
+void setRandomFill(set<int> &numbers , int requestedSize) {            
+                                                                       
+    string answer = numbers.empty() ? "empty" : "not empty";           
+    cout << answer << endl;                                            
+                                                                       
+    // fill set with random numbers                                    
+    while (numbers.size() != requestedSize) {                          
+        numbers.insert(rand() % 100);                                  
+    }                                                                  
+    showContent(numbers);     
+}    
+
+int main () {                                                                      
+                                                                                   
+    srand(time(NULL));                                                             
+    set<int> numbers1;                                                             
+    multiset<int> numbers2;                                                        
+                                                                                   
+    setRandomFill(numbers1, 10); // 1, 3, 10, 22, 27, 43, 58, 82, 83, 92           
+    multisetRandomFill(numbers2, 10); // 1, 3, 3, 22, 27, 43, 50, 50, 83, 92       
+                                                                                   
+    return 0;                                                                      
+}                                                                                  
 ````
