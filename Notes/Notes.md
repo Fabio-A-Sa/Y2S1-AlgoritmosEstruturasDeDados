@@ -452,4 +452,9 @@ Conjunto de nós (nodes) e arestas (edges) entre dois nós. Algumas definições
 
 ### 3.2 - Representação de grafos em C++
 
+Na STL não existe uma representação total ou parcial desta estrutura de dados, pois são abrangentes que se torna impossível implementar todas as suas características. Para cada `Node` é necessário representar o seu conjunto de adjacências, as `Edges`. Para isso existem duas abordagens:
+
+- [1] Matriz de Adjacências
+- [2] Lista de Adjacências
+
 
