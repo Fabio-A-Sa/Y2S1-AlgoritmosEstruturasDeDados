@@ -7,8 +7,9 @@ using namespace std;
 
 void showContent(priority_queue<int> numbers) {
 
+    cout << "Content: ";
     while (!numbers.empty()) {
-        cout << numbers.top() << ", ";
+        cout << numbers.top() << " ";
         numbers.pop();
     }
     cout << endl;
@@ -28,6 +29,7 @@ int main () {
     srand(time(NULL));
     priority_queue<int> numbers;
     fillContent(numbers, 10);
+    showContent(numbers);           // Content: 19 16 15 14 14 11 6 5 2 1
 
     return 0;
 }
