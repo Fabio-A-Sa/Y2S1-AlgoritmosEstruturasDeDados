@@ -481,7 +481,36 @@ Na STL não existe uma representação total ou parcial desta estrutura de dados
 No caso geral da cadeira de Algoritmos e Estruturas de Dados, vai ser adoptada a matriz de adjacências, seguindo a seguinte implementação em C++ 11:
 
 ```c++
-
+class Graph {
+    
+    private:
+    
+        struct Edge {
+            int destination;
+            int weight;
+        };
+        
+        struct Node {
+            list<Edge> adjacents;
+            bool visited;
+            int distance;
+        };
+        
+        int size;
+        bool hasDirection;
+        vector<Node> nodes;
+        
+    public:
+        
+        Graph(int nodes, bool direction = false) {
+            
+        };
+        
+        void addEdge(int origin, int destination, int weight = 1) {
+            
+        }
+        
+};
 ```
 
 ### 3.3 - Pesquisa em Grafos
