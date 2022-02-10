@@ -624,7 +624,7 @@ list<int> Graph::topologicalSorting() {
 
 #### 3.3.2 - Breadth First Search
 
-Pesquisa
+Pesquisa em largura, em expansão. Usa uma queue como estrutura auxiliar por causa da ordem com que os nós são inseridos e visitados. Depois de marcar todos os nós a não visitados, consulta-se o seguinte algoritmo:
 
 `````c++
 void Graph::BFS(int v) {
@@ -653,6 +653,10 @@ void Graph::BFS(int v) {
     }
 }
 `````
+
+A nível de complexidade, percorrem-se inicialmente todos os nós, O(V), e posteriormente todas as arestas desses nós O(E), que globalmente ficará `O(N + E)` para listas de adjacências. Para uma matriz de adjacências ficará pior, cerca de `O(V^2)`. <br>
+Principais utilidades do DFS:
+1. Contar componentes conexos;
 
 ### 3.4 - Minimal Spanning Trees
 
