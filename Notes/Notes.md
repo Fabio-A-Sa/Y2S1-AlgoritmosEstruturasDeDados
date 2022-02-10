@@ -711,3 +711,15 @@ int Graph::diameter() {
 ### 3.4 - Minimal Spanning Trees
 
 Para cada grafo
+
+#### 3.4.1 - Prim
+
+#### 3.4.2 - Kruskal
+
+## 4 - Dijkstra Algorithm
+
+## 5 - Estruturas auxiliares
+
+### 5.1 - Heap / Priority Queue
+
+### 5.2 - Disjoint Sets
