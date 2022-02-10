@@ -661,14 +661,53 @@ Principais utilidades do BFS:
 1. Computar distâncias entre dois nós;
 
 ````c++
+void Graph::fillDistances(int v) {
 
+    resetNodes();
+
+    queue<int> visitedNodes = {};
+    visitedNodes.push(v);
+    nodes[v].distance = 0;
+    nodes[v].visited = true;
+
+    while (!visitedNodes.empty()) {
+
+        int node = visitedNodes.front();
+        visitedNodes.pop();
+        cout << node << "->" << nodes[node].distance << " ";
+
+        for (Edge e : nodes[node].adj) {
+            int a = e.dest;
+            if (!nodes[a].visited) {
+                visitedNodes.push(a);
+                nodes[a].visited = true;
+                nodes[a].distance = nodes[node].distance + 1;
+            }
+        }
+    }
+}
 ````
 
 2. Computar o diâmetro do grafo;
 
 ````c++
+int Graph::diameter() {
 
+    if (connectedComponents() > 1) return -1;
+
+    int max = INT_MIN;
+
+    for (int i = 1 ; i <= n ; i++) {
+        fillDistances(i);
+        for (const Node &node : nodes) {
+            max = node.distance > max ? node.distance : max;
+        }
+    }
+
+    return max;
+}
 ````
 
 ### 3.4 - Minimal Spanning Trees
 
+Para cada grafo
