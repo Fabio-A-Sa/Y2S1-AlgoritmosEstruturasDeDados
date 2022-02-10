@@ -298,19 +298,26 @@ Os principais problemas deste método são:
 ### 2.1 - Collisions
 
 Há dois métodos principais para implementar a tabela de hash e acima de tudo que lidam com as colisões que daí possam derivar.
-Para os dois exemplos abaixo, considera-se a relação lambda = número de elementos a albergar / número de índices disponíveis.
+Para os dois exemplos abaixo, considera-se `load factor / lambda` = número de elementos a albergar / número de índices disponíveis. Para haver um `resize` basta que o load factor passe para o dobro ou metade, dependendo da técnica utilizada.
 
-#### 2.1.1 - Open Addressing
+#### 2.1.1 - Open Addressing / Closed hashing
 
 As chaves são guardadas na própria tabela e se o valor não der para ser guardado no index retornado pela função hash, tenta colocar-se na posição index+1, até conseguir ter espaço livre. <br>
-Neste caso em concreto, se a função lambda = 1/8, então para cada hash teremos mais 7 índices vazios para suportar as colisões. Ao remover, colocar um número `del` para que não exista `lazy detection`, ou seja, para que a próxima inserção não seja colocada ali.
-Apesar de ser o método que gasta menos memória (não tem de possuir apontadores nem listas ligadas como o tópico 2.1.2), quando lambda for  terá de se fazer um `rehash` completo, além de poderem existir grandes intervalos completamente preenchidos ou esparços, que invalidam a complexidade temporal almejada (O(1)), passando a ser na pior situação O(n).
+Neste caso em concreto, se a função lambda = 1/8, então para cada hash teremos mais 7 índices vazios para suportar as colisões. Ao remover, colocar um número `del / tombstone` para que exista `lazy delection`, ou seja, para que a próxima inserção seja colocada ali mas a pesquisa considere aquele lugar ainda como ocupado.
+Apesar de ser o método que gasta menos memória (não tem de possuir apontadores nem listas ligadas como o tópico 2.1.2), quando lambda for  terá de se fazer um `rehash` completo, além de poderem existir grandes intervalos completamente preenchidos (clusters) ou esparsos, que invalidam a complexidade temporal almejada (O(1)), passando a ser na pior situação O(n).
 
-#### 2.1.2 - Separate Chaining
+#### 2.1.2 - Separate Chaining / Open hashing
 
 Cada índice da tabela corresponde, na verdade, a uma lista ligada de elementos que alberga objectos com o mesmo hash. Assim a função labda é superior a 1, por exemplo 8, o que significa que cada index comporta até 7 colisões com o objecto primário.
 A maior desvantagem é mesmo a utilização quase indevida de memória extra, a performence vai sendo deteorada gradualmente até haver necessidade de fazer `rehash` completo.
-A complexidade de pesquisa é O(n), sendo n o tamanho da lista de cada index na tabela.
+A complexidade de pesquisa é O(lambda), o tamanho da lista de cada index na tabela.
 
 ### 2.2 - HashTables in STL
 
+A STL implementa HashTables para as seguintes estruturas de dados:
+- `unordered_set`, 
+- `unordered_multiset`, 
+- `unordered_map`, 
+- `unordered_multimap`,
+
+#### Alguns exemplos de funcionamento:
