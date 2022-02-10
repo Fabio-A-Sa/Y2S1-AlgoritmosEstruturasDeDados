@@ -688,7 +688,7 @@ void Graph::fillDistances(int v) {
 }
 ````
 
-2. Computar o diâmetro do grafo;
+2. Computar o diâmetro do grafo conexo;
 
 ````c++
 int Graph::diameter() {
@@ -710,9 +710,50 @@ int Graph::diameter() {
 
 ### 3.4 - Minimal Spanning Trees
 
-Para cada grafo
+Para cada grafo pesado existem várias possíveis MSTs, sendo estas o conjunto de arestas e nós que permitem unir todos os nós do grafo com o menor custo possível. Cada MST tem exatamente V-1 arestas, se o número for inferior há nós que não pertencem ao conjunto, se o número for superior ficam a existir ciclos. <br>
+Há duas formas possíveis para descobrir MSTs:
 
 #### 3.4.1 - Prim
+
+Implementação possível:
+
+````c++
+int Graph::prim(int r) {
+
+    MinHeap<int, int> heap(n, -1);
+
+    for (int i = 1 ; i <= n ; i++) {
+        nodes[i].distance = INT_MAX;
+        nodes[i].parent = NULL;
+        heap.insert(i, nodes[i].distance);
+    }
+
+    nodes[r].distance = 0;
+    heap.decreaseKey(r, 0);
+
+    while (heap.getSize()) {
+
+        int nodeIndex = heap.removeMin(); // o índice do nó que possui menor distância a r
+
+        for (Edge edge : nodes[nodeIndex].adj) {
+            int neighbor = edge.dest;
+            if (heap.hasKey(neighbor) && edge.weight < nodes[neighbor].distance) {
+                nodes[neighbor].parent = neighbor;
+                nodes[neighbor].distance = edge.weight;
+                heap.decreaseKey(neighbor, edge.weight);
+            }
+        }
+    }
+
+    int total = 0;
+    for (int i = 1 ; i <= n ; i++) {
+        total += nodes[i].distance;
+        cout << "Node " << i << " distance: " << nodes[i].distance << endl;
+    }
+
+    return total;
+}
+````
 
 #### 3.4.2 - Kruskal
 
