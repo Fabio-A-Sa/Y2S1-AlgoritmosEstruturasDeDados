@@ -355,18 +355,18 @@ int main () {
     // unordered sets
     unordered_set<string> names;
     fillUnorderedSet(names);
-    showContent(names);                                         // passaro, gato, tartaruga, cao
-    cout << exists(names, "cao") << endl;                   // 1
-    cout << exists(names, "papagaio") << endl;              // 0
-    removeKey(names, "passaro");                            // gato, tartaruga, cao
+    showContent(names);                             // passaro, gato, tartaruga, cao
+    cout << exists(names, "cao") << endl;           // 1
+    cout << exists(names, "papagaio") << endl;      // 0
+    removeKey(names, "passaro");                    // gato, tartaruga, cao
 
     // unordered multisets
     unordered_multiset<string> names2;
     fillUnorderedSet(names2);
-    showContent(names2);                                  // passaro, passaro, gato, gato, cao, cao, tartaruga
-    cout << exists(names2, "cao") << endl;            // 1
-    cout << exists(names2, "papagaio") << endl;       // 0
-    removeKey(names2, "passaro");                         // passaro, gato, gato, cao, cao, tartaruga
+    showContent(names2);                            // passaro, passaro, gato, gato, cao, cao, tartaruga
+    cout << exists(names2, "cao") << endl;          // 1
+    cout << exists(names2, "papagaio") << endl;     // 0
+    removeKey(names2, "passaro");                   // passaro, gato, gato, cao, cao, tartaruga
 
     return 0;
 }
@@ -414,10 +414,10 @@ int main () {
     // unordered multisets
     unordered_multimap<string, int> names2;
     fillUnorderedMap(names2);
-    showContent(names2);                                    // passaro = 1, passaro = 1, gato = 9, cao = 1, cao = 4, cao = 9
+    showContent(names2);                                        // passaro = 1, passaro = 1, gato = 9, cao = 1, cao = 4, cao = 9
 
-    cout << exists(names2, "tartaruga") << endl;    // 1
-    cout << exists(names2, "rola") << endl;         // 0
+    cout << exists(names2, "tartaruga") << endl;                // 1
+    cout << exists(names2, "rola") << endl;                     // 0
     removeKey(names2, "cao");                                   // passaro = 1, passaro = 1, gato = 9, cao = 4, cao = 9
 
     return 0;
