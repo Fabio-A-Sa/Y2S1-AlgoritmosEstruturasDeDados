@@ -715,6 +715,8 @@ Há duas formas possíveis para descobrir MSTs:
 
 #### 3.4.1 - Prim
 
+Primeiro inicializam-se todos os nós com distance = INF e parent = NULL, `O(V)`. De seguida, colocam-se todos numa heap de modo a ordená-los por ordem crescente. Em cada passo, enquanto a estrutura não fica vazia, retira-se o menor valor e amortiza-se a distância a todos os seus vizinhos, assim como o parent. <br>
+Assim, de modo global, temos complexidade `O(V + V.extractMinimum() + E.updateDistance())`, e como extractMinimum() é efetuado em tempo O(log V) e updateDistance em tempo O(1), então de forma assintótica tempos `O(V.log(V))` e então `O(E.log(V))`.
 Implementação possível:
 
 ````c++
