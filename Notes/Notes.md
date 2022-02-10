@@ -285,7 +285,8 @@ int HashTable::objectHash(const Person &person) {
 
 template <class F>
 int HashTable::templateHash(const F &value) {
-    return std::hash(T);
+    std::hash(T) h; // h é um objecto
+    return h(T);
 }
 ```
 
