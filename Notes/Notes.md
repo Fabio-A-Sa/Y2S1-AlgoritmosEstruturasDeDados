@@ -502,14 +502,18 @@ class Graph {
         
     public:
         
-        Graph(int nodes, bool direction = false) {
-            
+        Graph(int nodes, bool direction = false) : this->nodes(nodes+1) {
+            this->direction = direction;
         };
         
         void addEdge(int origin, int destination, int weight = 1) {
-            
+            Edge edge = {destination, weight};
+            nodes[origin].adjacent.push_back(edge);
+            if (!this->hasDirection) {
+                edge = {origin, weight};
+                nodes[origin].adjacent.push_back(edge);
+            }
         }
-        
 };
 ```
 
