@@ -537,7 +537,65 @@ void Graph::DFS(int v) {
 }
 ```
 
-A nível de complexidade, percorrem-se inicialmente todos os nós, O(V), e posteriormente todas as arestas desses nós O(E), que globalmente ficará `O(N + E)` para listas de adjacências. Para uma matriz de adjacências ficará pior, cerca de `O(V^2)`.
+A nível de complexidade, percorrem-se inicialmente todos os nós, O(V), e posteriormente todas as arestas desses nós O(E), que globalmente ficará `O(N + E)` para listas de adjacências. Para uma matriz de adjacências ficará pior, cerca de `O(V^2)`. <br>
+Principais utilidades do DFS:
+1. Contar componentes conexos;
+
+````c++
+int Graph::howManyComponents() {
+    
+    Graph::resetNodes();
+    
+    int total = 0;
+    for (int i = 1 ; i <= size ; i++) {                   // Para cada conjunto que não foi visitado, visita o seu início
+        if (!nodes[i].visited) {                          // E incrementa o contador
+            total++;
+            DFS(i);
+        }
+    }
+    
+    return total;
+}
+````
+
+2. Conseguir detectar ciclos;
+
+`````c++
+bool Graph::colorsDFS(int v) {
+
+    nodes[v].color = GRAY;
+
+    for (Edge edge : nodes[v].adj) {
+        int dest = edge.dest;
+        if (nodes[dest].color == GRAY) {
+            return true;
+        } else {
+            colorsDFS(dest);
+        }
+    }
+
+    nodes[v].color = BLACK;
+}
+
+bool Graph::hasCycle() {
+
+    Graph::resetNodes();
+
+    for (int i = 0 ; i <= n ; i++) {
+        if (nodes[i].color == WHITE) {
+            bool answer = colorsDFS(i);
+            if (answer) return answer; else continue;
+        }
+    }
+    return false;
+}
+`````
+
+3. Ordenação topológica;
+
+`````c++
+
+`````
 
 #### 3.3.2 - Breadth First Search
 
