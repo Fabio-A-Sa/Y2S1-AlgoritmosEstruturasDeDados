@@ -539,6 +539,7 @@ void Graph::DFS(int v) {
 
 A nível de complexidade, percorrem-se inicialmente todos os nós, O(V), e posteriormente todas as arestas desses nós O(E), que globalmente ficará `O(N + E)` para listas de adjacências. Para uma matriz de adjacências ficará pior, cerca de `O(V^2)`. <br>
 Principais utilidades do DFS:
+
 1. Contar componentes conexos;
 
 ````c++
@@ -655,8 +656,19 @@ void Graph::BFS(int v) {
 `````
 
 A nível de complexidade, percorrem-se inicialmente todos os nós, O(V), e posteriormente todas as arestas desses nós O(E), que globalmente ficará `O(N + E)` para listas de adjacências. Para uma matriz de adjacências ficará pior, cerca de `O(V^2)`. <br>
-Principais utilidades do DFS:
-1. Contar componentes conexos;
+Principais utilidades do BFS:
+
+1. Computar distâncias entre dois nós;
+
+````c++
+
+````
+
+2. Computar o diâmetro do grafo;
+
+````c++
+
+````
 
 ### 3.4 - Minimal Spanning Trees
 
