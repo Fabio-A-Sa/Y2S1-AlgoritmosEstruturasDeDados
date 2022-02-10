@@ -426,9 +426,12 @@ int main () {
 
 <br>
 
-## 3 - Graphs
+## 3 - Grafos
 
 Conjunto de nós (nodes) e arestas (edges) entre dois nós. Algumas definições / características desta estrutura:
+
+### 3.1 - Algumas definições
+
 - `dirigido` ou `não dirigido`;
 - `pesado` ou `não pesado`;
 - `multigrafo`;
@@ -443,4 +446,10 @@ Conjunto de nós (nodes) e arestas (edges) entre dois nós. Algumas definições
 - `componente conexo` - todos os nós que têm caminho entre si;
 - `grafo conexo` - quando é composto por somente um componente conexo;
 - `subgrafo` - subconjunto de nós que fazem parte de um grafo;
-- 
+- `subgrafo completo` - subconjunto de nós em que todos estão ligados entre todos, formando um ciclo;
+- `tree` - grafo simples, conectado, conexo e acíclico;
+- `forest` - conjunto de trees;
+
+### 3.2 - Representação de grafos em C++
+
+
