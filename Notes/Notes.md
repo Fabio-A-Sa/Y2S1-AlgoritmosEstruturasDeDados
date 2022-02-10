@@ -102,7 +102,7 @@ A STL implementa Red Black Trees para as seguintes estruturas de dados:
   - `set`, armazena somente dados de valores não repetidos e ordenados;
   - `multiset`, o mesmo que um set mas permite valores repetidos. Ao ordenar ordena primeiro first e depois second. Ao eliminar só elimina um dos repetidos;
   - `map`, parecido com um dicionário de Python. Para cada chave possui um valor. Qualquer inicialização names["test"] resulta no valor 0;
-  - `multimap`, o mesmo que um map mas permite valores repetidos. Ao ordenar ordena apenas pelo valor de first. Ao eliminar elimina apenas o primeiro par;
+  - `multimap, o mesmo que um map mas permite valores repetidos. Ao ordenar ordena apenas pelo valor de first. Ao eliminar elimina apenas o primeiro par;
 
 #### Alguns exemplos de funcionamento:
 
