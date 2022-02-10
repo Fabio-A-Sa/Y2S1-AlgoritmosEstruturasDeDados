@@ -141,7 +141,7 @@ void eraseElementByPosition(set<int> &numbers , int position) {
     set<int>::iterator it = numbers.begin();                        
     advance(it, position-1);                                        
     numbers.erase(it);                                              
-}                                                                   
+}
 
 int main () {                                                                                      
                                                                                                    
@@ -173,7 +173,15 @@ int main () {
                                                                                                    
     for (set<pair<string, int> >::iterator it = names.begin() ; it != names.end() ; it++) {        
         cout << "Pair: " << it->first << " -> " << it->second << endl;                             
-    }                                                                                              
+    }                 
+    
+    // Os sets podem ser adaptados de acordo com a função que faz a comparação
+    bool key = [](const string &s1, const string &s2) { return s1.size() < s2.size(); };
+    set<string, decltype(key)> strings(key);
+    strings.insert("Aurélio");
+    strings.insert("Ana");
+    string.insert("Oi");
+    showContent(strings);  // Oi, Ana, Aurélio;
                                                                                                    
     return 0;                                                                                      
 }                                                                                                                                                                  
