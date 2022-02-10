@@ -771,7 +771,7 @@ Operações comuns:
 - `Insert` - Faz upHeap, o valor é colocado na folha mais à esquerda e baixa possível e de seguida sobe até atingir o correcto patamar, O(log(N));
 - `Remove` - Faz downHeap, o valor é colocado no root da árvore e de seguida baixa até atingir o correcto patamar, O(log(N));
 
-Na STL tempos uma implementação de heap, a `priority_queue`, cuja exploração está abaixo:
+Na STL temos uma implementação de heap, a `priority_queue`, cuja exploração está abaixo:
 
 ```c++
 
