@@ -455,6 +455,24 @@ Conjunto de nós (nodes) e arestas (edges) entre dois nós. Algumas definições
 Na STL não existe uma representação total ou parcial desta estrutura de dados, pois são abrangentes que se torna impossível implementar todas as suas características. Para cada `Node` é necessário representar o seu conjunto de adjacências, as `Edges`. Para isso existem duas abordagens:
 
 - [1] Matriz de Adjacências
+
+  Pode ser comparada a uma estrutura `bool[n][n] matrix`, sendo n o número total de nós do grafo. Assim cada nó `n` tem um array `a[]` com os vizinhos, percorrendo-os em tempo linear `O(n)`. <br>
+
+  Vantagens:
+  - Remover e adicionar conexões entre dois quaisquer nós;
+
+  Desvantagens:
+  - Memória usada, n^2
+  - Procura pouco eficiente dos vizinhos, já que teremos de percorrer todos os outros nós
+
 - [2] Lista de Adjacências
+
+  Cada nó possui uma lista de edges, `list<Edge> adjacent` e cada edge possui um parâmetro que é o índice do nó de destino. <br>
+
+  Vantagens:
+  - 
+
+  Desvantagens:
+  -
 
 
