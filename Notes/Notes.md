@@ -774,7 +774,34 @@ Operações comuns:
 Na STL temos uma implementação de heap, a `priority_queue`, cuja exploração está abaixo:
 
 ```c++
+void showContent(priority_queue<int> numbers) {
 
+    cout << "Content: ";
+    while (!numbers.empty()) {
+        cout << numbers.top() << " ";
+        numbers.pop();
+    }
+    cout << endl;
+}
+
+void fillContent(priority_queue<int> &numbers, int size) {
+
+    while (numbers.size() < size) {
+        int attemp = rand() % 20;
+        cout << "Inserindo n = " << attemp << endl;
+        numbers.push(attemp);
+    }
+}
+
+int main () {
+
+    srand(time(NULL));
+    priority_queue<int> numbers;
+    fillContent(numbers, 10);
+    showContent(numbers);           // Content: 19 16 15 14 14 11 6 5 2 1
+    
+    return 0;
+}
 ```
 
 O algoritmo de ordenação `HeapSort` implementa este tipo de estrutura. De uma forma simples, insere N valores, N.O(log(N)), e remove N valores, O(log(N)). Ao todo temos O(Nlog(N)^2), que é equivalente a O(2Nlog(N)) e que a nível assintótico é na realidade `O(Nlog(N))`.
