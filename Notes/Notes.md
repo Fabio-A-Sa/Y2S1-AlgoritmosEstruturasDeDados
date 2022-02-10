@@ -547,8 +547,8 @@ int Graph::howManyComponents() {
     Graph::resetNodes();
     
     int total = 0;
-    for (int i = 1 ; i <= size ; i++) {                   // Para cada conjunto que não foi visitado, visita o seu início
-        if (!nodes[i].visited) {                          // E incrementa o contador
+    for (int i = 1 ; i <= size ; i++) {          // Para cada conjunto que não foi visitado, visita o seu início
+        if (!nodes[i].visited) {                 // E incrementa o contador
             total++;
             DFS(i);
         }
@@ -594,12 +594,37 @@ bool Graph::hasCycle() {
 3. Ordenação topológica;
 
 `````c++
+void Graph::topologicalDFS(int v, list<int> &order) {
 
+    nodes[v].visited = true;
+    for (Edge e : nodes[v].adj) {
+        int node = e.dest;
+        if (!nodes[node].visited) {
+            topologicalDFS(node, order);
+        }
+    }
+    order.push_front(v);
+}
+
+list<int> Graph::topologicalSorting() {
+
+    resetNodes();
+
+    list<int> order = {};
+
+    for (int i = 1 ; i <= n ; i++) {
+        if (!nodes[i].visited) {
+            topologicalDFS(i, order);
+        }
+    }
+
+    return order;
+}
 `````
 
 #### 3.3.2 - Breadth First Search
 
-
+Pesquisa
 
 `````c++
 void Graph::BFS(int v) {
