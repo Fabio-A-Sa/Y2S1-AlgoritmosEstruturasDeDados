@@ -315,8 +315,8 @@ A complexidade de pesquisa é O(lambda), o tamanho da lista de cada index na tab
 ### 2.2 - HashTables in STL
 
 A STL implementa HashTables para as seguintes estruturas de dados:
-- `unordered_set`, 
-- `unordered_multiset`, 
+- `unordered_set`, parecido com um set, só que não ordenado. Não permite chaves duplicadas;
+- `unordered_multiset`, parecido com um multiset, só que não ordenado. Permite chaves duplicadas;
 - `unordered_map`, 
 - `unordered_multimap`,
 
