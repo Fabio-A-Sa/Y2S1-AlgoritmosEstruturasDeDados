@@ -765,11 +765,15 @@ int Graph::prim(int r) {
 
 ### 5.1 - Heap / Priority Queue
 
-Árvore binária equilibrada, embora não de uma forma tradicionalmente ordenada. Todos os filhos são menores do que o pai, ou seguem uma distribuição de acordo com a comparação desejada no momento da instanciação. Se tiver de estar incompleta, a árvore possui o último patamar incompleto, preenchido da esquerda para a direita. 
+Árvore binária equilibrada, embora não de uma forma tradicionalmente ordenada. Todos os filhos são menores do que o pai, ou seguem uma distribuição de acordo com a comparação desejada no momento da instanciação. Se tiver de estar incompleta, a árvore possui o último patamar incompleto, preenchido da esquerda para a direita. <br>
+Operações comuns:
+- `Search` - Retorna o topo da árvore, O(1);
+- `Insert` - Faz upHeap, o valor é colocado na folha mais à esquerda e baixa possível e de seguida sobe até atingir o correcto patamar, O(log(N));
+- `Remove` - Faz downHeap, o valor é colocado no root da árvore e de seguida baixa até atingir o correcto patamar, O(log(N));
 
 Na STL tempos uma implementação de heap, a `priority_queue`, cuja exploração está abaixo:
 
-```
+```c++
 
 ```
 
