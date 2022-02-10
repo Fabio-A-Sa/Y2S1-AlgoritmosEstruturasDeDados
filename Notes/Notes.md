@@ -715,7 +715,7 @@ Há duas formas possíveis para descobrir MSTs:
 
 #### 3.4.1 - Prim
 
-Primeiro inicializam-se todos os nós com distance = INF e parent = NULL, `O(V)`. De seguida, colocam-se todos numa heap de modo a ordená-los por ordem crescente. Em cada passo, enquanto a estrutura não fica vazia, retira-se o menor valor e amortiza-se a distância a todos os seus vizinhos, assim como o parent. <br>
+Primeiro inicializam-se todos os nós com distance = INF e parent = NULL, `O(V)`. De seguida, colocam-se todos numa heap (ver tópico 5.1) de modo a ordená-los por ordem crescente da forma mais eficiente possível. Em cada passo, enquanto a estrutura não fica vazia, retira-se o menor valor e amortiza-se a distância a todos os seus vizinhos, assim como o parent. <br>
 Assim, de modo global, temos complexidade `O(V + V.extractMinimum() + E.updateDistance())`, e como extractMinimum() é efetuado em tempo O(log V) e updateDistance em tempo O(1), então de forma assintótica tempos `O(V.log(V))` e então `O(E.log(V))`.
 Implementação possível:
 
@@ -764,5 +764,13 @@ int Graph::prim(int r) {
 ## 5 - Estruturas auxiliares
 
 ### 5.1 - Heap / Priority Queue
+
+Árvore binária equilibrada, embora não de uma forma tradicionalmente ordenada. Todos os filhos são menores do que o pai, ou seguem uma distribuição de acordo com a comparação desejada no momento da instanciação. Se tiver de estar incompleta, a árvore possui o último patamar incompleto, preenchido da esquerda para a direita. 
+
+Na STL tempos uma implementação de heap, a `priority_queue`, cuja exploração está abaixo:
+
+```
+
+```
 
 ### 5.2 - Disjoint Sets
