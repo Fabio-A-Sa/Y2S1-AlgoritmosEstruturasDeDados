@@ -424,3 +424,23 @@ int main () {
 }
 ```
 
+<br>
+
+## 3 - Graphs
+
+Conjunto de nós (nodes) e arestas (edges) entre dois nós. Algumas definições / características desta estrutura:
+- dirigido ou não dirigido
+- pesado ou não pesado
+- multigrafo
+- grau do nó - número de ligações do nó
+- trivial - se só tiver um nó e nenhuma aresta
+- self loop ou ciclo - como os autómatos
+- denso ou esparso
+- path ou caminho - sequência de nós e arestas que percorrem parte do caminho
+- tamanho do caminho - quantidade de nós
+- distância - devido ao peso de cada aresta
+- diâmetro - maior distância possível entre dois nós num grafo
+- componente conexo - todos os nós que têm caminho entre si
+- grafo conexo - quando é composto por somente um componente conexo
+- subgrafo - subconjunto de nós que fazem parte de um grafo
+- 
