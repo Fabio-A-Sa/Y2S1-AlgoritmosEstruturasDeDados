@@ -456,10 +456,11 @@ Na STL não existe uma representação total ou parcial desta estrutura de dados
 
 - [1] Matriz de Adjacências
 
-  Pode ser comparada a uma estrutura `bool[n][n] matrix`, sendo n o número total de nós do grafo. Assim cada nó `n` tem um array `a[]` com os vizinhos, percorrendo-os em tempo linear `O(n)`. <br>
+  Pode ser comparada a uma estrutura `bool[n][n] matrix`, sendo n o número total de nós do grafo. Assim cada nó `n` tem um array `a[]` com os vizinhos, percorrendo-os em tempo linear `O(n)`. Curiosamente, se n1 é vizinho de n2, então n2 também é vizinho de n1, logo esta matriz é simétrica pela diagonal maior. <br>
 
   Vantagens:
   - Remover e adicionar conexões entre dois quaisquer nós;
+  - O peso das ligações pode ser alocado na matriz, usando um `int[n][n] matrix` e um `notFound = -1`;
 
   Desvantagens:
   - Memória usada, n^2
@@ -470,9 +471,18 @@ Na STL não existe uma representação total ou parcial desta estrutura de dados
   Cada nó possui uma lista de edges, `list<Edge> adjacent` e cada edge possui um parâmetro que é o índice do nó de destino. <br>
 
   Vantagens:
-  - 
+  - Memória usada
+  - Procura eficiente dos vizinhos de um nó n
 
   Desvantagens:
-  -
+  - Remover e adicionar conexções entre quaisquer dois nós
+  - O peso das ligações têm de ser colocado numa aresta, estrutura auxiliar
+  
+No caso geral da cadeira de Algoritmos e Estruturas de Dados, vai ser adoptada a matriz de adjacências, seguindo a seguinte implementação em C++ 11:
 
+```c++
+
+```
+
+### 3.3 - Pesquisa em Grafos
 
