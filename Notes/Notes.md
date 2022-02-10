@@ -777,4 +777,6 @@ Na STL tempos uma implementação de heap, a `priority_queue`, cuja exploração
 
 ```
 
+O algoritmo de ordenação `HeapSort` implementa este tipo de estrutura. De uma forma simples, insere N valores, N.O(log(N)), e remove N valores, O(log(N)). Ao todo temos O(Nlog(N)^2), que é equivalente a O(2Nlog(N)) e que a nível assintótico é na realidade `O(Nlog(N))`.
+
 ### 5.2 - Disjoint Sets
