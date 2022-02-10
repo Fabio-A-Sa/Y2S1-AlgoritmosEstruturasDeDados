@@ -106,7 +106,7 @@ void Graph::DFS(int v) {
     for (Edge edge : nodes[v].adjacents) {      // Para cada aresta a visitar
         int dest = edge.destination;            // Encontra o nó de destino
         if (!nodes[dest].visited) {             // Se esse nó ainda não estiver visitado
-            DFS(dest);                          // Visita-o recursivamente
+            DFS(dest);                       // Visita-o recursivamente
         }
     }
 }
@@ -134,7 +134,7 @@ int Graph::howManyComponents() {
 
 void Graph::BFS(int v) {
 
-    for (int i = 1 ; i <= size ; i++) {                // marcar todos como não visitado
+    for (int i = 1 ; i <= size ; i++) {            // marcar todos como não visitado
         nodes[i].visited = false;
     }
 

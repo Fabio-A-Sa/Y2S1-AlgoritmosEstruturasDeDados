@@ -519,3 +519,55 @@ class Graph {
 
 ### 3.3 - Pesquisa em Grafos
 
+#### 3.3.1 - Depth First Search (DFS)
+
+
+
+```c++
+void Graph::DFS(int v) {
+
+    nodes[v].visited = true;                    // Marcar o nó como visitado
+    cout << v << " ";                           // Mostra o nó que visita
+    for (Edge edge : nodes[v].adjacents) {      // Para cada aresta a visitar
+        int dest = edge.destination;            // Encontra o nó de destino
+        if (!nodes[dest].visited) {             // Se esse nó ainda não estiver visitado
+            DFS(dest);                          // Visita-o recursivamente
+        }
+    }
+}
+```
+
+#### 3.3.2 - Breadth First Search
+
+
+
+`````c++
+void Graph::BFS(int v) {
+
+    for (int i = 1 ; i <= size ; i++) {             // marcar todos como não visitado
+        nodes[i].visited = false;
+    }
+
+    queue<int> visitedNodes = {};
+    visitedNodes.push(v);                           // primeiro nó visitado;
+    nodes[v].visited = true;                        // marcar como visitado
+
+    while (!visitedNodes.empty()) {
+
+        int node = visitedNodes.front();
+        visitedNodes.pop();                         // retirar o primeiro elemento da fila
+        cout << node << " " ;
+
+        for (Edge e : nodes[node].adjacents) {      // Vai a cada adjacência
+            int n = e.destination;                  // Vê qual é o nó
+            if (!nodes[n].visited) {                // Se o nó ainda não tiver visitado
+                visitedNodes.push(n);               // Acrescenta à fila
+                nodes[n].visited = true;            // Marca-o como visitado
+            }
+        }
+    }
+}
+`````
+
+### 3.4 - Minimal Spanning Trees
+
