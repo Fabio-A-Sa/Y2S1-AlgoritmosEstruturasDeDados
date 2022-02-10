@@ -521,7 +521,7 @@ class Graph {
 
 #### 3.3.1 - Depth First Search (DFS)
 
-
+Percorre o grafo em profundidade. Inicialmente marca-se todos os nós a não visitados e só depois avança-se para a implementação seguinte:
 
 ```c++
 void Graph::DFS(int v) {
@@ -536,6 +536,8 @@ void Graph::DFS(int v) {
     }
 }
 ```
+
+A nível de complexidade, percorrem-se inicialmente todos os nós, O(V), e posteriormente todas as arestas desses nós O(E), que globalmente ficará `O(N + E)` para listas de adjacências. Para uma matriz de adjacências ficará pior, cerca de `O(V^2)`.
 
 #### 3.3.2 - Breadth First Search
 
