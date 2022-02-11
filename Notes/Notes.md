@@ -843,3 +843,52 @@ int main () {
 O algoritmo de ordenação `HeapSort` implementa este tipo de estrutura. De uma forma simples, insere N valores, N.O(log(N)), e remove N valores, O(log(N)). Ao todo temos O(Nlog(N)^2), que é equivalente a O(2Nlog(N)) e que a nível assintótico é na realidade `O(Nlog(N))`.
 
 ### 5.2 - Disjoint Sets
+
+Melhoram a complexidade do algoritmo de Kruskal. Cada set inicial é representado por um nó (uma tree simples), e cada nó aponta para a sua raiz e para o seu parente. Há duas hipóteses de melhoria, para que a sua complexidade amortizada seja, para qualquer operação, `O(1)`:
+1. Union By Rank: <br>
+   Ao haver union() entre dois ramos, o menor root aponta para o maior root, de modo a não mexer na altura da árvore;
+2. Path Compression: <br>
+   Aproveitando o facto de no método find() ter de passar por um ramo por vezes extenso, colocar cada nó desse ramo a apontar recursivamente para o root. Assim a próxima pesquisa ficará agilizada;
+
+<br>
+Uma implementação possível:
+
+`````c++
+// Create a set with a single element x
+template <class T>
+void DisjointSets<T>::makeSet(const T& x) {
+    a[x].parent = x;
+    a[x].myrank = 0;
+}
+
+// Find the representative of the set of element x
+template <class T>
+T DisjointSets<T>::find(const T& x) {
+    if (a[x].parent != x)
+        a[x].parent = find(a[x].parent);
+    return a[x].parent;
+}
+
+// Merge the sets of elements x and y
+template <class T>
+void DisjointSets<T>::unite(const T& x, const T& y) {
+
+    T xRoot = find(x);
+    T yRoot = find(y);
+
+    if (a[xRoot].myrank < a[yRoot].myrank) {
+        a[xRoot].parent = yRoot;
+
+    } else if (a[xRoot].myrank > a[yRoot].myrank) {
+        a[yRoot].parent = xRoot;
+
+    } else {
+        a[yRoot].parent = xRoot;
+        a[xRoot].myrank = a[xRoot].myrank + 1;
+    }
+}
+`````
+<br>
+
+### Fábio Araujo de Sá <br>
+#### 2021/2022
