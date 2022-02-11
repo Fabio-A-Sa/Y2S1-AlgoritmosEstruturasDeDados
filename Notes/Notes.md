@@ -797,7 +797,7 @@ Assim, de modo global, temos complexidade `O(sort() + V.makeSet() + 2.E.findSet(
 
 ## 4 - Dijkstra Algorithm
 
-Uma implementação possível:
+Uma implementação possível, usando uma minHeap para que a complexidade final seja de `O(E.log(V))`:
 
 ````c++
 void Graph::dijkstra(int s) {
