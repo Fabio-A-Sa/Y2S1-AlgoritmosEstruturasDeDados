@@ -759,6 +759,8 @@ int Graph::prim(int r) {
 
 #### 3.4.2 - Kruskal
 
+
+
 ## 4 - Dijkstra Algorithm
 
 ## 5 - Estruturas auxiliares
