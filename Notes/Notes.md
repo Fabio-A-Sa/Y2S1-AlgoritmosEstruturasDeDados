@@ -759,7 +759,41 @@ int Graph::prim(int r) {
 
 #### 3.4.2 - Kruskal
 
+Ao contrário do Algoritmo de Prim, Kruskal retira a aresta menos pesada e em seguida une os dois extremos ao conjunto já conhecido da MST. Para uma forma mais eficiente, usam-se os Disjoint Sets (abordados no tópico 5.2). <br>
+Exemplo de implementação:
 
+`````c++
+int Graph::kruskal() {
+
+    vector<Edge> minimalSpanningTree = {};
+    vector<Edge> allEdges = {};
+    DisjointSets<int> set;
+
+    for (int i = 0 ; i <= n ; i++) {
+        set.makeSet(i);
+        for (Edge edge : nodes[i].adj) {
+            edge.origin = i;
+            allEdges.push_back(edge);
+        }
+    }
+
+    sort(allEdges.begin(), allEdges.end(), [](const Edge &e1, const Edge &e2) { return e1.weight < e2.weight; });
+
+    for (Edge edge : allEdges) {
+        if (set.find(edge.origin) != set.find(edge.dest)) {
+            minimalSpanningTree.push_back(edge);
+            set.unite(edge.origin, edge.dest);
+        }
+    }
+
+    int total = 0;
+    for (Edge edge : minimalSpanningTree)
+        total += edge.weight;
+    return total;
+}
+`````
+
+Assim, de modo global, temos complexidade `O(sort() + V.makeSet() + 2.E.findSet() + E.unite())`, e como makeSet(), findSet() e union() são efetuados em tempo O(1) e o sort() em tempo N.Log(N), então de forma assintótica tempos `O(V.log(V))` e então `O(E.log(V))`, tal como o Prim.
 
 ## 4 - Dijkstra Algorithm
 
