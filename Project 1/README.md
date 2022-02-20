@@ -10,7 +10,7 @@ Implemented features:
 <p align = "center" >
   <img 
        title = "Menu strategy"
-       src = "Images//Project1_Menu.png" 
+       src = "../Images//Project1_Menu.png" 
        alt = "Credits: Gabriel Machado Jr." 
        />
 </p>
@@ -25,7 +25,7 @@ Implemented features:
 <p align = "center" >
   <img 
        title = "Luggage strategy"
-       src = "Images//Project1_Luggage.png" 
+       src = "../Images//Project1_Luggage.png" 
        alt = "Credits: Carolina Brandão" 
        />
 </p>
@@ -38,7 +38,7 @@ Implemented features:
 <p align = "center" >
   <img 
        title = "ID strategy"
-       src = "Images//Project1_IDs.png" 
+       src = "../Images//Project1_IDs.png" 
        alt = "Credits: Gabriel Machado Jr." 
        />
 </p>
