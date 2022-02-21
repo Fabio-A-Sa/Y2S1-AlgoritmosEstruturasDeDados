@@ -75,7 +75,7 @@ Implemented features:
 
 <br>
 
-### Project 2 - STCP++ (Grade: X / 20)
+### Project 2 - STCP++ (Grade: 19.73 / 20)
 
 A project done in two weeks with [Carolina Brandão](https://github.com/CarolBrandak) and [Gabriel Machado Jr.](https://github.com/gabrieltmjr). <br>
 The “Sociedade de Transportes Colectivos do Porto (STCP)” is the company that manages the bus network in the municipality of Porto (and also in some neighboring areas). It is intended to implement a system capable of providing help to those who want to use the STCP network to move around, such as a Google Maps, through Algorithms that manipulate Graphs. <br>
