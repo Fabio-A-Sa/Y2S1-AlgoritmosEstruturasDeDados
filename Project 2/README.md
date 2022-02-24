@@ -7,7 +7,7 @@ All data, coordinates, lines and stops used are real and were provided by Profes
 <p align = "center" >
   <img 
        title = "Dataset"
-       src = "Images//Project2_Dataset.png" 
+       src = "../Images//Project2_Dataset.png" 
        alt = "Credits: Pedro Ribeiro" 
        />
 </p>
@@ -24,7 +24,7 @@ Implemented features:
 <p align = "center" >
   <img 
        title = "Dataset"
-       src = "Images//Project2_Dijkstra.png" 
+       src = "../Images//Project2_Dijkstra.png" 
        alt = "Credits: Gabriel Machado Jr." 
        />
 </p>
