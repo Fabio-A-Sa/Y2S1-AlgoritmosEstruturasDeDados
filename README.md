@@ -2,7 +2,7 @@
 
 This repository contains all the exercises and assessments of the UC Algorithms and Data Structures, taught by [Pedro Ribeiro](https://www.dcc.fc.up.pt/~pribeiro/) and [Ana Paula Rocha](https://sigarra.up.pt/feup/pt/func_geral.formview?p_codigo=211625) at [Integrated Master in Informatics and Computing Engineering](https://sigarra.up.pt/feup/pt/cur_geral.cur_view?pv_curso_id=742) [MIEIC] at the [Faculty of Engineering of the University of Porto](https://sigarra.up.pt/feup/pt/web_page.Inicial) [FEUP]. <br/>
 
-<br/>
+<h2 align = "center" >Final Grade: 18/20</h2>
 <p align = "center" >
   <img 
        title = "FEUP logo"
